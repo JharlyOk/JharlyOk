@@ -1,0 +1,22 @@
+name: Update GitHub Activity in README
+
+on:
+  # Se ejecuta automáticamente cada 12 horas para mantener tu perfil fresco
+  schedule:
+    - cron: "0 */12 * * *"
+  # Permite que puedas ejecutarlo tú mismo haciendo clic en un botón en GitHub
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Actualizar README con la actividad más reciente
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+        
+      - name: Actualizar sección de Actividad
+        uses: jamesgeorge007/github-activity-readme@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
