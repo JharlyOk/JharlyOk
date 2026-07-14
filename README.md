@@ -1,15 +1,15 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00BFFF,100:8A2BE2&height=250&section=header&text=Hello%20World!%20%F0%9F%91%8B&fontSize=70&fontColor=ffffff&fontAlignY=35&desc=I'm%20JharlyOk,%20Vibe%20Coder%20%26%20AI-Assisted%20Developer&descAlignY=55&descColor=ffffff" alt="Header" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:00BFFF,100:8A2BE2&amp;height=250&amp;section=header&amp;text=Hello%20World!%20%F0%9F%91%8B&amp;fontSize=70&amp;fontColor=ffffff&amp;fontAlignY=35&amp;desc=I'm%20JharlyOk,%20Vibe%20Coder%20%26%20AI-Assisted%20Developer&amp;descAlignY=55&amp;descColor=ffffff" alt="Header" width="100%"/>
 </div>
 
 <h3 align="center">Llevando ideas a la realidad con el poder de la Inteligencia Artificial 🤖✨</h3>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&color=00BFFF&center=true&vCenter=true&width=500&lines=Vibe+Coder+%26+AI+Explorer;Telegram+Bots+Creator;AI-Assisted+Development;Building+with+Gemini+%26+Cursor" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&amp;weight=500&amp;size=22&amp;pause=1000&amp;color=00BFFF&amp;center=true&amp;vCenter=true&amp;width=500&amp;lines=Vibe+Coder+%26+AI+Explorer;Telegram+Bots+Creator;AI-Assisted+Development;Building+with+Gemini+%26+Cursor" alt="Typing SVG" />
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=JharlyOk&color=00BFFF&style=flat-square&label=Visitas+al+perfil" alt="Profile Views"/>
+  <img src="https://komarev.com/ghpvc/?username=JharlyOk&amp;color=00BFFF&amp;style=flat-square&amp;label=Visitas+al+perfil" alt="Profile Views"/>
 </p>
 
 ---
@@ -35,12 +35,12 @@
 ### 📈 Mis Estadísticas de GitHub
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=JharlyOk&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00BFFF&icon_color=8A2BE2" height="165" alt="Stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=JharlyOk&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00BFFF" height="165" alt="Top Langs" />
+  <img src="https://github-readme-stats.vercel.app/api?username=JharlyOk&amp;show_icons=true&amp;theme=tokyonight&amp;hide_border=true&amp;bg_color=0D1117&amp;title_color=00BFFF&amp;icon_color=8A2BE2" height="165" alt="Stats" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=JharlyOk&amp;layout=compact&amp;theme=tokyonight&amp;hide_border=true&amp;bg_color=0D1117&amp;title_color=00BFFF" height="165" alt="Top Langs" />
 </div>
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=JharlyOk&theme=tokyonight&hide_border=true&background=0D1117&ring=00BFFF&fire=8A2BE2" alt="Streak Stats" />
+  <img src="https://streak-stats.demolab.com/?user=JharlyOk&amp;theme=tokyonight&amp;hide_border=true&amp;background=0D1117&amp;ring=00BFFF&amp;fire=8A2BE2" alt="Streak Stats" />
 </div>
 
 ---
@@ -59,5 +59,5 @@
 </div>
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:00BFFF&height=100&section=footer" alt="Footer" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:8A2BE2,100:00BFFF&amp;height=100&amp;section=footer" alt="Footer" width="100%"/>
 </div>
