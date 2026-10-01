@@ -1,14 +1,14 @@
-"""Header builder — Identity hero card.
+"""Header builder — Terminal-style identity card.
 
-Generates a dedicated identity card with:
-  - Name and role prominently displayed
-  - About/bio text
-  - Highlight metrics (bots, audio, AI, infra)
-  - Methodology tagline
-  - Subtle accent gradients
+Generates a terminal window running `whoami --verbose` that outputs
+the user's identity in a neofetch-inspired format. Consistent with
+the terminal aesthetic of projects and stack cards.
 
-This is the first thing visitors see. It must be memorable
-and communicate who you are at a glance.
+Design:
+  - Same terminal chrome as other cards
+  - Structured output with key-value pairs
+  - Highlight metrics inline
+  - No gradients, no dashboard widgets
 """
 
 from __future__ import annotations
@@ -18,148 +18,190 @@ from typing import Any, Dict
 from ..registry import BaseBuilder, register_builder
 from ..theme_loader import Theme
 from ..svg_primitives import (
-    svg_open, svg_close, defs_block, style_block,
-    rect, text, line, circle, _esc,
+    svg_open, svg_close,
+    rect, text, line, circle,
+    terminal_header, _esc,
 )
-
-
-# Icon glyphs for highlights (simple geometric representations)
-_ICON_GLYPHS = {
-    "bot": "\u2B23",      # Hexagon
-    "audio": "\u266B",    # Music note
-    "ai": "\u2B50",       # Star (will use circle instead)
-    "infra": "\u2302",    # House
-}
 
 
 @register_builder("header")
 class HeaderBuilder(BaseBuilder):
-    """Generates the identity hero card SVG."""
+    """Generates the terminal-style identity card SVG."""
 
     WIDTH = 880
-    HEIGHT = 200
+    HEADER_H = 36
+    LINE_H = 20
+    PADDING_X = 24
+    KEY_X = 40        # After the prompt symbol
+    VAL_X = 200       # Value column
+    SECTION_GAP = 10  # Extra gap between sections
 
     def build(self, config: Dict[str, Any], theme: Theme) -> str:
         identity = config["identity"]
         highlights = identity.get("highlights", [])
         about_lines = identity.get("about", [])
+        contact = config.get("contact", {})
+
+        # Build the terminal output lines
+        output_lines = self._build_output(identity, highlights, about_lines, contact)
+
+        # Calculate height
+        content_h = len(output_lines) * self.LINE_H + 28
+        total_h = self.HEADER_H + content_h
 
         parts: list[str] = []
 
         # ── SVG Root ────────────────────────────────────────────
         parts.append(svg_open(
-            self.WIDTH, self.HEIGHT,
+            self.WIDTH, total_h,
             f"{identity['handle']} — {identity['role']}",
             identity.get("tagline", ""),
         ))
 
-        # ── Defs ────────────────────────────────────────────────
-        defs_content = (
-            f'    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">\n'
-            f'      <stop offset="0%" stop-color="{theme.accent_primary}" stop-opacity="0.8" />\n'
-            f'      <stop offset="50%" stop-color="{theme.accent_secondary}" stop-opacity="0.4" />\n'
-            f'      <stop offset="100%" stop-color="{theme.accent_primary}" stop-opacity="0.1" />\n'
-            f'    </linearGradient>\n'
-        )
-        parts.append(defs_block(defs_content))
-
         # ── Background ──────────────────────────────────────────
-        parts.append(rect(0, 0, self.WIDTH, self.HEIGHT, theme.bg_canvas, rx=10,
+        parts.append(rect(0, 0, self.WIDTH, total_h, theme.bg_canvas, rx=10,
                           stroke=theme.border_default, stroke_width=1))
 
-        # Accent gradient line at top
-        parts.append(rect(0, 0, self.WIDTH, 3, "url(#accentLine)", rx=10))
-        parts.append(rect(0, 3, self.WIDTH, 7, theme.bg_canvas))
-
-        # ── Left side: Identity ─────────────────────────────────
-        left_x = 28
-        
-        # Handle name — large
-        parts.append(text(
-            left_x, 44, identity["handle"], theme.fg_default,
-            theme.font_sans, font_size=30, font_weight=700,
+        # ── Terminal Header ─────────────────────────────────────
+        parts.append(terminal_header(
+            self.WIDTH, "whoami --verbose", theme,
+            self.HEADER_H,
+            status_text="identity",
+            status_color=theme.accent_primary,
         ))
 
-        # Role — accent colored
-        parts.append(text(
-            left_x, 68, identity["role"], theme.accent_primary,
-            theme.font_sans, font_size=14, font_weight=500,
-        ))
+        # ── Output Lines ────────────────────────────────────────
+        y = self.HEADER_H + 22
 
-        # About lines
-        about_y = 94
-        for i, about_line in enumerate(about_lines):
-            parts.append(text(
-                left_x, about_y + (i * 17),
-                about_line, theme.fg_muted, theme.font_sans,
-                font_size=12.5,
-            ))
+        for entry in output_lines:
+            kind = entry.get("kind", "kv")
 
-        # Methodology badge at bottom
-        method = identity.get("methodology", "")
-        if method:
-            method_y = self.HEIGHT - 22
-            parts.append(text(
-                left_x, method_y, method,
-                theme.fg_subtle, theme.font_mono,
-                font_size=10, letter_spacing=0.5,
-            ))
+            if kind == "blank":
+                y += self.SECTION_GAP
+                continue
 
-        # ── Right side: Highlights ──────────────────────────────
-        if highlights:
-            # Vertical separator
-            sep_x = 520
-            parts.append(line(sep_x, 20, sep_x, self.HEIGHT - 20,
-                              theme.border_muted, 0.5))
-
-            highlight_x = sep_x + 28
-            highlight_y_start = 36
-            card_h = 36
-            card_gap = 6
-            card_w = self.WIDTH - highlight_x - 20
-
-            for i, hl in enumerate(highlights):
-                y = highlight_y_start + (i * (card_h + card_gap))
-
-                # Highlight card background
-                parts.append(rect(
-                    highlight_x, y, card_w, card_h,
-                    theme.bg_subtle, rx=6,
-                    stroke=theme.border_muted, stroke_width=0.5,
+            if kind == "section":
+                # Section header with subtle accent
+                parts.append(text(
+                    self.PADDING_X, y, entry["text"],
+                    theme.accent_primary, theme.font_mono,
+                    font_size=11, font_weight=600, letter_spacing=0.5,
                 ))
+                y += self.LINE_H
+                # Underline
+                parts.append(line(
+                    self.PADDING_X, y - 8,
+                    self.PADDING_X + len(entry["text"]) * 7, y - 8,
+                    theme.accent_primary, 0.3,
+                ))
+                continue
 
-                # Icon dot (color-coded)
-                icon_colors = {
-                    "bot": theme.accent_primary,
-                    "audio": theme.accent_secondary,
-                    "ai": theme.accent_success,
-                    "infra": theme.accent_warning,
-                }
-                icon_type = hl.get("icon", "bot")
-                dot_color = icon_colors.get(icon_type, theme.accent_primary)
+            if kind == "kv":
+                key = entry.get("key", "")
+                val = entry.get("val", "")
+                val_color = entry.get("color", theme.fg_default)
+
+                # Key (muted)
+                parts.append(text(
+                    self.KEY_X, y, key, theme.fg_subtle,
+                    theme.font_mono, font_size=12,
+                ))
+                # Value
+                parts.append(text(
+                    self.VAL_X, y, val, val_color,
+                    theme.font_mono, font_size=12, font_weight=500,
+                ))
+                y += self.LINE_H
+                continue
+
+            if kind == "text":
+                parts.append(text(
+                    self.KEY_X, y, entry["text"],
+                    theme.fg_muted, theme.font_mono, font_size=11.5,
+                ))
+                y += self.LINE_H
+                continue
+
+            if kind == "highlight":
+                # Dot + label + detail
+                dot_color = entry.get("dot", theme.accent_primary)
                 parts.append(circle(
-                    highlight_x + 16, y + card_h // 2, 4, dot_color,
+                    self.KEY_X + 4, y - 4, 3.5, dot_color,
                 ))
-
-                # Label (bold)
                 parts.append(text(
-                    highlight_x + 28, y + 16,
-                    hl.get("label", ""), theme.fg_default,
-                    theme.font_mono, font_size=12, font_weight=600,
+                    self.KEY_X + 16, y, entry.get("label", ""),
+                    theme.fg_default, theme.font_mono,
+                    font_size=12, font_weight=600,
                 ))
-
-                # Detail (muted, right-aligned)
                 parts.append(text(
-                    highlight_x + card_w - 12, y + 16,
-                    hl.get("detail", ""), theme.fg_subtle,
-                    theme.font_mono, font_size=10.5, text_anchor="end",
+                    self.KEY_X + 200, y, entry.get("detail", ""),
+                    theme.fg_subtle, theme.font_mono,
+                    font_size=11,
                 ))
-
-                # Subtle accent bar on left of card
-                parts.append(rect(
-                    highlight_x, y, 3, card_h,
-                    dot_color, rx=1, opacity=0.5,
-                ))
+                y += self.LINE_H
+                continue
 
         parts.append(svg_close())
         return "".join(parts)
+
+    def _build_output(
+        self,
+        identity: dict,
+        highlights: list,
+        about_lines: list,
+        contact: dict,
+    ) -> list[dict]:
+        """Build structured output lines for the terminal display."""
+
+        icon_colors_map = {
+            "bot": "#58a6ff",
+            "audio": "#bc8cff",
+            "ai": "#3fb950",
+            "infra": "#d29922",
+        }
+
+        lines: list[dict] = []
+
+        # Identity section
+        lines.append({"kind": "section", "text": "IDENTITY"})
+        lines.append({"kind": "kv", "key": "handle", "val": f"@{identity['handle']}"})
+        lines.append({"kind": "kv", "key": "role", "val": identity["role"],
+                       "color": "#58a6ff"})
+        lines.append({"kind": "kv", "key": "method", "val": identity.get("methodology", "")})
+
+        lines.append({"kind": "blank"})
+
+        # About section
+        lines.append({"kind": "section", "text": "ABOUT"})
+        for about in about_lines:
+            lines.append({"kind": "text", "text": about})
+
+        lines.append({"kind": "blank"})
+
+        # Highlights
+        lines.append({"kind": "section", "text": "ACTIVE SYSTEMS"})
+        for hl in highlights:
+            icon_type = hl.get("icon", "bot")
+            lines.append({
+                "kind": "highlight",
+                "label": hl.get("label", ""),
+                "detail": hl.get("detail", ""),
+                "dot": icon_colors_map.get(icon_type, "#58a6ff"),
+            })
+
+        lines.append({"kind": "blank"})
+
+        # Contact
+        if contact:
+            lines.append({"kind": "section", "text": "REACH"})
+            if contact.get("telegram"):
+                lines.append({"kind": "kv", "key": "telegram",
+                               "val": contact["telegram"]})
+            if contact.get("discord"):
+                lines.append({"kind": "kv", "key": "discord",
+                               "val": contact["discord"]})
+            if contact.get("email"):
+                lines.append({"kind": "kv", "key": "email",
+                               "val": contact["email"]})
+
+        return lines

@@ -5,16 +5,16 @@
     "tagline": "Transforming complex distributed ideas into production software through AI acceleration",
     "about": [
       "I architect autonomous bot ecosystems that run 24/7 on self-hosted infrastructure.",
-      "My approach: Vibe Coding — rapid iteration powered by Google Gemini & Cursor,",
-      "building systems that would take teams weeks in a fraction of the time."
+      "My approach: Vibe Coding — rapid prototyping powered by multi-LLM orchestration",
+      "(Gemini, Claude, Cursor, LLM Arena) to ship production systems at speed."
     ],
     "highlights": [
       {"icon": "bot", "label": "13+ Production Bots", "detail": "Telegram & Discord fleet"},
-      {"icon": "audio", "label": "Real-Time Audio", "detail": "Lavalink v4 + LavaSrc"},
-      {"icon": "ai", "label": "AI-First Development", "detail": "Gemini & Cursor orchestration"},
-      {"icon": "infra", "label": "Self-Hosted Infra", "detail": "Docker + Linux VPS"}
+      {"icon": "audio", "label": "Real-Time Audio", "detail": "Lavalink v4 + LavaSrc pipeline"},
+      {"icon": "ai", "label": "Multi-LLM Development", "detail": "Gemini, Claude, Cursor, LLM Arena"},
+      {"icon": "infra", "label": "Self-Hosted Infra", "detail": "Docker + Linux VPS + Pterodactyl"}
     ],
-    "methodology": "Vibe Coding · AI-Accelerated · Zero-Trust Architecture"
+    "methodology": "Vibe Coding · Multi-LLM Orchestration · Zero-Trust Architecture"
   },
 
   "themes": {
@@ -38,7 +38,7 @@
       {"tokens": [{"type": "property", "text": "  stack"}, {"type": "punctuation", "text": ": {"}]},
       {"tokens": [{"type": "property", "text": "    bots"}, {"type": "punctuation", "text": ": ["}, {"type": "string", "text": "\"Telethon\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"Pyrogram\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"Discord.js v14\""}, {"type": "punctuation", "text": "],"}]},
       {"tokens": [{"type": "property", "text": "    audio"}, {"type": "punctuation", "text": ": ["}, {"type": "string", "text": "\"Lavalink v4\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"LavaSrc\""}, {"type": "punctuation", "text": "],"}]},
-      {"tokens": [{"type": "property", "text": "    ai"}, {"type": "punctuation", "text": ": ["}, {"type": "string", "text": "\"Gemini\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"Cursor\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"epic-ai-agents\""}, {"type": "punctuation", "text": "],"}]},
+      {"tokens": [{"type": "property", "text": "    ai"}, {"type": "punctuation", "text": ": ["}, {"type": "string", "text": "\"Gemini\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"Claude\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"Cursor\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"LLM Arena\""}, {"type": "punctuation", "text": "],"}]},
       {"tokens": [{"type": "property", "text": "    infra"}, {"type": "punctuation", "text": ": ["}, {"type": "string", "text": "\"Docker\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"Linux VPS\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"SQLite WAL\""}, {"type": "punctuation", "text": "],"}]},
       {"tokens": [{"type": "punctuation", "text": "  },"}]},
       {"tokens": [{"type": "property", "text": "  status"}, {"type": "punctuation", "text": ": "}, {"type": "string", "text": "\"building\""}, {"type": "punctuation", "text": ","}]},
@@ -70,8 +70,8 @@
 
   "stack": {
     "ai_toolchain": {
-      "label": "AI & Prompt Architecture",
-      "items": ["Google Gemini", "Cursor", "epic-ai-agents"]
+      "label": "AI & LLM Toolkit",
+      "items": ["Google Gemini", "Claude", "Cursor", "LLM Arena", "epic-ai-agents"]
     },
     "bot_frameworks": {
       "label": "Bot Frameworks (MTProto)",
