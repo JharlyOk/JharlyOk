@@ -27,18 +27,18 @@ from ..svg_primitives import (
 class ProjectsBuilder(BaseBuilder):
     """Generates the projects panel SVG."""
 
-    WIDTH = 800
+    WIDTH = 880
     HEADER_H = 36
-    PROJECT_HEIGHT = 76
+    PROJECT_HEIGHT = 64
     PADDING_X = 24
-    PADDING_TOP = 20
+    PADDING_TOP = 14
 
     def build(self, config: Dict[str, Any], theme: Theme) -> str:
         projects: List[dict] = config.get("projects", [])
         num_projects = len(projects)
 
         # Calculate height dynamically
-        content_h = (num_projects * self.PROJECT_HEIGHT) + self.PADDING_TOP + 36
+        content_h = (num_projects * self.PROJECT_HEIGHT) + self.PADDING_TOP + 28
         total_h = self.HEADER_H + content_h
 
         parts: list[str] = []
@@ -77,7 +77,7 @@ class ProjectsBuilder(BaseBuilder):
             letter_spacing=0.5,
         ))
         parts.append(text(
-            370, col_y, "DESCRIPTION", theme.fg_subtle,
+            400, col_y, "DESCRIPTION", theme.fg_subtle,
             theme.font_mono, font_size=10, font_weight=600,
             letter_spacing=0.5,
         ))
@@ -126,7 +126,7 @@ class ProjectsBuilder(BaseBuilder):
             # Description
             desc = project.get("description", "")
             parts.append(text(
-                370, row_y, desc, theme.fg_muted, theme.font_mono,
+                400, row_y, desc, theme.fg_muted, theme.font_mono,
                 font_size=11.5,
             ))
 

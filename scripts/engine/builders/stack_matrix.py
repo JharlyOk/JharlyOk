@@ -28,9 +28,9 @@ from ..svg_primitives import (
 class StackMatrixBuilder(BaseBuilder):
     """Generates the tech stack matrix SVG."""
 
-    WIDTH = 800
+    WIDTH = 880
     HEADER_H = 36
-    COL_WIDTH = 250
+    COL_WIDTH = 275
     COLS_PER_ROW = 3
     CATEGORY_HEIGHT = 28
     ITEM_HEIGHT = 24

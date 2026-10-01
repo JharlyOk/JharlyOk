@@ -1,26 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="800" height="320" role="img" aria-labelledby="svgTitle svgDesc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 270" width="880" height="270" role="img" aria-labelledby="svgTitle svgDesc">
   <title id="svgTitle">JharlyOk — Active Projects</title>
   <desc id="svgDesc">Project portfolio and tech stack overview.</desc>
-  <rect x="0" y="0" width="800" height="320" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1" />
-  <rect x="0" y="0" width="800" height="36" rx="10" fill="#eff2f5" />
-  <rect x="0" y="26" width="800" height="10" rx="0" fill="#eff2f5" />
-  <line x1="0" y1="36" x2="800" y2="36" stroke="#d0d7de" stroke-width="1" />
+  <rect x="0" y="0" width="880" height="270" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1" />
+  <rect x="0" y="0" width="880" height="36" rx="10" fill="#eff2f5" />
+  <rect x="0" y="26" width="880" height="10" rx="0" fill="#eff2f5" />
+  <line x1="0" y1="36" x2="880" y2="36" stroke="#d0d7de" stroke-width="1" />
   <circle cx="16" cy="18" r="4.5" fill="#f85149" />
   <circle cx="32" cy="18" r="4.5" fill="#d29922" />
   <circle cx="48" cy="18" r="4.5" fill="#3fb950" />
   <text x="68" y="22" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12"><tspan fill="#1a7f37" font-weight="600">jharlyok@dev</tspan><tspan fill="#6e7681">:</tspan><tspan fill="#0969da" font-weight="600">~</tspan><tspan fill="#6e7681">$ </tspan><tspan fill="#1f2328">ls -la ~/projects --format=detailed</tspan></text>
-  <rect x="701" y="8" width="87" height="20" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.8" />
-  <circle cx="711" cy="18" r="3" fill="#0969da" />
-  <text x="721" y="22" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5" font-weight="600">3 entries</text>
+  <rect x="781" y="8" width="87" height="20" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.8" />
+  <circle cx="791" cy="18" r="3" fill="#0969da" />
+  <text x="801" y="22" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5" font-weight="600">3 entries</text>
   <text x="24" y="54" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="600" letter-spacing="0.5">PROJECT</text>
   <text x="200" y="54" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="600" letter-spacing="0.5">TYPE</text>
-  <text x="370" y="54" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="600" letter-spacing="0.5">DESCRIPTION</text>
-  <line x1="24" y1="64" x2="776" y2="64" stroke="#d8dee4" stroke-width="0.5" />
+  <text x="400" y="54" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="600" letter-spacing="0.5">DESCRIPTION</text>
+  <line x1="24" y1="64" x2="856" y2="64" stroke="#d8dee4" stroke-width="0.5" />
   <text x="24" y="88" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">├─</text>
   <text x="50" y="88" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="600">epic-ai-agents</text>
   <rect x="200" y="76" width="144.0" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
   <text x="272.0" y="88" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">AI Context Framework</text>
-  <text x="370" y="88" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">System prompt architecture for LLM-assisted bot development</text>
+  <text x="400" y="88" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">System prompt architecture for LLM-assisted bot development</text>
   <text x="24" y="110" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">│</text>
   <rect x="50" y="99" width="103.0" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
   <text x="101.5" y="110" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Two-Phase Init</text>
@@ -28,29 +28,29 @@
   <text x="197.5" y="110" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Zero-Trust</text>
   <rect x="242.0" y="99" width="129.0" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
   <text x="306.5" y="110" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Repository Pattern</text>
-  <text x="24" y="164" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">├─</text>
-  <text x="50" y="164" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="600">EpicBot v4</text>
-  <rect x="200" y="152" width="131.0" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
-  <text x="265.5" y="164" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">Discord Bot Engine</text>
-  <text x="370" y="164" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">Sharded TypeScript bot with Lavalink audio streaming</text>
-  <text x="24" y="186" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">│</text>
-  <rect x="50" y="175" width="103.0" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
-  <text x="101.5" y="186" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Discord.js v14</text>
-  <rect x="159.0" y="175" width="44.5" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
-  <text x="181.25" y="186" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Redis</text>
-  <rect x="209.5" y="175" width="83.5" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
-  <text x="251.25" y="186" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Lavalink v4</text>
-  <text x="24" y="240" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">└─</text>
-  <text x="50" y="240" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="600">Epic Telegram Suite</text>
-  <rect x="200" y="228" width="144.0" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
-  <text x="272.0" y="240" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">Autonomous Bot Fleet</text>
-  <text x="370" y="240" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">13+ specialized content automation bots</text>
-  <rect x="50" y="251" width="64.0" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
-  <text x="82.0" y="262" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Telethon</text>
-  <rect x="120.0" y="251" width="64.0" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
-  <text x="152.0" y="262" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Pyrogram</text>
-  <rect x="190.0" y="251" width="70.5" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
-  <text x="225.25" y="262" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Gemini AI</text>
-  <rect x="266.5" y="251" width="77.0" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
-  <text x="305.0" y="262" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">SQLite WAL</text>
+  <text x="24" y="152" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">├─</text>
+  <text x="50" y="152" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="600">EpicBot v4</text>
+  <rect x="200" y="140" width="131.0" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
+  <text x="265.5" y="152" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">Discord Bot Engine</text>
+  <text x="400" y="152" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">Sharded TypeScript bot with Lavalink audio streaming</text>
+  <text x="24" y="174" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">│</text>
+  <rect x="50" y="163" width="103.0" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
+  <text x="101.5" y="174" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Discord.js v14</text>
+  <rect x="159.0" y="163" width="44.5" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
+  <text x="181.25" y="174" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Redis</text>
+  <rect x="209.5" y="163" width="83.5" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
+  <text x="251.25" y="174" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Lavalink v4</text>
+  <text x="24" y="216" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">└─</text>
+  <text x="50" y="216" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="600">Epic Telegram Suite</text>
+  <rect x="200" y="204" width="144.0" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
+  <text x="272.0" y="216" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">Autonomous Bot Fleet</text>
+  <text x="400" y="216" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">13+ specialized content automation bots</text>
+  <rect x="50" y="227" width="64.0" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
+  <text x="82.0" y="238" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Telethon</text>
+  <rect x="120.0" y="227" width="64.0" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
+  <text x="152.0" y="238" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Pyrogram</text>
+  <rect x="190.0" y="227" width="70.5" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
+  <text x="225.25" y="238" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">Gemini AI</text>
+  <rect x="266.5" y="227" width="77.0" height="16" rx="3" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.5" />
+  <text x="305.0" y="238" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" text-anchor="middle">SQLite WAL</text>
 </svg>
