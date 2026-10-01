@@ -1,10 +1,10 @@
 <div align="center">
 
-<!-- HERO BANNER — adapts to visitor's GitHub theme automatically -->
+<!-- HEADER — Identity hero card -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
-  <img src="assets/banner-dark.svg" width="100%" alt="JharlyOk — AI-Assisted Systems Builder" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
+  <img src="assets/header-dark.svg" width="100%" alt="JharlyOk — AI-Assisted Systems Builder & Bot Architect" />
 </picture>
 
 <a href="https://github.com/JharlyOk">
@@ -16,6 +16,17 @@
 [![GitHub](https://img.shields.io/github/followers/JharlyOk?label=Follow&style=flat-square&color=30363d&labelColor=21262d)](https://github.com/JharlyOk)
 
 </div>
+
+---
+
+### `$ cat src/core/JharlyOk.config.ts`
+
+<!-- CODE EDITOR — TypeScript profile manifest -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
+  <img src="assets/banner-dark.svg" width="100%" alt="JharlyOk Code Manifest" />
+</picture>
 
 ---
 

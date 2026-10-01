@@ -1,8 +1,20 @@
 {
   "identity": {
     "handle": "JharlyOk",
-    "role": "AI-Assisted Systems Builder",
-    "tagline": "Building autonomous bot ecosystems through AI acceleration"
+    "role": "AI-Assisted Systems Builder & Bot Architect",
+    "tagline": "Transforming complex distributed ideas into production software through AI acceleration",
+    "about": [
+      "I architect autonomous bot ecosystems that run 24/7 on self-hosted infrastructure.",
+      "My approach: Vibe Coding — rapid iteration powered by Google Gemini & Cursor,",
+      "building systems that would take teams weeks in a fraction of the time."
+    ],
+    "highlights": [
+      {"icon": "bot", "label": "13+ Production Bots", "detail": "Telegram & Discord fleet"},
+      {"icon": "audio", "label": "Real-Time Audio", "detail": "Lavalink v4 + LavaSrc"},
+      {"icon": "ai", "label": "AI-First Development", "detail": "Gemini & Cursor orchestration"},
+      {"icon": "infra", "label": "Self-Hosted Infra", "detail": "Docker + Linux VPS"}
+    ],
+    "methodology": "Vibe Coding · AI-Accelerated · Zero-Trust Architecture"
   },
 
   "themes": {
