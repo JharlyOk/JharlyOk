@@ -1,0 +1,124 @@
+#!/usr/bin/env python3
+"""Profile build script — compiles all SVG assets for dark & light themes.
+
+Usage:
+    python scripts/build.py                  # Build all components
+    python scripts/build.py --only banner    # Build only the banner
+    python scripts/build.py --list           # List registered builders
+
+The script:
+  1. Loads profile.config.json
+  2. Loads the dark and light theme JSONs
+  3. Discovers all registered builders
+  4. Runs each builder against both themes
+  5. Writes assets/{name}-dark.svg and assets/{name}-light.svg
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+import time
+from pathlib import Path
+
+# Resolve project root (one level up from scripts/)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+
+from engine.config_loader import load_config
+from engine.theme_loader import load_theme_pair
+from engine.registry import get_all_builders, get_builder
+
+# Import builders to trigger registration
+import engine.builders  # noqa: F401
+
+
+def _log(msg: str) -> None:
+    """Print a message with safe encoding for all platforms."""
+    try:
+        print(msg)
+    except UnicodeEncodeError:
+        print(msg.encode("ascii", errors="replace").decode("ascii"))
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="JharlyOk Profile Engine -- SVG asset compiler.",
+    )
+    parser.add_argument(
+        "--only", type=str, default=None,
+        help="Build only a specific component (e.g. 'banner').",
+    )
+    parser.add_argument(
+        "--list", action="store_true",
+        help="List all registered builders and exit.",
+    )
+    args = parser.parse_args()
+
+    # Paths
+    config_path = PROJECT_ROOT / "config" / "profile.config.json"
+    themes_dir = PROJECT_ROOT / "themes"
+    assets_dir = PROJECT_ROOT / "assets"
+
+    # Load config
+    config = load_config(config_path)
+    _log(f"  [ok] Config loaded: {config['identity']['handle']}")
+
+    # Load themes
+    dark_theme, light_theme = load_theme_pair(config, themes_dir)
+    _log(f"  [ok] Themes loaded: {dark_theme.label} / {light_theme.label}")
+
+    # Discover builders
+    if args.list:
+        builders = get_all_builders()
+        _log(f"\n  Registered builders ({len(builders)}):")
+        for b in builders:
+            _log(f"    - {b.builder_name}")
+        return
+
+    if args.only:
+        builders = [get_builder(args.only)]
+    else:
+        builders = get_all_builders()
+
+    _log(f"  [ok] Builders: {[b.builder_name for b in builders]}")
+
+    # Ensure assets directory exists
+    assets_dir.mkdir(parents=True, exist_ok=True)
+
+    # Build all assets
+    _log("")
+    total_start = time.perf_counter()
+
+    for builder in builders:
+        name = builder.builder_name
+        start = time.perf_counter()
+
+        # Build dark variant
+        dark_svg = builder.build(config, dark_theme)
+        dark_path = assets_dir / f"{name}-dark.svg"
+        dark_path.write_text(dark_svg, encoding="utf-8")
+
+        # Build light variant
+        light_svg = builder.build(config, light_theme)
+        light_path = assets_dir / f"{name}-light.svg"
+        light_path.write_text(light_svg, encoding="utf-8")
+
+        elapsed = (time.perf_counter() - start) * 1000
+        dark_kb = len(dark_svg.encode("utf-8")) / 1024
+        light_kb = len(light_svg.encode("utf-8")) / 1024
+
+        _log(
+            f"  > {name:.<20s} "
+            f"dark: {dark_kb:.1f}KB  light: {light_kb:.1f}KB  "
+            f"({elapsed:.0f}ms)"
+        )
+
+    total_elapsed = (time.perf_counter() - total_start) * 1000
+    total_files = len(builders) * 2
+    _log(f"\n  [ok] Done: {total_files} files compiled in {total_elapsed:.0f}ms")
+    _log(f"  [ok] Output: {assets_dir.relative_to(PROJECT_ROOT)}/")
+
+
+if __name__ == "__main__":
+    main()

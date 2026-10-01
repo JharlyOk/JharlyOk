@@ -1,0 +1,92 @@
+{
+  "identity": {
+    "handle": "JharlyOk",
+    "role": "AI-Assisted Systems Builder",
+    "tagline": "Building autonomous bot ecosystems through AI acceleration"
+  },
+
+  "themes": {
+    "dark": "github-dark",
+    "light": "github-light"
+  },
+
+  "banner": {
+    "filename": "JharlyOk.config.ts",
+    "filepath": "src/core/",
+    "language": "TypeScript",
+    "git_branch": "main",
+    "code_lines": [
+      {"tokens": [{"type": "keyword", "text": "import"}, {"type": "punctuation", "text": " { "}, {"type": "type", "text": "SystemsBuilder"}, {"type": "punctuation", "text": " } "}, {"type": "keyword", "text": "from"}, {"type": "string", "text": " \"@epic/core\""},  {"type": "punctuation", "text": ";"}]},
+      {"tokens": []},
+      {"tokens": [{"type": "comment", "text": "// AI-accelerated autonomous bot ecosystems"}]},
+      {"tokens": [{"type": "keyword", "text": "export const"}, {"type": "punctuation", "text": " profile"}, {"type": "keyword", "text": ":"}, {"type": "type", "text": " SystemsBuilder"}, {"type": "punctuation", "text": " = {"}]},
+      {"tokens": [{"type": "property", "text": "  handle"}, {"type": "punctuation", "text": ": "}, {"type": "string", "text": "\"JharlyOk\""}, {"type": "punctuation", "text": ","}]},
+      {"tokens": [{"type": "property", "text": "  role"}, {"type": "punctuation", "text": ": "}, {"type": "string", "text": "\"AI-Assisted Systems Builder\""}, {"type": "punctuation", "text": ","}]},
+      {"tokens": [{"type": "property", "text": "  focus"}, {"type": "punctuation", "text": ": "}, {"type": "string", "text": "\"Autonomous Bot Ecosystems & Audio Infra\""}, {"type": "punctuation", "text": ","}]},
+      {"tokens": [{"type": "property", "text": "  stack"}, {"type": "punctuation", "text": ": {"}]},
+      {"tokens": [{"type": "property", "text": "    bots"}, {"type": "punctuation", "text": ": ["}, {"type": "string", "text": "\"Telethon\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"Pyrogram\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"Discord.js v14\""}, {"type": "punctuation", "text": "],"}]},
+      {"tokens": [{"type": "property", "text": "    audio"}, {"type": "punctuation", "text": ": ["}, {"type": "string", "text": "\"Lavalink v4\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"LavaSrc\""}, {"type": "punctuation", "text": "],"}]},
+      {"tokens": [{"type": "property", "text": "    ai"}, {"type": "punctuation", "text": ": ["}, {"type": "string", "text": "\"Gemini\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"Cursor\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"epic-ai-agents\""}, {"type": "punctuation", "text": "],"}]},
+      {"tokens": [{"type": "property", "text": "    infra"}, {"type": "punctuation", "text": ": ["}, {"type": "string", "text": "\"Docker\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"Linux VPS\""}, {"type": "punctuation", "text": ", "}, {"type": "string", "text": "\"SQLite WAL\""}, {"type": "punctuation", "text": "],"}]},
+      {"tokens": [{"type": "punctuation", "text": "  },"}]},
+      {"tokens": [{"type": "property", "text": "  status"}, {"type": "punctuation", "text": ": "}, {"type": "string", "text": "\"building\""}, {"type": "punctuation", "text": ","}]},
+      {"tokens": [{"type": "punctuation", "text": "};"}]},
+      {"tokens": []}
+    ]
+  },
+
+  "projects": [
+    {
+      "name": "epic-ai-agents",
+      "type": "AI Context Framework",
+      "description": "System prompt architecture for LLM-assisted bot development",
+      "tags": ["Two-Phase Init", "Zero-Trust", "Repository Pattern"]
+    },
+    {
+      "name": "EpicBot v4",
+      "type": "Discord Bot Engine",
+      "description": "Sharded TypeScript bot with Lavalink audio streaming",
+      "tags": ["Discord.js v14", "Redis", "Lavalink v4"]
+    },
+    {
+      "name": "Epic Telegram Suite",
+      "type": "Autonomous Bot Fleet",
+      "description": "13+ specialized content automation bots",
+      "tags": ["Telethon", "Pyrogram", "Gemini AI", "SQLite WAL"]
+    }
+  ],
+
+  "stack": {
+    "ai_toolchain": {
+      "label": "AI & Prompt Architecture",
+      "items": ["Google Gemini", "Cursor", "epic-ai-agents"]
+    },
+    "bot_frameworks": {
+      "label": "Bot Frameworks (MTProto)",
+      "items": ["Telethon", "Pyrogram", "Discord.js v14"]
+    },
+    "audio_media": {
+      "label": "Audio & Media Pipeline",
+      "items": ["Lavalink v4", "LavaSrc", "Pillow"]
+    },
+    "data": {
+      "label": "Persistence & Caching",
+      "items": ["SQLite (WAL)", "Redis", "MongoDB"]
+    },
+    "runtime": {
+      "label": "Core Runtimes",
+      "items": ["Python 3.12", "TypeScript 5", "Node.js 20"]
+    },
+    "infra": {
+      "label": "Infrastructure",
+      "items": ["Docker", "Linux VPS", "Pterodactyl"]
+    }
+  },
+
+  "contact": {
+    "telegram": "@JharlyOk",
+    "discord": "JharlyOk",
+    "email": "jhefcarrascojesus2001@gmail.com",
+    "github": "JharlyOk"
+  }
+}
