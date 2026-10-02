@@ -1,11 +1,11 @@
-"""Header builder — Animated welcome bar + visual highlights strip.
+"""Header builder — Typewriter welcome bar + highlight cards.
 
-Two zones:
-  1. A bar with CSS-animated cycling text (built into the SVG)
-  2. Four horizontal highlight cards
+Uses SMIL `<animate>` for true typewriter effect:
+  - A covering rect reveals text char-by-char (typing)
+  - Then covers it back (erasing)
+  - Cycles through multiple messages
 
-The text animation uses pure CSS @keyframes opacity cycling —
-no JavaScript, no external services. GitHub allows CSS in SVGs.
+Accent bars use clipPath to stay within card bounds.
 """
 
 from __future__ import annotations
@@ -20,54 +20,134 @@ from ..svg_primitives import (
 )
 
 
-def _cycling_text_css(num_messages: int, duration_each: float = 3.0) -> str:
-    """Generate CSS keyframes for cycling N text elements.
+def _typewriter_elements(
+    messages: List[str],
+    x: float,
+    y: float,
+    bar_width: float,
+    bg_color: str,
+    text_color: str,
+    accent_color: str,
+    font_family: str,
+    font_size: float = 14,
+) -> str:
+    """Generate SVG elements for SMIL-based typewriter animation.
 
-    Each message is visible for `duration_each` seconds.
-    Total cycle = num_messages * duration_each.
+    Uses a covering rect per message that shrinks (typing) and grows (erasing).
     """
-    total = num_messages * duration_each
-    # Each message gets a slot: fade in (5%), hold (80%), fade out (5%), hidden (10%)
-    slot_pct = 100.0 / num_messages
-    fade_in = slot_pct * 0.05
-    hold_start = slot_pct * 0.10
-    hold_end = slot_pct * 0.85
-    fade_out = slot_pct * 0.95
+    n = len(messages)
+    char_w = font_size * 0.62  # monospace char width approximation
+    type_speed = 0.06          # seconds per character reveal
+    erase_speed = 0.03         # faster erase
+    hold_time = 2.0            # seconds to display full message
+    gap_time = 0.4             # pause between messages
 
-    css = f'    @keyframes cycle {{\n'
-    css += f'      0%, {fade_in:.1f}% {{ opacity: 0; }}\n'
-    css += f'      {hold_start:.1f}%, {hold_end:.1f}% {{ opacity: 1; }}\n'
-    css += f'      {fade_out:.1f}%, 100% {{ opacity: 0; }}\n'
-    css += f'    }}\n'
+    # Calculate per-message and total timing
+    timings = []
+    t = 0.0
+    for msg in messages:
+        msg_len = len(msg)
+        type_dur = msg_len * type_speed
+        erase_dur = msg_len * erase_speed
+        cover_w = msg_len * char_w + 20  # full cover width
 
-    # Each message class gets a delay
-    for i in range(num_messages):
-        delay = i * duration_each
-        css += (
-            f'    .msg-{i} {{\n'
-            f'      opacity: 0;\n'
-            f'      animation: cycle {total:.1f}s ease-in-out infinite;\n'
-            f'      animation-delay: {delay:.1f}s;\n'
-            f'    }}\n'
-        )
+        timings.append({
+            "start": t,
+            "type_dur": type_dur,
+            "hold_end": t + type_dur + hold_time,
+            "erase_dur": erase_dur,
+            "cover_w": cover_w,
+        })
+        t += type_dur + hold_time + erase_dur + gap_time
 
-    # Cursor blink
-    css += (
-        '    @keyframes blink {\n'
-        '      0%, 100% { opacity: 1; }\n'
-        '      50% { opacity: 0; }\n'
-        '    }\n'
-        '    .cursor-blink {\n'
-        '      animation: blink 1.1s step-end infinite;\n'
-        '    }\n'
+    total_dur = t
+
+    svg = ""
+
+    # Blinking cursor style
+    svg += "  <style>\n"
+    svg += "    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }\n"
+    svg += "    .cb { animation: blink 1.1s step-end infinite; }\n"
+    svg += "  </style>\n"
+
+    # Cursor (always visible, blinking)
+    svg += (
+        f'  <text x="{x + 4}" y="{y}" fill="{accent_color}" '
+        f'font-family="{font_family}" font-size="{font_size}" '
+        f'font-weight="700" class="cb">\u2588</text>\n'
     )
 
-    return css
+    for i, (msg, tm) in enumerate(zip(messages, timings)):
+        cover_w = tm["cover_w"]
+        type_dur = tm["type_dur"]
+        erase_dur = tm["erase_dur"]
+        msg_start = tm["start"]
+        hold_end = tm["hold_end"]
+
+        # Generate keyTimes and values for the cover rect animation:
+        # Phase 1: hidden (cover full) until msg_start
+        # Phase 2: typing (cover shrinks from cover_w to 0) — type_dur
+        # Phase 3: hold (cover stays 0) — hold_time
+        # Phase 4: erase (cover grows from 0 to cover_w) — erase_dur
+        # Phase 5: hidden (cover full) until end
+
+        # Normalize times to 0-1 range
+        t0 = msg_start / total_dur
+        t1 = (msg_start + type_dur) / total_dur
+        t2 = hold_end / total_dur
+        t3 = (hold_end + erase_dur) / total_dur
+
+        # Clamp to valid keyTimes
+        key_times = [0]
+        values = [str(cover_w)]
+
+        if t0 > 0.001:
+            key_times.append(round(t0, 4))
+            values.append(str(cover_w))
+
+        key_times.append(round(t1, 4))
+        values.append("0")
+
+        key_times.append(round(t2, 4))
+        values.append("0")
+
+        key_times.append(round(t3, 4))
+        values.append(str(cover_w))
+
+        if t3 < 0.999:
+            key_times.append(1)
+            values.append(str(cover_w))
+
+        kt_str = ";".join(str(k) for k in key_times)
+        val_str = ";".join(values)
+
+        # Text element
+        svg += (
+            f'  <text x="{x}" y="{y}" fill="{text_color}" '
+            f'font-family="{font_family}" font-size="{font_size}" '
+            f'font-weight="500">{_esc(msg)}</text>\n'
+        )
+
+        # Covering rect (same color as background, hides text)
+        svg += (
+            f'  <rect x="{x}" y="{y - font_size}" '
+            f'width="{cover_w}" height="{font_size + 8}" fill="{bg_color}">\n'
+            f'    <animate attributeName="width" '
+            f'values="{val_str}" '
+            f'keyTimes="{kt_str}" '
+            f'dur="{total_dur:.1f}s" repeatCount="indefinite" />\n'
+            f'    <animate attributeName="x" '
+            f'values="{x};{x};{x};{x};{x}" '
+            f'dur="{total_dur:.1f}s" repeatCount="indefinite" />\n'
+            f'  </rect>\n'
+        )
+
+    return svg
 
 
 @register_builder("header")
 class HeaderBuilder(BaseBuilder):
-    """Generates the animated welcome + highlights header SVG."""
+    """Generates the typewriter welcome + highlights header SVG."""
 
     WIDTH = 880
     WELCOME_H = 48
@@ -79,9 +159,7 @@ class HeaderBuilder(BaseBuilder):
     def build(self, config: Dict[str, Any], theme: Theme) -> str:
         identity = config["identity"]
         highlights = identity.get("highlights", [])
-        messages = identity.get("welcome_messages", [
-            "Welcome to my workspace",
-        ])
+        messages = identity.get("welcome_messages", ["Welcome"])
 
         total_h = self.WELCOME_H + self.GAP + self.CARD_H
         num_cards = len(highlights) if highlights else 4
@@ -93,37 +171,34 @@ class HeaderBuilder(BaseBuilder):
         parts.append(svg_open(
             self.WIDTH, total_h,
             f"{identity['handle']} — Active Systems",
-            "Animated welcome and key highlights.",
+            identity.get("tagline", ""),
         ))
 
-        # ── CSS Animations ──────────────────────────────────────
-        parts.append(style_block(_cycling_text_css(len(messages))))
-
         # ── Welcome Bar ─────────────────────────────────────────
+        bar_bg = theme.bg_subtle
         parts.append(rect(
             0, 0, self.WIDTH, self.WELCOME_H,
-            theme.bg_subtle, rx=8,
+            bar_bg, rx=8,
             stroke=theme.border_muted, stroke_width=1,
         ))
 
-        # Prompt symbol (static)
+        # Prompt symbol
         parts.append(text(
             16, 30, ">_", theme.accent_primary,
             theme.font_mono, font_size=16, font_weight=700,
         ))
 
-        # Cycling messages (stacked at same position, CSS cycles opacity)
-        for i, msg in enumerate(messages):
-            parts.append(text(
-                48, 30, msg, theme.fg_default,
-                theme.font_mono, font_size=14, font_weight=500,
-                css_class=f"msg-{i}",
-            ))
-
-        # Blinking cursor (always visible)
-        parts.append(text(
-            self.WIDTH - 30, 30, "\u2588", theme.accent_primary,
-            theme.font_mono, font_size=14, css_class="cursor-blink",
+        # Typewriter animated text
+        parts.append(_typewriter_elements(
+            messages=messages,
+            x=50,
+            y=30,
+            bar_width=self.WIDTH - 70,
+            bg_color=bar_bg,
+            text_color=theme.fg_default,
+            accent_color=theme.accent_primary,
+            font_family=theme.font_mono,
+            font_size=14,
         ))
 
         # ── Highlight Cards ─────────────────────────────────────
@@ -148,9 +223,10 @@ class HeaderBuilder(BaseBuilder):
                 stroke=theme.border_muted, stroke_width=1,
             ))
 
-            # Accent top bar
-            parts.append(rect(x, cards_y, card_w, 3, accent, rx=self.CARD_RX))
-            parts.append(rect(x, cards_y + 1, card_w, 2, accent))
+            # Accent top line — INSIDE the card, no border-radius
+            parts.append(rect(
+                x + 1, cards_y + 1, card_w - 2, 2, accent,
+            ))
 
             # Accent dot
             parts.append(circle(x + 16, cards_y + 28, 4, accent))

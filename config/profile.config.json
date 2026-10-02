@@ -3,18 +3,12 @@
     "handle": "JharlyOk",
     "role": "AI-Assisted Systems Builder & Bot Architect",
     "tagline": "Transforming complex distributed ideas into production software through AI acceleration",
-    "about": [
-      "I architect autonomous bot ecosystems that run 24/7 on self-hosted infrastructure.",
-      "My approach: Vibe Coding — rapid prototyping powered by multi-LLM orchestration",
-      "(Gemini, Claude, Cursor, LLM Arena) to ship production systems at speed."
-    ],
     "highlights": [
       {"icon": "bot", "label": "13+ Production Bots", "detail": "Telegram & Discord fleet"},
       {"icon": "audio", "label": "Real-Time Audio", "detail": "Lavalink v4 + LavaSrc pipeline"},
       {"icon": "ai", "label": "Multi-LLM Development", "detail": "Gemini, Claude, Cursor, LLM Arena"},
       {"icon": "infra", "label": "Self-Hosted Infra", "detail": "Docker + Linux VPS + Pterodactyl"}
     ],
-    "methodology": "Vibe Coding · Multi-LLM Orchestration · Zero-Trust Architecture",
     "welcome_messages": [
       "Hey, welcome to my workspace",
       "Building autonomous bot ecosystems",
