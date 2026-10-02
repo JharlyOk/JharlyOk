@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 282" width="430" height="282" role="img" aria-labelledby="svgMobileStatsTitle svgMobileStatsDesc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 364" width="430" height="364" role="img" aria-labelledby="svgMobileStatsTitle svgMobileStatsDesc">
   <title id="svgMobileStatsTitle">JharlyOk Mobile GitHub Telemetry</title>
   <desc id="svgMobileStatsDesc">Live developer telemetry dashboard</desc>
-  <rect x="0" y="0" width="430" height="282" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.0" />
+  <rect x="0" y="0" width="430" height="364" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.0" />
   <rect x="0" y="0" width="430" height="36" rx="8" fill="#f6f8fa" />
   <rect x="0" y="26" width="430" height="10" rx="0" fill="#f6f8fa" />
   <line x1="0" y1="36" x2="430" y2="36" stroke="#d8dee4" stroke-width="1.0" />
@@ -12,39 +12,39 @@
   <rect x="372" y="7" width="46" height="22" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.8" />
   <circle cx="382" cy="18" r="3" fill="#1a7f37" />
   <text x="389" y="18" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" font-weight="700" fill="#1a7f37" dominant-baseline="central">LIVE</text>
-  <rect x="12" y="46" width="198" height="74" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
-  <rect x="12" y="54" width="3" height="58" rx="1.5" fill="#1a7f37" />
-  <g transform="translate(22, 56) scale(0.6667)">
+  <rect x="12" y="46" width="406" height="54" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
+  <rect x="12" y="53" width="3" height="40" rx="1.5" fill="#1a7f37" />
+  <g transform="translate(26, 59) scale(0.6667)">
     <path d="M3 2.75A2.75 2.75 0 0 1 5.75 0h14.5a.75.75 0 0 1 .75.75v20.5a.75.75 0 0 1-.75.75h-2a.75.75 0 0 1 0-1.5H19.5V1.5H5.75A1.25 1.25 0 0 0 4.5 2.75v16.5c0 .69.56 1.25 1.25 1.25h12.5a.75.75 0 0 1 0 1.5H5.75A2.75 2.75 0 0 1 3 19.25Zm3.25 3.75a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1-.75-.75Zm.75 3.5a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5Z" fill="#1a7f37" />
   </g>
-  <text x="44" y="68" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="700" letter-spacing="0.5" fill="#656d76">REPOSITORIOS</text>
-  <text x="22" y="91" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14.5" font-weight="800" fill="#1f2328">9 Activos</text>
-  <text x="22" y="108" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" font-weight="500" fill="#6e7681">sistemas open source</text>
-  <rect x="220" y="46" width="198" height="74" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
-  <rect x="220" y="54" width="3" height="58" rx="1.5" fill="#9a6700" />
-  <g transform="translate(230, 56) scale(0.6667)">
+  <text x="50" y="70" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="700" letter-spacing="0.5" fill="#656d76">REPOSITORIOS</text>
+  <text x="50" y="88" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" font-weight="500" fill="#6e7681">sistemas open source</text>
+  <text x="402" y="79" text-anchor="end" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="15" font-weight="800" fill="#1f2328">9 Activos</text>
+  <rect x="12" y="108" width="406" height="54" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
+  <rect x="12" y="115" width="3" height="40" rx="1.5" fill="#9a6700" />
+  <g transform="translate(26, 121) scale(0.6667)">
     <path d="M12.672.668a.75.75 0 0 0-1.345 0L8.27 6.865l-6.838.994a.75.75 0 0 0-.416 1.279l4.948 4.823-1.168 6.811a.75.75 0 0 0 1.088.791L12 18.347l6.117 3.216a.75.75 0 0 0 1.088-.79l-1.169-6.812 4.948-4.823a.75.75 0 0 0-.416-1.28l-6.838-.993L12.672.668Z" fill="#9a6700" />
   </g>
-  <text x="252" y="68" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="700" letter-spacing="0.5" fill="#656d76">ESTRELLAS</text>
-  <text x="230" y="91" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14.5" font-weight="800" fill="#1f2328">0 Ganadas</text>
-  <text x="230" y="108" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" font-weight="500" fill="#6e7681">stargazers de la comunidad</text>
-  <rect x="12" y="130" width="198" height="74" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
-  <rect x="12" y="138" width="3" height="58" rx="1.5" fill="#8250df" />
-  <g transform="translate(22, 140) scale(0.6667)">
+  <text x="50" y="132" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="700" letter-spacing="0.5" fill="#656d76">ESTRELLAS</text>
+  <text x="50" y="150" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" font-weight="500" fill="#6e7681">stargazers de la comunidad</text>
+  <text x="402" y="141" text-anchor="end" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="15" font-weight="800" fill="#1f2328">0 Ganadas</text>
+  <rect x="12" y="170" width="406" height="54" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
+  <rect x="12" y="177" width="3" height="40" rx="1.5" fill="#8250df" />
+  <g transform="translate(26, 183) scale(0.6667)">
     <path d="M10.5 4.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM7 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-5.5 12a4.5 4.5 0 0 1 9 0 .75.75 0 0 1-1.5 0 3 3 0 0 0-6 0 .75.75 0 0 1-1.5 0Zm14.5-12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-1.5 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Zm-4.25 12a4.25 4.25 0 0 1 7.25-3.056.75.75 0 0 1-1.042 1.08 2.75 2.75 0 0 0-4.666 1.976.75.75 0 0 1-1.5 0Z" fill="#8250df" />
   </g>
-  <text x="44" y="152" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="700" letter-spacing="0.5" fill="#656d76">SEGUIDORES</text>
-  <text x="22" y="175" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14.5" font-weight="800" fill="#1f2328">1 Seguidor</text>
-  <text x="22" y="192" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" font-weight="500" fill="#6e7681">2 desarrolladores seguidos</text>
-  <rect x="220" y="130" width="198" height="74" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
-  <rect x="220" y="138" width="3" height="58" rx="1.5" fill="#0969da" />
-  <g transform="translate(230, 140) scale(0.6667)">
+  <text x="50" y="194" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="700" letter-spacing="0.5" fill="#656d76">SEGUIDORES</text>
+  <text x="50" y="212" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" font-weight="500" fill="#6e7681">2 desarrolladores seguidos</text>
+  <text x="402" y="203" text-anchor="end" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="15" font-weight="800" fill="#1f2328">1 Seguidor</text>
+  <rect x="12" y="232" width="406" height="54" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
+  <rect x="12" y="239" width="3" height="40" rx="1.5" fill="#0969da" />
+  <g transform="translate(26, 245) scale(0.6667)">
     <path d="M1.679 13.111c-.412-.606-.679-1.28-.679-1.111 0-.17.267-.843.679-1.448C3.12 8.358 6.89 5 12 5c5.11 0 8.88 3.358 10.321 5.552.412.605.679 1.28.679 1.448 0 .17-.267.843-.679 1.448C20.88 15.642 17.11 19 12 19c-5.11 0-8.88-3.358-10.321-5.889ZM12 6.5C7.758 6.5 4.412 9.387 3.125 11.233c.313.438.804.996 1.464 1.583C6.183 14.218 8.818 15.5 12 15.5c3.182 0 5.817-1.282 7.411-2.684.66-.587 1.151-1.145 1.464-1.583C19.588 9.387 16.242 6.5 12 6.5ZM12 8.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm0 1.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" fill="#0969da" />
   </g>
-  <text x="252" y="152" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="700" letter-spacing="0.5" fill="#656d76">VISITAS</text>
-  <text x="230" y="175" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14.5" font-weight="800" fill="#1f2328">+120 Visitas</text>
-  <text x="230" y="192" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" font-weight="500" fill="#6e7681">contador en tiempo real</text>
-  <rect x="12" y="214" width="406" height="56" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
-  <text x="22" y="236" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="600" fill="#1f2328"><tspan fill="#0969da">❯</tspan> <tspan fill="#656d76">Antigüedad:</tspan> Desde 2020 (6 años) <tspan fill="#d0d7de">·</tspan> <tspan fill="#656d76">Flota:</tspan> 13+ Bots Autónomos</text>
-  <text x="22" y="256" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="600" fill="#1f2328"><tspan fill="#0969da">❯</tspan> <tspan fill="#656d76">Pipeline:</tspan> Lavalink v4 + LavaSrc <tspan fill="#d0d7de">·</tspan> <tspan fill="#656d76">Sincronizado vía</tspan> <tspan fill="#0969da">Actions</tspan></text>
+  <text x="50" y="256" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="700" letter-spacing="0.5" fill="#656d76">VISITAS</text>
+  <text x="50" y="274" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" font-weight="500" fill="#6e7681">contador en tiempo real</text>
+  <text x="402" y="265" text-anchor="end" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="15" font-weight="800" fill="#1f2328">+124 Visitas</text>
+  <rect x="12" y="296" width="406" height="56" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
+  <text x="22" y="318" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="600" fill="#1f2328"><tspan fill="#0969da">❯</tspan> <tspan fill="#656d76">Antigüedad:</tspan> Desde 2020 (6 años) <tspan fill="#d0d7de">·</tspan> <tspan fill="#656d76">Flota:</tspan> 13+ Bots Autónomos</text>
+  <text x="22" y="338" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="600" fill="#1f2328"><tspan fill="#0969da">❯</tspan> <tspan fill="#656d76">Pipeline:</tspan> Lavalink v4 + LavaSrc <tspan fill="#d0d7de">·</tspan> <tspan fill="#656d76">Sincronizado vía</tspan> <tspan fill="#0969da">Actions</tspan></text>
 </svg>
