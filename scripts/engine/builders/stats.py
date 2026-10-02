@@ -1,8 +1,9 @@
 """GitHub Stats & Telemetry Banner Builder.
 
 Generates a unified 880px terminal card displaying:
-  1. macOS terminal header with `gh telemetry --overview` prompt and live status
+  1. macOS terminal header with configurable prompt command and live status tag
   2. Dynamically-sized metric cards (Repos, Stars, Network/Followers, Visitor Hits)
+     with fully customizable titles, subtitles, and suffixes
   3. Optional bottom system telemetry statusline with developer tenure, bot fleet count & audio pipeline
 """
 
@@ -53,16 +54,48 @@ class StatsBuilder(BaseBuilder):
         # Granular configuration from profile.config.yaml
         stats_cfg = config.get("stats", {})
         metrics_cfg = stats_cfg.get("metrics", {})
-        show_repos = metrics_cfg.get("repos", True)
-        show_stars = metrics_cfg.get("stars", True)
-        show_followers = metrics_cfg.get("followers", True)
-        show_views = metrics_cfg.get("views", True)
+
+        def _get_metric_cfg(key: str, default_label: str, default_sub: str, default_suffix: str) -> dict:
+            val = metrics_cfg.get(key, {})
+            if isinstance(val, bool):
+                return {
+                    "enabled": val,
+                    "label": default_label,
+                    "sub": default_sub,
+                    "suffix": default_suffix,
+                }
+            elif isinstance(val, dict):
+                return {
+                    "enabled": val.get("enabled", True),
+                    "label": val.get("label", default_label),
+                    "sub": val.get("sub", default_sub),
+                    "suffix": val.get("suffix", default_suffix),
+                }
+            return {
+                "enabled": True,
+                "label": default_label,
+                "sub": default_sub,
+                "suffix": default_suffix,
+            }
+
+        cfg_repos = _get_metric_cfg("repos", "PUBLIC REPOS", "open source systems", "Active")
+        cfg_stars = _get_metric_cfg("stars", "TOTAL STARS", "community stargazers", "Earned")
+        cfg_followers = _get_metric_cfg("followers", "DEV NETWORK", "{following} following developers", "Followers")
+        cfg_views = _get_metric_cfg("views", "PROFILE VIEWS", "live hit counter", "Hits")
+
+        followers_sub = cfg_followers["sub"].replace("{following}", str(following))
+        command_text = stats_cfg.get("command", "gh telemetry --overview")
+        badge_text = stats_cfg.get("badge_text", "LIVE TELEMETRY")
 
         statusline_cfg = stats_cfg.get("statusline", {})
         has_statusline = statusline_cfg.get("enabled", True)
+        tenure_label = statusline_cfg.get("tenure_label", "Tenure:")
         tenure_text = statusline_cfg.get("tenure", "Since 2020 (6y)")
+        fleet_label = statusline_cfg.get("fleet_label", "Fleet:")
         fleet_text = statusline_cfg.get("fleet", "13+ Autonomous Bots")
+        pipeline_label = statusline_cfg.get("pipeline_label", "Pipeline:")
         pipeline_text = statusline_cfg.get("pipeline", "Lavalink v4 + LavaSrc")
+        sync_text = statusline_cfg.get("sync_text", "Auto-synced via")
 
         width = 880
         height = 196 if has_statusline else 142
@@ -88,51 +121,51 @@ class StatsBuilder(BaseBuilder):
             # Prompt text
             f'  <text x="82" y="23" font-family="{theme.font_mono}" font-size="12" '
             f'font-weight="600" fill="{theme.fg_muted}">'
-            f'{handle.lower()}@dev:~$ <tspan fill="{theme.fg_default}">gh telemetry --overview</tspan></text>\n',
+            f'{handle.lower()}@dev:~$ <tspan fill="{theme.fg_default}">{_esc(command_text)}</tspan></text>\n',
             # Right Live Telemetry Tag
             rect(width - 150, 10, 130, 20, rx=4, fill=theme.bg_inset),
             circle(width - 138, 20, 3.5, fill=theme.accent_success),
             f'  <text x="{width - 128}" y="24" font-family="{theme.font_mono}" font-size="10" '
-            f'font-weight="700" fill="{theme.accent_success}">LIVE TELEMETRY</text>\n',
+            f'font-weight="700" fill="{theme.accent_success}">{_esc(badge_text)}</text>\n',
         ]
 
         # Candidate Metric Cards
         all_cards = [
             {
                 "id": "repos",
-                "label": "PUBLIC REPOS",
-                "val": f"{repos} Active",
-                "sub": "open source systems",
+                "label": cfg_repos["label"],
+                "val": f"{repos} {cfg_repos['suffix']}".strip(),
+                "sub": cfg_repos["sub"],
                 "icon": "repo",
                 "accent": theme.accent_success,
-                "enabled": show_repos,
+                "enabled": cfg_repos["enabled"],
             },
             {
                 "id": "stars",
-                "label": "TOTAL STARS",
-                "val": f"★ {stars} Earned",
-                "sub": "community stargazers",
+                "label": cfg_stars["label"],
+                "val": f"★ {stars} {cfg_stars['suffix']}".strip(),
+                "sub": cfg_stars["sub"],
                 "icon": "star",
                 "accent": theme.accent_warning,
-                "enabled": show_stars,
+                "enabled": cfg_stars["enabled"],
             },
             {
                 "id": "followers",
-                "label": "DEV NETWORK",
-                "val": f"{followers} Followers",
-                "sub": f"{following} following developers",
+                "label": cfg_followers["label"],
+                "val": f"{followers} {cfg_followers['suffix']}".strip(),
+                "sub": followers_sub,
                 "icon": "followers",
                 "accent": theme.accent_secondary,
-                "enabled": show_followers,
+                "enabled": cfg_followers["enabled"],
             },
             {
                 "id": "views",
-                "label": "PROFILE VIEWS",
-                "val": f"{format_metric_value(views)}+ Hits",
-                "sub": "live hit counter",
+                "label": cfg_views["label"],
+                "val": f"{format_metric_value(views)}+ {cfg_views['suffix']}".strip(),
+                "sub": cfg_views["sub"],
                 "icon": "eye",
                 "accent": theme.accent_primary,
-                "enabled": show_views,
+                "enabled": cfg_views["enabled"],
             },
         ]
 
@@ -183,15 +216,15 @@ class StatsBuilder(BaseBuilder):
                 # Status items separated by dots
                 f'  <text x="{bar_x + 32}" y="{bar_y + 26}" font-family="{theme.font_mono}" font-size="11" '
                 f'font-weight="600" fill="{theme.fg_default}">'
-                f'<tspan fill="{theme.fg_muted}">Tenure:</tspan> {_esc(tenure_text)} '
+                f'<tspan fill="{theme.fg_muted}">{_esc(tenure_label)}</tspan> {_esc(tenure_text)} '
                 f'<tspan fill="{theme.border_default}">·</tspan> '
-                f'<tspan fill="{theme.fg_muted}">Fleet:</tspan> {_esc(fleet_text)} '
+                f'<tspan fill="{theme.fg_muted}">{_esc(fleet_label)}</tspan> {_esc(fleet_text)} '
                 f'<tspan fill="{theme.border_default}">·</tspan> '
-                f'<tspan fill="{theme.fg_muted}">Pipeline:</tspan> {_esc(pipeline_text)}</text>\n',
+                f'<tspan fill="{theme.fg_muted}">{_esc(pipeline_label)}</tspan> {_esc(pipeline_text)}</text>\n',
                 # Right badge: Auto-synced
                 f'  <text x="{bar_x + bar_w - 14}" y="{bar_y + 26}" text-anchor="end" font-family="{theme.font_mono}" '
                 f'font-size="10" font-weight="600" fill="{theme.fg_muted}">'
-                f'Auto-synced via <tspan fill="{theme.accent_primary}">GitHub Actions</tspan></text>\n',
+                f'{_esc(sync_text)} <tspan fill="{theme.accent_primary}">GitHub Actions</tspan></text>\n',
             ])
 
         parts.append(svg_close())

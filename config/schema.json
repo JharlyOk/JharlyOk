@@ -215,22 +215,80 @@
       "type": "object",
       "description": "Granular metric cards and statusline configuration for GitHub stats banner.",
       "properties": {
+        "command": { "type": "string" },
+        "badge_text": { "type": "string" },
         "metrics": {
           "type": "object",
           "properties": {
-            "repos": { "type": "boolean" },
-            "stars": { "type": "boolean" },
-            "followers": { "type": "boolean" },
-            "views": { "type": "boolean" }
+            "repos": {
+              "oneOf": [
+                { "type": "boolean" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "enabled": { "type": "boolean" },
+                    "label": { "type": "string" },
+                    "sub": { "type": "string" },
+                    "suffix": { "type": "string" }
+                  }
+                }
+              ]
+            },
+            "stars": {
+              "oneOf": [
+                { "type": "boolean" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "enabled": { "type": "boolean" },
+                    "label": { "type": "string" },
+                    "sub": { "type": "string" },
+                    "suffix": { "type": "string" }
+                  }
+                }
+              ]
+            },
+            "followers": {
+              "oneOf": [
+                { "type": "boolean" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "enabled": { "type": "boolean" },
+                    "label": { "type": "string" },
+                    "sub": { "type": "string" },
+                    "suffix": { "type": "string" }
+                  }
+                }
+              ]
+            },
+            "views": {
+              "oneOf": [
+                { "type": "boolean" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "enabled": { "type": "boolean" },
+                    "label": { "type": "string" },
+                    "sub": { "type": "string" },
+                    "suffix": { "type": "string" }
+                  }
+                }
+              ]
+            }
           }
         },
         "statusline": {
           "type": "object",
           "properties": {
             "enabled": { "type": "boolean" },
+            "tenure_label": { "type": "string" },
             "tenure": { "type": "string" },
+            "fleet_label": { "type": "string" },
             "fleet": { "type": "string" },
-            "pipeline": { "type": "string" }
+            "pipeline_label": { "type": "string" },
+            "pipeline": { "type": "string" },
+            "sync_text": { "type": "string" }
           }
         }
       }

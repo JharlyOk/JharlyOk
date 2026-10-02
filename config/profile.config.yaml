@@ -312,22 +312,48 @@ stack:
 
 # ==============================================================================
 # 📊 6. DASHBOARD DE ESTADÍSTICAS Y TELEMETRÍA DE GITHUB (stats.py)
-# Control granular: activa o desactiva individualmente cada tarjeta de métrica
-# Si desactivas una métrica, las tarjetas restantes se recalculan simétricamente
+# Control granular: personaliza títulos, textos secundarios, sufijos y activa/desactiva
+# Si desactivas una métrica con enabled: false, las tarjetas restantes se recalculan simétricamente
 # ==============================================================================
 stats:
+  command: "gh telemetry --overview"     # Comando simulado en la barra superior
+  badge_text: "LIVE TELEMETRY"          # Etiqueta verde superior derecha
+
   metrics:
-    repos: true          # 📦 Public Repos (repositorios públicos activos)
-    stars: true          # ⭐ Total Stars (estrellas acumuladas; pon false para ocultar)
-    followers: true      # 👥 Dev Network (seguidores y desarrolladores)
-    views: true          # 👁️ Profile Views (contador de visitas en vivo)
+    repos:
+      enabled: true                     # true = muestra la tarjeta en el banner
+      label: "PUBLIC REPOS"             # Título superior de la tarjeta
+      sub: "open source systems"        # Subtexto descriptivo
+      suffix: "Active"                  # Sufijo numérico (ej. 8 Active)
+
+    stars:
+      enabled: true                     # true = muestra la tarjeta en el banner
+      label: "TOTAL STARS"
+      sub: "community stargazers"
+      suffix: "Earned"
+
+    followers:
+      enabled: true                     # true = muestra la tarjeta en el banner
+      label: "DEV NETWORK"
+      sub: "{following} following developers"  # {following} se reemplaza en vivo
+      suffix: "Followers"
+
+    views:
+      enabled: true                     # true = muestra la tarjeta en el banner
+      label: "PROFILE VIEWS"
+      sub: "live hit counter"
+      suffix: "Hits"
 
   # Barra de estado inferior del terminal de stats
   statusline:
-    enabled: true        # true = muestra la línea inferior de tenure y flota de bots
+    enabled: true                       # true = muestra la línea inferior
+    tenure_label: "Tenure:"
     tenure: "Since 2020 (6y)"
+    fleet_label: "Fleet:"
     fleet: "13+ Autonomous Bots"
+    pipeline_label: "Pipeline:"
     pipeline: "Lavalink v4 + LavaSrc"
+    sync_text: "Auto-synced via"
 
 # ==============================================================================
 # 🌐 7. CANALES DE CONTACTO Y REDES SOCIALES (socials.py & badges.py)
