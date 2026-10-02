@@ -20,7 +20,7 @@ JharlyOk/
 │       ├── telegram-dark.svg / telegram-light.svg
 │       └── ...
 ├── config/
-│   ├── profile.config.json    # FUENTE ÚNICA DE LA VERDAD
+│   ├── profile.config.yaml    # FUENTE ÚNICA DE LA VERDAD (100% en YAML con comentarios)
 │   ├── schema.json            # JSON Schema (validación y autocompletado en IDEs)
 │   └── README.md              # Referencia rápida
 ├── docs/
@@ -29,8 +29,9 @@ JharlyOk/
 │   ├── build.py               # CLI principal de compilación y orquestación
 │   └── engine/                # Motor modular SVG (Arquitectura por capas)
 │       ├── core/              # Núcleo del sistema
-│       │   ├── config.py      # Validador y cargador de configuración
+│       │   ├── config.py      # Validador y cargador de configuración YAML
 │       │   ├── theme.py       # Mapeo de tokens de diseño Primer (Dark/Light)
+│       │   ├── telemetry.py   # Telemetría en vivo con GitHub API y Komarev
 │       │   └── registry.py    # Decorador @register_builder y registro dinámico
 │       ├── svg/               # Capa gráfica y vectores
 │       │   ├── primitives.py  # Primitivas SVG (rect, text, circle, terminal_header, etc.)
@@ -55,18 +56,17 @@ JharlyOk/
 
 ## 🎛️ Control de Módulos (Feature Toggles)
 
-En `config/profile.config.json`, la sección `modules` permite activar o desactivar componentes de forma atómica:
+En `config/profile.config.yaml`, la sección `modules` permite activar o desactivar componentes de forma limpia:
 
-```json
-"modules": {
-  "header":   { "enabled": true },
-  "banner":   { "enabled": true },
-  "projects": { "enabled": true },
-  "stack":    { "enabled": true },
-  "connect":  { "enabled": true },
-  "badges":   { "enabled": true },
-  "telemetry":{ "enabled": true }
-}
+```yaml
+modules:
+  header: true       # Saludo máquina de escribir + highlight cards
+  banner: true       # Editor de código Neovim
+  projects: true     # Árbol de proyectos en terminal
+  stack: true        # Cuadrícula de tecnologías
+  connect: true      # Terminal de canales de contacto y SLAs
+  badges: true       # Botones split-pill de redes sociales
+  telemetry: true    # Métricas dinámicas (followers, repos, stars, visitas)
 ```
 
 ### ¿Qué ocurre cuando desactivas un módulo?
@@ -90,7 +90,7 @@ En `config/profile.config.json`, la sección `modules` permite activar o desacti
 ### 2. Neovim Code Manifest (`banner.py`)
 * **Aspecto**: Ventana macOS con pestañas (`JharlyOk.config.ts` y `package.json`), badge de lenguaje, barra de números de línea, código coloreado por tokens y statusline Neovim (`NORMAL main (utf-8) ● LSP READY`).
 * **Personalización**:
-  * Modifica `banner.code_lines` en `profile.config.json` para agregar tus propias líneas o funciones.
+  * Modifica `banner.code_lines` en `profile.config.yaml` para agregar tus propias líneas o funciones.
 
 ### 3. Terminal de Proyectos (`projects.py`)
 * **Aspecto**: Ventana de terminal ejecutando `ls -la ~/projects --format=detailed`.

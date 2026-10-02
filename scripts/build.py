@@ -7,7 +7,7 @@ Usage:
     python scripts/build.py --list           # List registered builders
 
 The script:
-  1. Loads profile.config.json
+  1. Loads profile.config.yaml
   2. Loads the dark and light theme JSONs
   3. Discovers all registered builders
   4. Runs each builder against both themes
@@ -63,8 +63,8 @@ def main() -> None:
     args = parser.parse_args()
 
     # Paths
-    config_path = PROJECT_ROOT / "config" / "profile.config.json"
-    cache_path = PROJECT_ROOT / "config" / "telemetry_cache.json"
+    config_path = PROJECT_ROOT / "config" / "profile.config.yaml"
+    cache_path = PROJECT_ROOT / ".cache" / "telemetry.json"
     themes_dir = PROJECT_ROOT / "themes"
     assets_dir = PROJECT_ROOT / "assets"
     readme_path = PROJECT_ROOT / "README.md"

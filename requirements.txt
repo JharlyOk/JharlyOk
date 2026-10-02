@@ -1,0 +1,2 @@
+# JharlyOk Profile Engine Dependencies
+pyyaml>=6.0.0

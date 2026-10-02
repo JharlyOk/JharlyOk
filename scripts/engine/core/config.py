@@ -1,33 +1,36 @@
-"""Config loader — reads and provides profile configuration."""
+"""Config loader — reads and provides profile configuration from YAML."""
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any, Dict
+import yaml
 
 
 def load_config(config_path: Path) -> Dict[str, Any]:
-    """Load the profile configuration from JSON.
+    """Load the profile configuration from YAML.
 
     Args:
-        config_path: Path to profile.config.json.
+        config_path: Path to profile.config.yaml.
 
     Returns:
         Parsed configuration dictionary.
 
     Raises:
         FileNotFoundError: If config file doesn't exist.
-        json.JSONDecodeError: If JSON is malformed.
+        yaml.YAMLError: If YAML syntax is invalid.
     """
     if not config_path.exists():
         raise FileNotFoundError(
             f"Profile config not found at {config_path}. "
-            f"Create it from config/profile.config.json template."
+            f"Ensure config/profile.config.yaml exists."
         )
 
     with open(config_path, "r", encoding="utf-8") as f:
-        config = json.load(f)
+        config = yaml.safe_load(f)
+
+    if not isinstance(config, dict):
+        raise ValueError(f"Invalid YAML config structure at {config_path}. Root must be a mapping.")
 
     _validate_config(config)
     return config
