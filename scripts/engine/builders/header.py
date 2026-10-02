@@ -1,27 +1,94 @@
-"""Header builder — Highlight cards strip.
+"""Header builder — Typewriter welcome bar + highlight cards.
 
-Generates 4 horizontal cards showing active systems.
-The typing animation is handled externally by readme-typing-svg
-(configured in build.py from welcome_messages in config).
+Generates a unified SVG header containing:
+  1. Terminal-style welcome bar with true SMIL typewriter animation (textPath).
+     Cycles through welcome_messages smoothly (type -> hold -> backspace -> next).
+  2. 4 horizontal active systems cards with clipped accent bars and status tags.
 """
 
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from ..registry import BaseBuilder, register_builder
 from ..theme_loader import Theme
 from ..svg_primitives import (
-    svg_open, svg_close,
-    rect, text, circle,
+    svg_close, rect, text, circle, _esc,
 )
+
+
+def _build_typewriter(
+    messages: List[str],
+    start_x: int | float,
+    y: int | float,
+    max_width: int | float,
+    text_color: str,
+    font_family: str,
+    font_size: int | float = 13.5,
+) -> tuple[str, str]:
+    """Generate SMIL textPath-based typewriter elements for cycling messages.
+    
+    Returns (defs_paths_svg, visible_texts_svg).
+    """
+    if not messages:
+        messages = ["Welcome to my workspace"]
+
+    n = len(messages)
+    paths: list[str] = []
+    texts: list[str] = []
+
+    type_speed = 0.045   # seconds per char typing
+    hold_time = 2.2     # seconds to display full message
+    erase_speed = 0.02  # fast backspacing
+
+    for i, msg in enumerate(messages):
+        prev_id = f"hdr_anim_{(i - 1) % n}"
+        curr_id = f"hdr_anim_{i}"
+        path_id = f"hdr_path_{i}"
+
+        msg_len = len(msg)
+        type_dur = max(1.0, msg_len * type_speed)
+        erase_dur = max(0.5, msg_len * erase_speed)
+        total_dur = type_dur + hold_time + erase_dur
+
+        k_type = round(type_dur / total_dur, 3)
+        k_hold = round((type_dur + hold_time) / total_dur, 3)
+
+        # First animation starts at 0s, subsequent ones chain to previous end
+        begin_attr = f"0s;{prev_id}.end" if i == 0 else f"{prev_id}.end"
+        dur_ms = int(total_dur * 1000)
+
+        # Generous horizontal path width to ensure full text reveals cleanly
+        w = max_width
+
+        paths.append(
+            f'    <path id="{path_id}">\n'
+            f'      <animate id="{curr_id}" attributeName="d" '
+            f'begin="{begin_attr}" dur="{dur_ms}ms" fill="remove" '
+            f'values="m{start_x},{y} h0 ; m{start_x},{y} h{w} ; m{start_x},{y} h{w} ; m{start_x},{y} h0" '
+            f'keyTimes="0; {k_type}; {k_hold}; 1" />\n'
+            f'    </path>'
+        )
+
+        texts.append(
+            f'  <text font-family="{font_family}" fill="{text_color}" '
+            f'font-size="{font_size}" font-weight="500" dominant-baseline="middle">\n'
+            f'    <textPath href="#{path_id}" xlink:href="#{path_id}">{_esc(msg)}</textPath>\n'
+            f'  </text>\n'
+        )
+
+    paths_str = "\n".join(paths) + "\n"
+    texts_str = "".join(texts)
+    return paths_str, texts_str
 
 
 @register_builder("header")
 class HeaderBuilder(BaseBuilder):
-    """Generates the highlights strip SVG."""
+    """Generates the unified typewriter welcome + highlights header SVG."""
 
     WIDTH = 880
+    WELCOME_H = 46
+    GAP = 10
     CARD_H = 76
     CARD_GAP = 10
     CARD_RX = 8
@@ -29,23 +96,102 @@ class HeaderBuilder(BaseBuilder):
     def build(self, config: Dict[str, Any], theme: Theme) -> str:
         identity = config["identity"]
         highlights = identity.get("highlights", [])
+        messages = identity.get("welcome_messages", [
+            "Hey, welcome to my workspace",
+            "Building autonomous bot ecosystems",
+            "13+ production bots running 24/7",
+            "AI-accelerated dev with Gemini & Claude",
+            "Real-time audio routing with Lavalink v4",
+        ])
 
+        total_h = self.WELCOME_H + self.GAP + self.CARD_H
         num_cards = len(highlights) if highlights else 4
         card_w = (self.WIDTH - ((num_cards - 1) * self.CARD_GAP)) / num_cards
 
+        cards_y = self.WELCOME_H + self.GAP
+        bar_mid_y = self.WELCOME_H / 2
+
+        # Build typewriter paths (for <defs>) and texts (for body)
+        tw_paths, tw_texts = _build_typewriter(
+            messages=messages,
+            start_x=48,
+            y=bar_mid_y + 1,
+            max_width=self.WIDTH - 64,
+            text_color=theme.fg_default,
+            font_family=theme.font_mono,
+            font_size=13.5,
+        )
+
         parts: list[str] = []
 
-        parts.append(svg_open(
-            self.WIDTH, self.CARD_H,
-            f"{identity['handle']} — Active Systems",
-            "Key highlights and active systems.",
+        # ── SVG Root ────────────────────────────────────────────
+        parts.append(
+            f'<svg xmlns="http://www.w3.org/2000/svg" '
+            f'xmlns:xlink="http://www.w3.org/1999/xlink" '
+            f'viewBox="0 0 {self.WIDTH} {total_h}" '
+            f'width="{self.WIDTH}" height="{total_h}" '
+            f'role="img" aria-labelledby="svgTitle svgDesc">\n'
+            f'  <title id="svgTitle">{_esc(identity["handle"])} — Workspace Header</title>\n'
+            f'  <desc id="svgDesc">{_esc(identity.get("tagline", "Key highlights and active systems."))}</desc>\n'
+        )
+
+        # ── Defs: Cursor blink style, Card clipPaths, & Typewriter paths ─
+        defs_parts: list[str] = [
+            '  <defs>',
+            '    <style>',
+            '      @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }',
+            '      .hdr-cursor { animation: cursorBlink 1s step-end infinite; }',
+            '    </style>',
+        ]
+
+        # ClipPaths for cards so accent bars follow the rounded corners perfectly
+        for i in range(num_cards):
+            x = i * (card_w + self.CARD_GAP)
+            defs_parts.append(
+                f'    <clipPath id="card-clip-{i}">\n'
+                f'      <rect x="{x}" y="{cards_y}" width="{card_w}" height="{self.CARD_H}" rx="{self.CARD_RX}" />\n'
+                f'    </clipPath>'
+            )
+
+        parts.append("\n".join(defs_parts) + "\n")
+        parts.append(tw_paths)
+        parts.append("  </defs>\n\n")
+
+        # ── Welcome Bar (Body) ──────────────────────────────────
+        bar_bg = theme.bg_subtle
+
+        # Bar background
+        parts.append(rect(
+            0, 0, self.WIDTH, self.WELCOME_H,
+            bar_bg, rx=self.CARD_RX,
+            stroke=theme.border_muted, stroke_width=1,
         ))
 
+        # Terminal prompt (>_)
+        parts.append(
+            f'  <text x="18" y="{bar_mid_y + 1}" '
+            f'font-family="{theme.font_mono}" font-size="14" font-weight="700" dominant-baseline="middle">'
+            f'<tspan fill="{theme.accent_primary}">&gt;</tspan>'
+            f'<tspan fill="{theme.accent_success}" class="hdr-cursor">_</tspan>'
+            f'</text>\n'
+        )
+
+        # Typewriter text elements (referencing paths in defs)
+        parts.append(tw_texts)
+
+        # ── Highlight Cards ─────────────────────────────────────
         accent_colors = {
             "bot": theme.accent_primary,
             "audio": theme.accent_secondary,
             "ai": theme.accent_success,
             "infra": theme.accent_warning,
+        }
+
+        status_map = {
+            "bot": "always online",
+            "audio": "real-time",
+            "ai": "multi-model",
+            "infra": "self-hosted",
         }
 
         for i, hl in enumerate(highlights):
@@ -55,20 +201,23 @@ class HeaderBuilder(BaseBuilder):
 
             # Card background
             parts.append(rect(
-                x, 0, card_w, self.CARD_H,
+                x, cards_y, card_w, self.CARD_H,
                 theme.bg_subtle, rx=self.CARD_RX,
                 stroke=theme.border_muted, stroke_width=1,
             ))
 
-            # Accent top line — inset inside card, no border-radius
-            parts.append(rect(x + 1, 1, card_w - 2, 2, accent))
+            # Top accent line — clipped perfectly to card's rounded corners
+            parts.append(
+                f'  <rect x="{x}" y="{cards_y}" width="{card_w}" height="3" '
+                f'fill="{accent}" clip-path="url(#card-clip-{i})" />\n'
+            )
 
             # Accent dot
-            parts.append(circle(x + 16, 28, 4, accent))
+            parts.append(circle(x + 16, cards_y + 26, 3.5, accent))
 
             # Label
             parts.append(text(
-                x + 28, 32,
+                x + 28, cards_y + 30,
                 hl.get("label", ""),
                 theme.fg_default, theme.font_mono,
                 font_size=12.5, font_weight=700,
@@ -76,21 +225,15 @@ class HeaderBuilder(BaseBuilder):
 
             # Detail
             parts.append(text(
-                x + 16, 52,
+                x + 16, cards_y + 49,
                 hl.get("detail", ""),
                 theme.fg_muted, theme.font_mono,
                 font_size=10.5,
             ))
 
             # Status
-            status_map = {
-                "bot": "always online",
-                "audio": "real-time",
-                "ai": "multi-model",
-                "infra": "self-hosted",
-            }
             parts.append(text(
-                x + 16, 68,
+                x + 16, cards_y + 65,
                 status_map.get(icon_type, ""),
                 theme.fg_subtle, theme.font_mono,
                 font_size=9, letter_spacing=0.5,

@@ -1,16 +1,13 @@
 <div align="center">
 
-<!-- TYPING WELCOME — animated greeting (config-driven messages via readme-typing-svg) -->
+<!-- HEADER — unified animated welcome typewriter + 4 active systems cards -->
 <a href="https://github.com/JharlyOk">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=3000&pause=1200&color=58A6FF&center=true&vCenter=true&width=700&height=40&lines=%F0%9F%91%8B+Hey%2C+welcome+to+my+workspace;Building+autonomous+bot+ecosystems;13%2B+production+bots+running+24%2F7;AI-accelerated+dev+with+Gemini+%26+Claude;Real-time+audio+routing+with+Lavalink+v4" alt="Typing SVG" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
+    <img src="assets/header-dark.svg" width="100%" alt="JharlyOk Workspace Header" />
+  </picture>
 </a>
-
-<!-- HIGHLIGHT CARDS — 4 active systems overview -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
-  <img src="assets/header-dark.svg" width="100%" alt="JharlyOk Active Systems" />
-</picture>
 
 <br>
 
