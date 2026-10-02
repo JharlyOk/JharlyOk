@@ -139,3 +139,117 @@ def format_metric_value(val: int | float | str) -> str:
             return f"{val / 1_000:.1f}k"
         return str(int(val))
     return str(val)
+
+
+# Canonical telemetry metrics definition (Single Source of Truth)
+TELEMETRY_METRICS_SPEC: Dict[str, Dict[str, Any]] = {
+    "followers": {
+        "id": "followers",
+        "default_label": "Followers",
+        "icon": "followers",
+        "accent": "secondary",
+        "prefix": "",
+        "suffix": "",
+    },
+    "repos": {
+        "id": "repos",
+        "default_label": "Public Repos",
+        "icon": "repo",
+        "accent": "success",
+        "prefix": "",
+        "suffix": "",
+    },
+    "stars": {
+        "id": "stars",
+        "default_label": "Stars Earned",
+        "icon": "star",
+        "accent": "warning",
+        "prefix": "★ ",
+        "suffix": "",
+    },
+    "views": {
+        "id": "views",
+        "default_label": "Profile Views",
+        "icon": "eye",
+        "accent": "primary",
+        "prefix": "",
+        "suffix": "+",
+        "is_counter": True,
+    },
+}
+
+
+def resolve_theme_accent(theme: Any, accent_name: str) -> str:
+    """Map an accent key string (primary, secondary, etc.) to a Theme color."""
+    mapping = {
+        "primary": getattr(theme, "accent_primary", "#58a6ff"),
+        "secondary": getattr(theme, "accent_secondary", "#bc8cff"),
+        "success": getattr(theme, "accent_success", "#3fb950"),
+        "warning": getattr(theme, "accent_warning", "#d29922"),
+        "danger": getattr(theme, "accent_danger", "#f85149"),
+    }
+    return mapping.get(accent_name, getattr(theme, "accent_primary", "#58a6ff"))
+
+
+def get_active_telemetry_metrics(
+    config: Dict[str, Any],
+    stats: Dict[str, Any],
+    theme: Any,
+    scope: str = "header",
+) -> list[Dict[str, Any]]:
+    """Extract and format active telemetry metrics, merging user config dynamically."""
+    if scope == "header":
+        telem_cfg = config.get("identity", {}).get("telemetry", {})
+        if not telem_cfg:
+            telem_cfg = config.get("header", {}).get("telemetry", {})
+        if not telem_cfg.get("enabled", False):
+            return []
+        metrics_cfg = telem_cfg.get("metrics", {})
+    else:
+        metrics_cfg = config.get("stats", {}).get("metrics", {})
+
+    stats_metrics_cfg = config.get("stats", {}).get("metrics", {})
+    active: list[Dict[str, Any]] = []
+
+    for mid, spec in TELEMETRY_METRICS_SPEC.items():
+        user_override = metrics_cfg.get(mid) if isinstance(metrics_cfg, dict) else True
+        if user_override is False:
+            continue
+
+        enabled = True
+        label_override = None
+        icon_override = None
+
+        if isinstance(user_override, dict):
+            enabled = user_override.get("enabled", True)
+            label_override = user_override.get("label")
+            icon_override = user_override.get("icon")
+
+        if not enabled:
+            continue
+
+        # Inherit customized labels from stats.metrics if not explicitly overridden
+        if not label_override and isinstance(stats_metrics_cfg, dict):
+            stats_m = stats_metrics_cfg.get(mid)
+            if isinstance(stats_m, dict) and "label" in stats_m:
+                label_override = stats_m["label"]
+
+        label = label_override or spec["default_label"]
+        icon = icon_override or spec["icon"]
+        raw_val = stats.get(mid, 0)
+        formatted_val = format_metric_value(raw_val)
+        val_str = f"{spec['prefix']}{formatted_val}{spec['suffix']}"
+
+        accent_color = resolve_theme_accent(theme, spec["accent"])
+
+        active.append({
+            "id": mid,
+            "val": val_str,
+            "label": label,
+            "icon": icon,
+            "accent": accent_color,
+            "raw": raw_val,
+        })
+
+    return active
+

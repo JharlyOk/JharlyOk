@@ -14,7 +14,7 @@ from typing import Any, Dict, List, Optional
 
 from ..core.registry import BaseBuilder, register_builder
 from ..core.theme import Theme
-from ..core.telemetry import format_metric_value
+from ..core.telemetry import format_metric_value, get_active_telemetry_metrics
 from ..svg.icons import render_icon
 from ..svg.primitives import (
     svg_close, rect, text, circle, _esc,
@@ -92,68 +92,7 @@ def _get_active_header_metrics(
     stats: Dict[str, Any],
 ) -> List[Dict[str, Any]]:
     """Extract and format active telemetry metrics configured for the header."""
-    # Look for telemetry inside identity first, fallback to header
-    telem_cfg = config.get("identity", {}).get("telemetry", {})
-    if not telem_cfg:
-        telem_cfg = config.get("header", {}).get("telemetry", {})
-    if not telem_cfg.get("enabled", False):
-        return []
-
-    metrics_cfg = telem_cfg.get("metrics", {})
-    followers = stats.get("followers", 0)
-    repos = stats.get("repos", 0)
-    stars = stats.get("stars", 0)
-    views = stats.get("views", 0)
-
-    catalog = {
-        "followers": {
-            "id": "followers",
-            "val": f"{followers}",
-            "label": "Followers",
-            "icon": "followers",
-            "accent": theme.accent_secondary,
-        },
-        "repos": {
-            "id": "repos",
-            "val": f"{repos}",
-            "label": "Public Repos",
-            "icon": "repo",
-            "accent": theme.accent_success,
-        },
-        "stars": {
-            "id": "stars",
-            "val": f"★ {stars}",
-            "label": "Stars Earned",
-            "icon": "star",
-            "accent": theme.accent_warning,
-        },
-        "views": {
-            "id": "views",
-            "val": f"{format_metric_value(views)}+",
-            "label": "Live Views",
-            "icon": "eye",
-            "accent": theme.accent_primary,
-        },
-    }
-
-    active = []
-    if isinstance(metrics_cfg, dict):
-        for mid, is_active in metrics_cfg.items():
-            if is_active and mid in catalog:
-                active.append(catalog[mid])
-    elif isinstance(metrics_cfg, list):
-        for item in metrics_cfg:
-            if isinstance(item, str) and item in catalog:
-                active.append(catalog[item])
-            elif isinstance(item, dict):
-                mid = item.get("id")
-                if item.get("enabled", True) and mid in catalog:
-                    entry = dict(catalog[mid])
-                    if "label" in item:
-                        entry["label"] = item["label"]
-                    active.append(entry)
-
-    return active
+    return get_active_telemetry_metrics(config, stats, theme, scope="header")
 
 
 @register_builder("header")

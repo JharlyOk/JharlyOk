@@ -127,10 +127,62 @@
               "type": "object",
               "description": "Granular toggles for each telemetry metric in the header.",
               "properties": {
-                "followers": { "type": "boolean", "default": true },
-                "repos": { "type": "boolean", "default": true },
-                "stars": { "type": "boolean", "default": false },
-                "views": { "type": "boolean", "default": true }
+                "followers": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "enabled": { "type": "boolean" },
+                        "label": { "type": "string" },
+                        "icon": { "type": "string" }
+                      }
+                    }
+                  ],
+                  "default": true
+                },
+                "repos": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "enabled": { "type": "boolean" },
+                        "label": { "type": "string" },
+                        "icon": { "type": "string" }
+                      }
+                    }
+                  ],
+                  "default": true
+                },
+                "stars": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "enabled": { "type": "boolean" },
+                        "label": { "type": "string" },
+                        "icon": { "type": "string" }
+                      }
+                    }
+                  ],
+                  "default": false
+                },
+                "views": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "enabled": { "type": "boolean" },
+                        "label": { "type": "string" },
+                        "icon": { "type": "string" }
+                      }
+                    }
+                  ],
+                  "default": true
+                }
               }
             }
           }
