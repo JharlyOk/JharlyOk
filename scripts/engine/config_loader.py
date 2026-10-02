@@ -39,7 +39,7 @@ def _validate_config(config: Dict[str, Any]) -> None:
     Raises:
         KeyError: If a required section is missing.
     """
-    required_sections = ["identity", "themes", "banner", "projects", "stack", "contact"]
+    required_sections = ["identity", "themes", "banner", "projects", "stack", "socials"]
     missing = [s for s in required_sections if s not in config]
     if missing:
         raise KeyError(
