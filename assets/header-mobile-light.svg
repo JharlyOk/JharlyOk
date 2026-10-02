@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 374" width="300" height="374" role="img" aria-labelledby="svgMobileTitle svgMobileDesc">
   <title id="svgMobileTitle">JharlyOk — Mobile Header</title>
-  <desc id="svgMobileDesc">Transformando ideas complejas en software de producción mediante aceleración con IA</desc>
+  <desc id="svgMobileDesc">JharlyOk — Mobile Workspace Header</desc>
   <defs>
     <style>
       @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
