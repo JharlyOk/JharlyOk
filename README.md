@@ -37,32 +37,6 @@
 
 <br><br>
 
-<a href="https://t.me/JharlyOk">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/telegram-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/badges/telegram-light.svg">
-    <img src="assets/badges/telegram-dark.svg" height="28" alt="Telegram" />
-  </picture>
-</a>
-&nbsp;
-<a href="https://discord.com">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/discord-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/badges/discord-light.svg">
-    <img src="assets/badges/discord-dark.svg" height="28" alt="Discord" />
-  </picture>
-</a>
-&nbsp;
-<a href="mailto:jhefcarrascojesus2001@gmail.com">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/email-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/badges/email-light.svg">
-    <img src="assets/badges/email-dark.svg" height="28" alt="Email" />
-  </picture>
-</a>
-
-<br><br>
-
 <!-- CODE MANIFEST — TypeScript profile configuration (Neovim editor) -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
@@ -90,12 +64,29 @@
 
 <br><br>
 
-<!-- SOCIALS & ENDPOINTS CARD (Terminal) -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/socials-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/socials-light.svg">
-  <img src="assets/socials-dark.svg" width="100%" alt="JharlyOk Communication Endpoints" />
-</picture>
+<a href="https://t.me/JharlyOk">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/telegram-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/badges/telegram-light.svg">
+    <img src="assets/badges/telegram-dark.svg" height="28" alt="Telegram" />
+  </picture>
+</a>
+&nbsp;
+<a href="https://discord.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/discord-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/badges/discord-light.svg">
+    <img src="assets/badges/discord-dark.svg" height="28" alt="Discord" />
+  </picture>
+</a>
+&nbsp;
+<a href="mailto:jhefcarrascojesus2001@gmail.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/email-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/badges/email-light.svg">
+    <img src="assets/badges/email-dark.svg" height="28" alt="Email" />
+  </picture>
+</a>
 
 <br><br>
 

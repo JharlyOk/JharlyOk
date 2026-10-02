@@ -25,14 +25,6 @@
 
 <br><br>
 
-{{ badge:telegram }}
-&nbsp;
-{{ badge:discord }}
-&nbsp;
-{{ badge:email }}
-
-<br><br>
-
 {{ banner }}
 
 <br><br>
@@ -45,7 +37,11 @@
 
 <br><br>
 
-{{ socials }}
+{{ badge:telegram }}
+&nbsp;
+{{ badge:discord }}
+&nbsp;
+{{ badge:email }}
 
 <br><br>
 
