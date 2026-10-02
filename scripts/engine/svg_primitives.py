@@ -176,9 +176,9 @@ def window_chrome(
 
     # Traffic light dots
     dot_y = header_height // 2
-    out += circle(20, dot_y, 5.5, "#f85149")   # Close (red)
-    out += circle(38, dot_y, 5.5, "#d29922")   # Minimize (yellow)
-    out += circle(56, dot_y, 5.5, "#3fb950")   # Maximize (green)
+    out += circle(20, dot_y, 5.5, theme.accent_danger)   # Close (red)
+    out += circle(38, dot_y, 5.5, theme.accent_warning)  # Minimize (yellow)
+    out += circle(56, dot_y, 5.5, theme.accent_success)  # Maximize (green)
 
     return out
 
@@ -324,9 +324,9 @@ def terminal_header(
 
     # Traffic lights
     dot_y = header_height // 2
-    out += circle(16, dot_y, 4.5, "#f85149")
-    out += circle(32, dot_y, 4.5, "#d29922")
-    out += circle(48, dot_y, 4.5, "#3fb950")
+    out += circle(16, dot_y, 4.5, theme.accent_danger)
+    out += circle(32, dot_y, 4.5, theme.accent_warning)
+    out += circle(48, dot_y, 4.5, theme.accent_success)
 
     # Prompt & command
     prompt_x = 68

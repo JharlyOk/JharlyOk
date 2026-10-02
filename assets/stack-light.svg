@@ -5,9 +5,9 @@
   <rect x="0" y="0" width="880" height="36" rx="10" fill="#eff2f5" />
   <rect x="0" y="26" width="880" height="10" rx="0" fill="#eff2f5" />
   <line x1="0" y1="36" x2="880" y2="36" stroke="#d0d7de" stroke-width="1" />
-  <circle cx="16" cy="18" r="4.5" fill="#f85149" />
-  <circle cx="32" cy="18" r="4.5" fill="#d29922" />
-  <circle cx="48" cy="18" r="4.5" fill="#3fb950" />
+  <circle cx="16" cy="18" r="4.5" fill="#d1242f" />
+  <circle cx="32" cy="18" r="4.5" fill="#9a6700" />
+  <circle cx="48" cy="18" r="4.5" fill="#1a7f37" />
   <text x="68" y="22" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12"><tspan fill="#1a7f37" font-weight="600">jharlyok@dev</tspan><tspan fill="#6e7681">:</tspan><tspan fill="#0969da" font-weight="600">~</tspan><tspan fill="#6e7681">$ </tspan><tspan fill="#1f2328">cat /etc/stack.yaml</tspan></text>
   <rect x="760" y="8" width="108" height="20" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.8" />
   <circle cx="770" cy="18" r="3" fill="#0969da" />
