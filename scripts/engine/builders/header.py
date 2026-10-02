@@ -58,8 +58,8 @@ class HeaderBuilder(BaseBuilder):
         # Background bar
         parts.append(rect(
             0, 0, self.WIDTH, self.TAGLINE_H,
-            theme.bg_subtle, rx=8,
-            stroke=theme.border_muted, stroke_width=0.5,
+            theme.bg_inset, rx=8,
+            stroke=theme.border_default, stroke_width=1,
         ))
 
         # Prompt symbol
@@ -101,8 +101,8 @@ class HeaderBuilder(BaseBuilder):
             # Card background
             parts.append(rect(
                 x, cards_y, card_w, self.CARD_H,
-                theme.bg_subtle, rx=self.CARD_RX,
-                stroke=theme.border_muted, stroke_width=0.6,
+                theme.bg_inset, rx=self.CARD_RX,
+                stroke=theme.border_default, stroke_width=1,
             ))
 
             # Accent top bar (not left — top feels more like a status indicator)
