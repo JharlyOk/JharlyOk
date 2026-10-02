@@ -28,9 +28,11 @@
   </picture>
 </a>
 
-<br><br>
+</div>
 
 ## `$ gh telemetry --overview`
+
+<div align="center">
 
 <!-- GITHUB STATS & TELEMETRY DASHBOARD (Terminal) -->
 <picture>
@@ -41,9 +43,11 @@
   <img src="assets/stats-dark.svg" width="100%" alt="JharlyOk GitHub Stats & Telemetry" />
 </picture>
 
-<br><br>
+</div>
 
 ## `$ nvim JharlyOk.config.ts`
+
+<div align="center">
 
 <!-- CODE MANIFEST — TypeScript profile configuration (Neovim editor) -->
 <picture>
@@ -54,9 +58,11 @@
   <img src="assets/banner-dark.svg" width="100%" alt="JharlyOk Code Manifest" />
 </picture>
 
-<br><br>
+</div>
 
 ## `$ ls -la ~/projects`
+
+<div align="center">
 
 <!-- ACTIVE PROJECTS — fleet portfolio overview (Terminal) -->
 <picture>
@@ -67,9 +73,11 @@
   <img src="assets/projects-dark.svg" width="100%" alt="JharlyOk Active Projects" />
 </picture>
 
-<br><br>
+</div>
 
 ## `$ cat tech-stack.yaml`
+
+<div align="center">
 
 <!-- TECHNOLOGY STACK — categorized toolchain matrix (Terminal) -->
 <picture>
@@ -80,9 +88,11 @@
   <img src="assets/stack-dark.svg" width="100%" alt="JharlyOk Technology Stack" />
 </picture>
 
-<br><br>
+</div>
 
 ## `$ connect --endpoints`
+
+<div align="center">
 
 <a href="https://t.me/JharlyOk">
   <picture>
@@ -110,8 +120,9 @@
 
 <br><br>
 
+</div>
+
+
 
 <!-- VISITOR HIT BEACON -->
 <img src="https://komarev.com/ghpvc/?username=JharlyOk" width="1" height="1" alt="" style="display:none" />
-</div>
-
