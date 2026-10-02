@@ -1,45 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 132" width="880" height="132" role="img" aria-labelledby="svgTitle svgDesc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 76" width="880" height="76" role="img" aria-labelledby="svgTitle svgDesc">
   <title id="svgTitle">JharlyOk — Active Systems</title>
-  <desc id="svgDesc">Transforming complex distributed ideas into production software through AI acceleration</desc>
-  <style>
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    .cursor-blink {
-      animation: blink 1.1s step-end infinite;
-    }
-  </style>
-  <rect x="0" y="0" width="880" height="48" rx="8" fill="#eff2f5" stroke="#d0d7de" stroke-width="1" />
-  <text x="16" y="30" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="16" font-weight="700">&gt;_</text>
-  <text x="48" y="30" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="500">Transforming complex distributed ideas into production software through AI acceleration</text>
-  <text x="709.1999999999999" y="30" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" class="cursor-blink">█</text>
-  <rect x="0.0" y="56" width="212.5" height="76" rx="8" fill="#eff2f5" stroke="#d0d7de" stroke-width="1" />
-  <rect x="0.0" y="56" width="212.5" height="3" rx="8" fill="#0969da" />
-  <rect x="0.0" y="57" width="212.5" height="2" rx="0" fill="#0969da" />
-  <circle cx="16.0" cy="84" r="4" fill="#0969da" />
-  <text x="28.0" y="88" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">13+ Production Bots</text>
-  <text x="16.0" y="108" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Telegram &amp; Discord fleet</text>
-  <text x="16.0" y="124" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">always online</text>
-  <rect x="222.5" y="56" width="212.5" height="76" rx="8" fill="#eff2f5" stroke="#d0d7de" stroke-width="1" />
-  <rect x="222.5" y="56" width="212.5" height="3" rx="8" fill="#8250df" />
-  <rect x="222.5" y="57" width="212.5" height="2" rx="0" fill="#8250df" />
-  <circle cx="238.5" cy="84" r="4" fill="#8250df" />
-  <text x="250.5" y="88" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Real-Time Audio</text>
-  <text x="238.5" y="108" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Lavalink v4 + LavaSrc pipeline</text>
-  <text x="238.5" y="124" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">real-time</text>
-  <rect x="445.0" y="56" width="212.5" height="76" rx="8" fill="#eff2f5" stroke="#d0d7de" stroke-width="1" />
-  <rect x="445.0" y="56" width="212.5" height="3" rx="8" fill="#1a7f37" />
-  <rect x="445.0" y="57" width="212.5" height="2" rx="0" fill="#1a7f37" />
-  <circle cx="461.0" cy="84" r="4" fill="#1a7f37" />
-  <text x="473.0" y="88" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Multi-LLM Development</text>
-  <text x="461.0" y="108" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Gemini, Claude, Cursor, LLM Arena</text>
-  <text x="461.0" y="124" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">multi-model</text>
-  <rect x="667.5" y="56" width="212.5" height="76" rx="8" fill="#eff2f5" stroke="#d0d7de" stroke-width="1" />
-  <rect x="667.5" y="56" width="212.5" height="3" rx="8" fill="#9a6700" />
-  <rect x="667.5" y="57" width="212.5" height="2" rx="0" fill="#9a6700" />
-  <circle cx="683.5" cy="84" r="4" fill="#9a6700" />
-  <text x="695.5" y="88" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Self-Hosted Infra</text>
-  <text x="683.5" y="108" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Docker + Linux VPS + Pterodactyl</text>
-  <text x="683.5" y="124" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">self-hosted</text>
+  <desc id="svgDesc">Key highlights and active systems.</desc>
+  <rect x="0.0" y="0" width="212.5" height="76" rx="8" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1" />
+  <rect x="0.0" y="0" width="212.5" height="3" rx="8" fill="#0969da" />
+  <rect x="0.0" y="1" width="212.5" height="2" rx="0" fill="#0969da" />
+  <circle cx="16.0" cy="28" r="4" fill="#0969da" />
+  <text x="28.0" y="32" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">13+ Production Bots</text>
+  <text x="16.0" y="52" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Telegram &amp; Discord fleet</text>
+  <text x="16.0" y="68" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">always online</text>
+  <rect x="222.5" y="0" width="212.5" height="76" rx="8" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1" />
+  <rect x="222.5" y="0" width="212.5" height="3" rx="8" fill="#8250df" />
+  <rect x="222.5" y="1" width="212.5" height="2" rx="0" fill="#8250df" />
+  <circle cx="238.5" cy="28" r="4" fill="#8250df" />
+  <text x="250.5" y="32" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Real-Time Audio</text>
+  <text x="238.5" y="52" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Lavalink v4 + LavaSrc pipeline</text>
+  <text x="238.5" y="68" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">real-time</text>
+  <rect x="445.0" y="0" width="212.5" height="76" rx="8" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1" />
+  <rect x="445.0" y="0" width="212.5" height="3" rx="8" fill="#1a7f37" />
+  <rect x="445.0" y="1" width="212.5" height="2" rx="0" fill="#1a7f37" />
+  <circle cx="461.0" cy="28" r="4" fill="#1a7f37" />
+  <text x="473.0" y="32" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Multi-LLM Development</text>
+  <text x="461.0" y="52" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Gemini, Claude, Cursor, LLM Arena</text>
+  <text x="461.0" y="68" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">multi-model</text>
+  <rect x="667.5" y="0" width="212.5" height="76" rx="8" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1" />
+  <rect x="667.5" y="0" width="212.5" height="3" rx="8" fill="#9a6700" />
+  <rect x="667.5" y="1" width="212.5" height="2" rx="0" fill="#9a6700" />
+  <circle cx="683.5" cy="28" r="4" fill="#9a6700" />
+  <text x="695.5" y="32" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Self-Hosted Infra</text>
+  <text x="683.5" y="52" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Docker + Linux VPS + Pterodactyl</text>
+  <text x="683.5" y="68" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">self-hosted</text>
 </svg>
