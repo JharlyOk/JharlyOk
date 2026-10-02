@@ -1,0 +1,209 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JharlyOk Profile Configuration",
+  "description": "Schema definition for the custom SVG profile engine configuration.",
+  "type": "object",
+  "required": ["identity", "themes", "banner", "projects", "stack", "socials"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path or URL to this JSON Schema definition."
+    },
+
+    "modules": {
+      "type": "object",
+      "description": "Feature toggles: enable or disable individual SVG profile components.",
+      "properties": {
+        "header": {
+          "type": "object",
+          "description": "Typewriter welcome greeting + 4 active systems highlight cards.",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "banner": {
+          "type": "object",
+          "description": "Neovim/VS Code-style TypeScript code editor card with syntax highlighting.",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "projects": {
+          "type": "object",
+          "description": "Terminal window showing active projects and repositories.",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "stack": {
+          "type": "object",
+          "description": "Terminal grid matrix showing categorized tools, runtimes, and frameworks.",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "connect": {
+          "type": "object",
+          "description": "Terminal window displaying communication channels, handles, and SLAs.",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "badges": {
+          "type": "object",
+          "description": "Standalone clickable split-pill vector badges for social links.",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true }
+          }
+        }
+      }
+    },
+
+    "identity": {
+      "type": "object",
+      "description": "Profile owner identity, titles, highlights, and welcome animation messages.",
+      "required": ["handle", "role", "tagline"],
+      "properties": {
+        "handle": {
+          "type": "string",
+          "description": "GitHub username or main alias (e.g. JharlyOk)."
+        },
+        "role": {
+          "type": "string",
+          "description": "Primary role or title displayed on the profile."
+        },
+        "tagline": {
+          "type": "string",
+          "description": "Short bio or engineering manifesto."
+        },
+        "highlights": {
+          "type": "array",
+          "description": "Cards displayed on the header (up to 4 cards recommended).",
+          "items": {
+            "type": "object",
+            "required": ["label", "detail"],
+            "properties": {
+              "icon": {
+                "type": "string",
+                "enum": ["bot", "audio", "ai", "infra", "web"],
+                "description": "Icon type for color accent and status mapping."
+              },
+              "label": {
+                "type": "string",
+                "description": "Main title of the highlight card."
+              },
+              "detail": {
+                "type": "string",
+                "description": "Subtitle describing the highlight."
+              }
+            }
+          }
+        },
+        "welcome_messages": {
+          "type": "array",
+          "description": "List of strings cycled by the typewriter SMIL animation in the header.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "themes": {
+      "type": "object",
+      "description": "Active theme identifiers mapped to themes/<name>.json.",
+      "required": ["dark", "light"],
+      "properties": {
+        "dark": { "type": "string", "default": "github-dark" },
+        "light": { "type": "string", "default": "github-light" }
+      }
+    },
+
+    "banner": {
+      "type": "object",
+      "description": "Configuration for the Neovim code manifest card.",
+      "required": ["filename", "code_lines"],
+      "properties": {
+        "filename": { "type": "string", "description": "Tab name in editor header." },
+        "filepath": { "type": "string", "description": "Relative path in project." },
+        "language": { "type": "string", "description": "Language label for the badge." },
+        "git_branch": { "type": "string", "description": "Branch name for statusline." },
+        "code_lines": {
+          "type": "array",
+          "description": "Lines of code with tokenized syntax highlighting.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "tokens": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["type", "text"],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["keyword", "string", "comment", "type", "property", "function", "punctuation"]
+                    },
+                    "text": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "projects": {
+      "type": "array",
+      "description": "Active projects featured in the projects terminal card.",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "description": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "stack": {
+      "type": "object",
+      "description": "Categorized technology stack displayed in the matrix grid.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["label", "items"],
+        "properties": {
+          "label": { "type": "string" },
+          "items": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "socials": {
+      "type": "array",
+      "description": "Communication endpoints, social networks, and handles.",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "handle", "url"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["telegram", "discord", "email", "github", "linkedin", "x", "web"]
+          },
+          "label": { "type": "string" },
+          "handle": { "type": "string" },
+          "display_handle": { "type": "string" },
+          "url": { "type": "string" },
+          "accent": {
+            "type": "string",
+            "enum": ["primary", "secondary", "success", "warning", "danger"]
+          },
+          "tag": { "type": "string" },
+          "description": { "type": "string" },
+          "latency": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -52,3 +52,21 @@ def _validate_config(config: Dict[str, Any]) -> None:
         raise KeyError(
             f"Missing required identity fields: {missing_id}"
         )
+
+
+def is_module_enabled(config: Dict[str, Any], module_name: str) -> bool:
+    """Check if a specific profile module is enabled.
+
+    Defaults to True if modules section is missing or module is not specified.
+    Supports either {"header": true} or {"header": {"enabled": true}}.
+    """
+    modules = config.get("modules", {})
+    if module_name not in modules:
+        return True
+    mod_val = modules[module_name]
+    if isinstance(mod_val, bool):
+        return mod_val
+    if isinstance(mod_val, dict):
+        return bool(mod_val.get("enabled", True))
+    return True
+

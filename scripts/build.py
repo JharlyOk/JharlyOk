@@ -53,12 +53,17 @@ def main() -> None:
         "--list", action="store_true",
         help="List all registered builders and exit.",
     )
+    parser.add_argument(
+        "--no-readme", action="store_true",
+        help="Skip automatic README.md synchronization.",
+    )
     args = parser.parse_args()
 
     # Paths
     config_path = PROJECT_ROOT / "config" / "profile.config.json"
     themes_dir = PROJECT_ROOT / "themes"
     assets_dir = PROJECT_ROOT / "assets"
+    readme_path = PROJECT_ROOT / "README.md"
 
     # Load config
     config = load_config(config_path)
@@ -76,12 +81,20 @@ def main() -> None:
             _log(f"    - {b.builder_name}")
         return
 
+    from engine.config_loader import is_module_enabled
+
     if args.only:
         builders = [get_builder(args.only)]
     else:
-        builders = get_all_builders()
+        all_builders = get_all_builders()
+        builders = []
+        for b in all_builders:
+            if is_module_enabled(config, b.builder_name):
+                builders.append(b)
+            else:
+                _log(f"  [skip] {b.builder_name} (disabled in config.modules)")
 
-    _log(f"  [ok] Builders: {[b.builder_name for b in builders]}")
+    _log(f"  [ok] Active builders: {[b.builder_name for b in builders]}")
 
     # Ensure assets directory exists
     assets_dir.mkdir(parents=True, exist_ok=True)
@@ -115,12 +128,22 @@ def main() -> None:
         )
 
     # Build standalone badges
-    from engine.builders.badges import compile_all_badges
-    badges_dir = assets_dir / "badges"
-    dark_badges = compile_all_badges(config, dark_theme, badges_dir)
-    light_badges = compile_all_badges(config, light_theme, badges_dir)
-    total_badges = len(dark_badges) + len(light_badges)
-    _log(f"  > badges.............. {total_badges} vector badges generated in assets/badges/")
+    total_badges = 0
+    if is_module_enabled(config, "badges"):
+        from engine.builders.badges import compile_all_badges
+        badges_dir = assets_dir / "badges"
+        dark_badges = compile_all_badges(config, dark_theme, badges_dir)
+        light_badges = compile_all_badges(config, light_theme, badges_dir)
+        total_badges = len(dark_badges) + len(light_badges)
+        _log(f"  > badges.............. {total_badges} vector badges generated in assets/badges/")
+    else:
+        _log("  [skip] badges (disabled in config.modules)")
+
+    # Sync README.md if not disabled
+    if not args.no_readme and not args.only:
+        from engine.readme_builder import update_readme_file
+        update_readme_file(config, readme_path)
+        _log("  [ok] README.md synchronized with active modules")
 
     total_elapsed = (time.perf_counter() - total_start) * 1000
     total_files = len(builders) * 2 + total_badges

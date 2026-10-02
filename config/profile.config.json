@@ -1,4 +1,15 @@
 {
+  "$schema": "./schema.json",
+
+  "modules": {
+    "header": { "enabled": true },
+    "banner": { "enabled": true },
+    "projects": { "enabled": true },
+    "stack": { "enabled": true },
+    "connect": { "enabled": true },
+    "badges": { "enabled": true }
+  },
+
   "identity": {
     "handle": "JharlyOk",
     "role": "AI-Assisted Systems Builder & Bot Architect",

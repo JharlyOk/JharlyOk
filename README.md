@@ -95,6 +95,7 @@
     <img src="assets/badges/x-dark.svg" height="28" alt="X" />
   </picture>
 </a>
+&nbsp;
 
 <br><br>
 
