@@ -42,7 +42,7 @@
     <path d="M1.679 13.111c-.412-.606-.679-1.28-.679-1.111 0-.17.267-.843.679-1.448C3.12 8.358 6.89 5 12 5c5.11 0 8.88 3.358 10.321 5.552.412.605.679 1.28.679 1.448 0 .17-.267.843-.679 1.448C20.88 15.642 17.11 19 12 19c-5.11 0-8.88-3.358-10.321-5.889ZM12 6.5C7.758 6.5 4.412 9.387 3.125 11.233c.313.438.804.996 1.464 1.583C6.183 14.218 8.818 15.5 12 15.5c3.182 0 5.817-1.282 7.411-2.684.66-.587 1.151-1.145 1.464-1.583C19.588 9.387 16.242 6.5 12 6.5ZM12 8.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm0 1.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" fill="#0969da" />
   </g>
   <text x="693.0" y="72" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="700" letter-spacing="0.5" fill="#656d76">VISITAS</text>
-  <text x="671.0" y="96" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="15" font-weight="800" fill="#1f2328">+124 Visitas</text>
+  <text x="671.0" y="96" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="15" font-weight="800" fill="#1f2328">+125 Visitas</text>
   <text x="671.0" y="113" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="500" fill="#6e7681">contador en tiempo real</text>
   <rect x="20" y="136" width="840" height="42" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
   <text x="34" y="162" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="800" fill="#0969da">❯</text>
