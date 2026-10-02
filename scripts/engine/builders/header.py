@@ -84,42 +84,61 @@ def _typewriter_elements(
         msg_start = tm["start"]
         hold_end = tm["hold_end"]
 
-        # Generate keyTimes and values for the cover rect animation:
-        # Phase 1: hidden (cover full) until msg_start
-        # Phase 2: typing (cover shrinks from cover_w to 0) — type_dur
-        # Phase 3: hold (cover stays 0) — hold_time
-        # Phase 4: erase (cover grows from 0 to cover_w) — erase_dur
-        # Phase 5: hidden (cover full) until end
+        # Cover rect animation:
+        # Typing: x moves right (x → x+cover_w), width shrinks (cover_w → 0)
+        #         This peels the left edge right, revealing text LEFT-TO-RIGHT
+        # Erase:  x moves left (x+cover_w → x), width grows (0 → cover_w)
+        #         This covers text RIGHT-TO-LEFT (backspace effect)
 
-        # Normalize times to 0-1 range
         t0 = msg_start / total_dur
         t1 = (msg_start + type_dur) / total_dur
         t2 = hold_end / total_dur
         t3 = (hold_end + erase_dur) / total_dur
 
-        # Clamp to valid keyTimes
-        key_times = [0]
-        values = [str(cover_w)]
+        x_end = x + cover_w  # x when fully revealed
+
+        # Width values
+        w_keys = [0]
+        w_vals = [str(cover_w)]  # covered
+
+        # X values (move right to reveal, left to hide)
+        x_keys = [0]
+        x_vals = [str(x)]  # at text start
 
         if t0 > 0.001:
-            key_times.append(round(t0, 4))
-            values.append(str(cover_w))
+            w_keys.append(round(t0, 4))
+            w_vals.append(str(cover_w))
+            x_keys.append(round(t0, 4))
+            x_vals.append(str(x))
 
-        key_times.append(round(t1, 4))
-        values.append("0")
+        # Type complete: width=0, x=x_end
+        w_keys.append(round(t1, 4))
+        w_vals.append("0")
+        x_keys.append(round(t1, 4))
+        x_vals.append(str(x_end))
 
-        key_times.append(round(t2, 4))
-        values.append("0")
+        # Hold: stays revealed
+        w_keys.append(round(t2, 4))
+        w_vals.append("0")
+        x_keys.append(round(t2, 4))
+        x_vals.append(str(x_end))
 
-        key_times.append(round(t3, 4))
-        values.append(str(cover_w))
+        # Erase complete: width=cover_w, x=x (back to start)
+        w_keys.append(round(t3, 4))
+        w_vals.append(str(cover_w))
+        x_keys.append(round(t3, 4))
+        x_vals.append(str(x))
 
         if t3 < 0.999:
-            key_times.append(1)
-            values.append(str(cover_w))
+            w_keys.append(1)
+            w_vals.append(str(cover_w))
+            x_keys.append(1)
+            x_vals.append(str(x))
 
-        kt_str = ";".join(str(k) for k in key_times)
-        val_str = ";".join(values)
+        wk_str = ";".join(str(k) for k in w_keys)
+        wv_str = ";".join(w_vals)
+        xk_str = ";".join(str(k) for k in x_keys)
+        xv_str = ";".join(x_vals)
 
         # Text element
         svg += (
@@ -128,16 +147,17 @@ def _typewriter_elements(
             f'font-weight="500">{_esc(msg)}</text>\n'
         )
 
-        # Covering rect (same color as background, hides text)
+        # Covering rect — animates x AND width for correct direction
         svg += (
             f'  <rect x="{x}" y="{y - font_size}" '
             f'width="{cover_w}" height="{font_size + 8}" fill="{bg_color}">\n'
             f'    <animate attributeName="width" '
-            f'values="{val_str}" '
-            f'keyTimes="{kt_str}" '
+            f'values="{wv_str}" '
+            f'keyTimes="{wk_str}" '
             f'dur="{total_dur:.1f}s" repeatCount="indefinite" />\n'
             f'    <animate attributeName="x" '
-            f'values="{x};{x};{x};{x};{x}" '
+            f'values="{xv_str}" '
+            f'keyTimes="{xk_str}" '
             f'dur="{total_dur:.1f}s" repeatCount="indefinite" />\n'
             f'  </rect>\n'
         )

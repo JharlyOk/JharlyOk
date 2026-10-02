@@ -11,27 +11,27 @@
   <text x="50" y="30" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14" font-weight="500">Hey, welcome to my workspace</text>
   <rect x="50" y="16" width="263.03999999999996" height="22" fill="#f6f8fa">
     <animate attributeName="width" values="263.03999999999996;0;0;263.03999999999996;263.03999999999996" keyTimes="0;0.0609;0.1335;0.1639;1" dur="27.6s" repeatCount="indefinite" />
-    <animate attributeName="x" values="50;50;50;50;50" dur="27.6s" repeatCount="indefinite" />
+    <animate attributeName="x" values="50;313.03999999999996;313.03999999999996;50;50" keyTimes="0;0.0609;0.1335;0.1639;1" dur="27.6s" repeatCount="indefinite" />
   </rect>
   <text x="50" y="30" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14" font-weight="500">Building autonomous bot ecosystems</text>
   <rect x="50" y="16" width="315.12" height="22" fill="#f6f8fa">
     <animate attributeName="width" values="315.12;315.12;0;0;315.12;315.12" keyTimes="0;0.1785;0.2524;0.325;0.362;1" dur="27.6s" repeatCount="indefinite" />
-    <animate attributeName="x" values="50;50;50;50;50" dur="27.6s" repeatCount="indefinite" />
+    <animate attributeName="x" values="50;50;365.12;365.12;50;50" keyTimes="0;0.1785;0.2524;0.325;0.362;1" dur="27.6s" repeatCount="indefinite" />
   </rect>
   <text x="50" y="30" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14" font-weight="500">13+ production bots running 24/7</text>
   <rect x="50" y="16" width="297.76" height="22" fill="#f6f8fa">
     <animate attributeName="width" values="297.76;297.76;0;0;297.76;297.76" keyTimes="0;0.3765;0.4461;0.5187;0.5535;1" dur="27.6s" repeatCount="indefinite" />
-    <animate attributeName="x" values="50;50;50;50;50" dur="27.6s" repeatCount="indefinite" />
+    <animate attributeName="x" values="50;50;347.76;347.76;50;50" keyTimes="0;0.3765;0.4461;0.5187;0.5535;1" dur="27.6s" repeatCount="indefinite" />
   </rect>
   <text x="50" y="30" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14" font-weight="500">AI-accelerated dev with Gemini &amp; Claude</text>
   <rect x="50" y="16" width="358.52" height="22" fill="#f6f8fa">
     <animate attributeName="width" values="358.52;358.52;0;0;358.52;358.52" keyTimes="0;0.568;0.6529;0.7254;0.7679;1" dur="27.6s" repeatCount="indefinite" />
-    <animate attributeName="x" values="50;50;50;50;50" dur="27.6s" repeatCount="indefinite" />
+    <animate attributeName="x" values="50;50;408.52;408.52;50;50" keyTimes="0;0.568;0.6529;0.7254;0.7679;1" dur="27.6s" repeatCount="indefinite" />
   </rect>
   <text x="50" y="30" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14" font-weight="500">Real-time audio routing with Lavalink v4</text>
   <rect x="50" y="16" width="367.2" height="22" fill="#f6f8fa">
     <animate attributeName="width" values="367.2;367.2;0;0;367.2;367.2" keyTimes="0;0.7824;0.8694;0.942;0.9855;1" dur="27.6s" repeatCount="indefinite" />
-    <animate attributeName="x" values="50;50;50;50;50" dur="27.6s" repeatCount="indefinite" />
+    <animate attributeName="x" values="50;50;417.2;417.2;50;50" keyTimes="0;0.7824;0.8694;0.942;0.9855;1" dur="27.6s" repeatCount="indefinite" />
   </rect>
   <rect x="0.0" y="56" width="212.5" height="76" rx="8" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1" />
   <rect x="1.0" y="57" width="210.5" height="2" rx="0" fill="#0969da" />
