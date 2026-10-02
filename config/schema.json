@@ -123,6 +123,15 @@
           "description": "List of strings cycled by the typewriter SMIL animation in the header.",
           "items": { "type": "string" }
         },
+        "typewriter": {
+          "type": "object",
+          "description": "Speed and hold duration settings for the typewriter animation.",
+          "properties": {
+            "hold_time": { "type": "number", "default": 4.5, "description": "Seconds each message stays completely visible before backspacing." },
+            "type_speed": { "type": "number", "default": 0.055, "description": "Seconds per character when typing out." },
+            "erase_speed": { "type": "number", "default": 0.025, "description": "Seconds per character when backspacing." }
+          }
+        },
         "telemetry": {
           "type": "object",
           "description": "Live telemetry pills integrated directly within the header SVG.",

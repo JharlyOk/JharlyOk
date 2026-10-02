@@ -19,19 +19,19 @@
       <rect x="667.5" y="56" width="212.5" height="76" rx="8" />
     </clipPath>
     <path id="hdr_path_0">
-      <animate id="hdr_anim_0" attributeName="d" begin="0s;hdr_anim_4.end" dur="4019ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.313; 0.861; 1" />
+      <animate id="hdr_anim_0" attributeName="d" begin="0s;hdr_anim_4.end" dur="6740ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.228; 0.896; 1" />
     </path>
     <path id="hdr_path_1">
-      <animate id="hdr_anim_1" attributeName="d" begin="hdr_anim_0.end" dur="4410ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.347; 0.846; 1" />
+      <animate id="hdr_anim_1" attributeName="d" begin="hdr_anim_0.end" dur="7220ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.259; 0.882; 1" />
     </path>
     <path id="hdr_path_2">
-      <animate id="hdr_anim_2" attributeName="d" begin="hdr_anim_1.end" dur="4280ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.336; 0.85; 1" />
+      <animate id="hdr_anim_2" attributeName="d" begin="hdr_anim_1.end" dur="7060ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.249; 0.887; 1" />
     </path>
     <path id="hdr_path_3">
-      <animate id="hdr_anim_3" attributeName="d" begin="hdr_anim_2.end" dur="4735ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.371; 0.835; 1" />
+      <animate id="hdr_anim_3" attributeName="d" begin="hdr_anim_2.end" dur="7619ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.281; 0.872; 1" />
     </path>
     <path id="hdr_path_4">
-      <animate id="hdr_anim_4" attributeName="d" begin="hdr_anim_3.end" dur="4800ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.375; 0.833; 1" />
+      <animate id="hdr_anim_4" attributeName="d" begin="hdr_anim_3.end" dur="7700ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.286; 0.87; 1" />
     </path>
   </defs>
 

@@ -29,6 +29,9 @@ def _build_typewriter(
     text_color: str,
     font_family: str,
     font_size: int | float = 13.5,
+    hold_time: float = 4.5,
+    type_speed: float = 0.055,
+    erase_speed: float = 0.025,
 ) -> tuple[str, str]:
     """Generate SMIL textPath-based typewriter elements for cycling messages.
     
@@ -40,10 +43,6 @@ def _build_typewriter(
     n = len(messages)
     paths: list[str] = []
     texts: list[str] = []
-
-    type_speed = 0.045   # seconds per char typing
-    hold_time = 2.2     # seconds to display full message
-    erase_speed = 0.02  # fast backspacing
 
     for i, msg in enumerate(messages):
         prev_id = f"hdr_anim_{(i - 1) % n}"
@@ -147,6 +146,11 @@ class HeaderBuilder(BaseBuilder):
         cards_y = self.WELCOME_H + self.GAP
         bar_mid_y = self.WELCOME_H / 2
 
+        tw_cfg = identity.get("typewriter", {})
+        hold_time = float(tw_cfg.get("hold_time", 4.5))
+        type_speed = float(tw_cfg.get("type_speed", 0.055))
+        erase_speed = float(tw_cfg.get("erase_speed", 0.025))
+
         # Build typewriter paths (for <defs>) and texts (for body)
         tw_paths, tw_texts = _build_typewriter(
             messages=messages,
@@ -156,6 +160,9 @@ class HeaderBuilder(BaseBuilder):
             text_color=theme.fg_default,
             font_family=theme.font_mono,
             font_size=13.5,
+            hold_time=hold_time,
+            type_speed=type_speed,
+            erase_speed=erase_speed,
         )
 
         parts: list[str] = []

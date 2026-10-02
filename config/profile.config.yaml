@@ -45,6 +45,12 @@ identity:
     - "AI-accelerated dev with Gemini & Claude"
     - "Real-time audio routing with Lavalink v4"
 
+  # Velocidad y permanencia de las frases en la terminal (efecto máquina de escribir)
+  typewriter:
+    hold_time: 4.5              # Segundos que permanece visible cada frase antes de borrarse (antes era solo 2.2s)
+    type_speed: 0.055           # Segundos por letra al escribir (ritmo natural y pausado)
+    erase_speed: 0.025          # Segundos por letra al borrar
+
   # 📊 Telemetría en vivo integrada al pie del header SVG (control granular)
   telemetry:
     enabled: false              # true = dibuja una 3ra fila de métricas dentro del Header SVG
