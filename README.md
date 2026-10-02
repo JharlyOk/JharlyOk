@@ -9,48 +9,36 @@
   </picture>
 </a>
 
-<br>
+<br><br>
 
-![Profile Views](https://komarev.com/ghpvc/?username=JharlyOk&color=58A6FF&style=flat-square&label=visitors)
-&nbsp;
-[![GitHub](https://img.shields.io/github/followers/JharlyOk?label=Follow&style=flat-square&color=30363d&labelColor=21262d)](https://github.com/JharlyOk)
-
-</div>
-
----
-
-### `$ cat src/core/JharlyOk.config.ts`
-
+<!-- CODE MANIFEST — TypeScript profile configuration (Neovim editor) -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
   <img src="assets/banner-dark.svg" width="100%" alt="JharlyOk Code Manifest" />
 </picture>
 
----
+<br><br>
 
-### `$ ls ~/projects`
-
+<!-- ACTIVE PROJECTS — fleet portfolio overview (Terminal) -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/projects-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/projects-light.svg">
   <img src="assets/projects-dark.svg" width="100%" alt="JharlyOk Active Projects" />
 </picture>
 
----
+<br><br>
 
-### `$ cat /etc/stack.yaml`
-
+<!-- TECHNOLOGY STACK — categorized toolchain matrix (Terminal) -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.svg">
   <img src="assets/stack-dark.svg" width="100%" alt="JharlyOk Technology Stack" />
 </picture>
 
----
+<br><br>
 
-<div align="center">
-
+<!-- CONNECT & TELEMETRY -->
 <a href="https://t.me/JharlyOk">
   <img src="https://img.shields.io/badge/Telegram-@JharlyOk-58A6FF?style=flat-square&logo=telegram&logoColor=white" alt="Telegram" />
 </a>
@@ -62,8 +50,12 @@
 <a href="mailto:jhefcarrascojesus2001@gmail.com">
   <img src="https://img.shields.io/badge/Email-Contact-f85149?style=flat-square&logo=gmail&logoColor=white" alt="Email" />
 </a>
+&nbsp;
+![Profile Views](https://komarev.com/ghpvc/?username=JharlyOk&color=58A6FF&style=flat-square&label=visitors)
+&nbsp;
+[![GitHub](https://img.shields.io/github/followers/JharlyOk?label=Follow&style=flat-square&color=30363d&labelColor=21262d)](https://github.com/JharlyOk)
 
-<br>
+<br><br>
 
 <sub>Built with a custom SVG engine · Dark/Light adaptive · Config-driven · <a href="scripts/">View source</a></sub>
 

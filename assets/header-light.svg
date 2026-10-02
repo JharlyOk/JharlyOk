@@ -52,28 +52,35 @@
   <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#1f2328" font-size="13.5" font-weight="500" dominant-baseline="middle">
     <textPath href="#hdr_path_4" xlink:href="#hdr_path_4">Real-time audio routing with Lavalink v4</textPath>
   </text>
+  <rect x="753.6" y="11.0" width="112.4" height="24" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.8" />
+  <circle cx="763.6" cy="23.0" r="3" fill="#1a7f37" />
+  <text x="772.6" y="26.5" fill="#1a7f37" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="700" letter-spacing="0.5">FLEET ACTIVE</text>
   <rect x="0.0" y="56" width="212.5" height="76" rx="8" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1" />
   <rect x="0.0" y="56" width="212.5" height="3" fill="#0969da" clip-path="url(#card-clip-0)" />
   <circle cx="16.0" cy="82" r="3.5" fill="#0969da" />
   <text x="28.0" y="86" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">13+ Production Bots</text>
   <text x="16.0" y="105" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Telegram &amp; Discord fleet</text>
-  <text x="16.0" y="121" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">always online</text>
+  <circle cx="18.0" cy="118.5" r="2.5" fill="#1a7f37" />
+  <text x="25.0" y="121.5" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" letter-spacing="0.3">always online</text>
   <rect x="222.5" y="56" width="212.5" height="76" rx="8" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1" />
   <rect x="222.5" y="56" width="212.5" height="3" fill="#8250df" clip-path="url(#card-clip-1)" />
   <circle cx="238.5" cy="82" r="3.5" fill="#8250df" />
   <text x="250.5" y="86" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Real-Time Audio</text>
   <text x="238.5" y="105" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Lavalink v4 + LavaSrc pipeline</text>
-  <text x="238.5" y="121" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">real-time</text>
+  <circle cx="240.5" cy="118.5" r="2.5" fill="#1a7f37" />
+  <text x="247.5" y="121.5" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" letter-spacing="0.3">real-time</text>
   <rect x="445.0" y="56" width="212.5" height="76" rx="8" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1" />
   <rect x="445.0" y="56" width="212.5" height="3" fill="#1a7f37" clip-path="url(#card-clip-2)" />
   <circle cx="461.0" cy="82" r="3.5" fill="#1a7f37" />
   <text x="473.0" y="86" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Multi-LLM Development</text>
   <text x="461.0" y="105" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Gemini, Claude, Cursor, LLM Arena</text>
-  <text x="461.0" y="121" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">multi-model</text>
+  <circle cx="463.0" cy="118.5" r="2.5" fill="#1a7f37" />
+  <text x="470.0" y="121.5" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" letter-spacing="0.3">multi-model</text>
   <rect x="667.5" y="56" width="212.5" height="76" rx="8" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1" />
   <rect x="667.5" y="56" width="212.5" height="3" fill="#9a6700" clip-path="url(#card-clip-3)" />
   <circle cx="683.5" cy="82" r="3.5" fill="#9a6700" />
   <text x="695.5" y="86" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Self-Hosted Infra</text>
   <text x="683.5" y="105" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Docker + Linux VPS + Pterodactyl</text>
-  <text x="683.5" y="121" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" letter-spacing="0.5">self-hosted</text>
+  <circle cx="685.5" cy="118.5" r="2.5" fill="#1a7f37" />
+  <text x="692.5" y="121.5" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" letter-spacing="0.3">self-hosted</text>
 </svg>

@@ -179,6 +179,24 @@ class HeaderBuilder(BaseBuilder):
         # Typewriter text elements (referencing paths in defs)
         parts.append(tw_texts)
 
+        # Status telemetry badge on right side of Welcome Bar
+        badge_text = "FLEET ACTIVE"
+        badge_w = len(badge_text) * 7.2 + 26
+        badge_h = 24
+        badge_x = self.WIDTH - badge_w - 14
+        badge_y = (self.WELCOME_H - badge_h) / 2
+        parts.append(rect(
+            badge_x, badge_y, badge_w, badge_h,
+            theme.bg_overlay, rx=4,
+            stroke=theme.border_muted, stroke_width=0.8,
+        ))
+        parts.append(circle(badge_x + 10, bar_mid_y, 3, theme.accent_success))
+        parts.append(text(
+            badge_x + 19, bar_mid_y + 3.5,
+            badge_text, theme.accent_success, theme.font_mono,
+            font_size=10, font_weight=700, letter_spacing=0.5,
+        ))
+
         # ── Highlight Cards ─────────────────────────────────────
         accent_colors = {
             "bot": theme.accent_primary,
@@ -231,12 +249,14 @@ class HeaderBuilder(BaseBuilder):
                 font_size=10.5,
             ))
 
-            # Status
+            # Status with active telemetry dot
+            status_text = status_map.get(icon_type, "")
+            parts.append(circle(x + 18, cards_y + 62.5, 2.5, theme.accent_success))
             parts.append(text(
-                x + 16, cards_y + 65,
-                status_map.get(icon_type, ""),
-                theme.fg_subtle, theme.font_mono,
-                font_size=9, letter_spacing=0.5,
+                x + 25, cards_y + 65.5,
+                status_text,
+                theme.fg_muted, theme.font_mono,
+                font_size=9.5, letter_spacing=0.3,
             ))
 
         parts.append(svg_close())
