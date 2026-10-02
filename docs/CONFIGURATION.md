@@ -34,7 +34,9 @@ JharlyOk/
 │       │   └── registry.py    # Decorador @register_builder y registro dinámico
 │       ├── svg/               # Capa gráfica y vectores
 │       │   ├── primitives.py  # Primitivas SVG (rect, text, circle, terminal_header, etc.)
-│       │   └── icons.py       # Catálogo de paths vectoriales (24x24)
+│       │   └── icons/         # Catálogo de íconos vectoriales SVG individuales (24x24)
+│       │       ├── __init__.py# Loader dinámico con caché en memoria
+│       │       └── *.svg      # Archivos SVG nativos (telegram, discord, repo, star...)
 │       ├── markdown/          # Capa de documentación
 │       │   └── readme.py      # Ensamblador dinámico de README.md
 │       └── builders/          # Constructores visuales de componentes
