@@ -52,9 +52,9 @@
   <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#1f2328" font-size="13.5" font-weight="500" dominant-baseline="middle">
     <textPath href="#hdr_path_4" xlink:href="#hdr_path_4">Ruteo de audio en tiempo real con Lavalink v4</textPath>
   </text>
-  <rect x="753.6" y="11.0" width="112.4" height="24" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.8" />
-  <circle cx="763.6" cy="23.0" r="3" fill="#1a7f37" />
-  <text x="772.6" y="26.5" fill="#1a7f37" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="700" letter-spacing="0.5">FLEET ACTIVE</text>
+  <rect x="761.1" y="11.0" width="104.9" height="24" rx="4.0" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.8" />
+  <circle cx="773.6" cy="23.0" r="3.0" fill="#1a7f37" />
+  <text x="782.1" y="23.0" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.0" font-weight="700" fill="#1a7f37" dominant-baseline="central">FLEET ACTIVE</text>
   <rect x="0.0" y="56" width="212.5" height="76" rx="8" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1" />
   <rect x="0.0" y="56" width="212.5" height="3" fill="#0969da" clip-path="url(#card-clip-0)" />
   <circle cx="16.0" cy="82" r="3.5" fill="#0969da" />

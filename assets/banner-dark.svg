@@ -18,13 +18,13 @@
   <circle cx="38" cy="20" r="5.5" fill="#d29922" />
   <circle cx="56" cy="20" r="5.5" fill="#3fb950" />
   <rect x="72" y="7" width="180" height="26" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="0.8" />
-  <circle cx="84" cy="20" r="3" fill="#58a6ff" />
-  <text x="94" y="24" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5" font-weight="600">JharlyOk.config.ts</text>
+  <circle cx="84" cy="20.0" r="3" fill="#58a6ff" />
+  <text x="94" y="20.0" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5" font-weight="600" dominant-baseline="central">JharlyOk.config.ts</text>
   <rect x="258" y="7" width="132" height="26" rx="6" fill="#010409" />
-  <circle cx="270" cy="20" r="3" fill="#58a6ff" />
-  <text x="280" y="24" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">package.json</text>
-  <rect x="780" y="10" width="86" height="20" rx="4" fill="#1c2128" stroke="#21262d" stroke-width="0.8" />
-  <text x="823" y="24" fill="#58a6ff" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="600" text-anchor="middle">TypeScript</text>
+  <circle cx="270" cy="20.0" r="3" fill="#58a6ff" />
+  <text x="280" y="20.0" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5" dominant-baseline="central">package.json</text>
+  <rect x="783.9" y="10" width="82.1" height="20.0" rx="4.0" fill="#1c2128" stroke="#21262d" stroke-width="0.6" />
+  <text x="824.9" y="20.0" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5" font-weight="600" fill="#58a6ff" text-anchor="middle" dominant-baseline="central">TypeScript</text>
   <text x="28" y="58" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14" text-anchor="end">1</text>
   <text x="52" y="58" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14"><tspan fill="#ff7b72">import</tspan><tspan fill="#f0f6fc"> { </tspan><tspan fill="#ffa657">SystemsBuilder</tspan><tspan fill="#f0f6fc"> } </tspan><tspan fill="#ff7b72">from</tspan><tspan fill="#a5d6ff"> &quot;@epic/core&quot;</tspan><tspan fill="#f0f6fc">;</tspan></text>
   <text x="28" y="81" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14" text-anchor="end">2</text>
@@ -58,10 +58,10 @@
   <text x="60" y="403" fill="#58a6ff" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14" class="cursor-blink">█</text>
   <rect x="0" y="432" width="880" height="28" rx="0" fill="#010409" />
   <line x1="0" y1="432" x2="880" y2="432" stroke="#30363d" stroke-width="1" />
-  <rect x="8" y="437" width="61.0" height="18" rx="3" fill="#58a6ff" />
-  <text x="38.5" y="450.0" fill="#010409" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700" text-anchor="middle">NORMAL</text>
-  <text x="81.0" y="450.0" fill="#bc8cff" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="600"> main</text>
-  <text x="128.0" y="450.0" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11">JharlyOk.config.ts</text>
-  <text x="266.0" y="450.0" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11">[utf-8]</text>
-  <text x="327.0" y="450.0" fill="#3fb950" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11">● LSP ready</text>
+  <rect x="8" y="436" width="61.0" height="20" rx="3" fill="#58a6ff" />
+  <text x="38.5" y="446.0" fill="#010409" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central">NORMAL</text>
+  <text x="81.0" y="446.0" fill="#bc8cff" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="600" dominant-baseline="central"> main</text>
+  <text x="128.0" y="446.0" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" dominant-baseline="central">JharlyOk.config.ts</text>
+  <text x="266.0" y="446.0" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" dominant-baseline="central">[utf-8]</text>
+  <text x="327.0" y="446.0" fill="#3fb950" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" dominant-baseline="central">● LSP ready</text>
 </svg>

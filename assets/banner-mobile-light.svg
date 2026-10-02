@@ -18,10 +18,10 @@
   <circle cx="38" cy="18" r="5.5" fill="#9a6700" />
   <circle cx="56" cy="18" r="5.5" fill="#1a7f37" />
   <rect x="48" y="6" width="180" height="26" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="0.8" />
-  <circle cx="60" cy="19" r="3" fill="#0969da" />
-  <text x="70" y="23" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5" font-weight="600">JharlyOk.config.ts</text>
-  <rect x="262" y="8" width="28" height="20" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.8" />
-  <text x="276.0" y="22" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="700" text-anchor="middle">TS</text>
+  <circle cx="60" cy="19.0" r="3" fill="#0969da" />
+  <text x="70" y="19.0" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5" font-weight="600" dominant-baseline="central">JharlyOk.config.ts</text>
+  <rect x="221.2" y="8" width="68.8" height="20.0" rx="4.0" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
+  <text x="255.6" y="18.0" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.0" font-weight="700" fill="#0969da" text-anchor="middle" dominant-baseline="central">TypeScript</text>
   <text x="16" y="52.0" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.8" text-anchor="end">1</text>
   <text x="24" y="52.0" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.8"><tspan fill="#cf222e">import</tspan><tspan fill="#1f2328"> { </tspan><tspan fill="#953800">SystemsBuilder</tspan><tspan fill="#1f2328"> } </tspan><tspan fill="#cf222e">from</tspan><tspan fill="#0a3069">&quot;@epic&quot;</tspan><tspan fill="#1f2328">;</tspan></text>
   <text x="16" y="71.5" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.8" text-anchor="end">2</text>
@@ -55,9 +55,9 @@
   <text x="32" y="344.5" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" class="cursor-blink">█</text>
   <rect x="0" y="364" width="300" height="24" rx="0" fill="#eff2f5" />
   <line x1="0" y1="364" x2="300" y2="364" stroke="#d0d7de" stroke-width="1" />
-  <rect x="8" y="369" width="61.0" height="14" rx="3" fill="#0969da" />
-  <text x="38.5" y="380.0" fill="#eff2f5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700" text-anchor="middle">NORMAL</text>
-  <text x="81.0" y="380.0" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="600"> main</text>
-  <text x="128.0" y="380.0" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11">JharlyOk.config.ts</text>
-  <text x="266.0" y="380.0" fill="#1a7f37" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11">TS</text>
+  <rect x="8" y="368" width="61.0" height="16" rx="3" fill="#0969da" />
+  <text x="38.5" y="376.0" fill="#eff2f5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central">NORMAL</text>
+  <text x="81.0" y="376.0" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="600" dominant-baseline="central"> main</text>
+  <text x="128.0" y="376.0" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" dominant-baseline="central">JharlyOk.config.ts</text>
+  <text x="266.0" y="376.0" fill="#1a7f37" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" dominant-baseline="central">TS</text>
 </svg>
