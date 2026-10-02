@@ -97,7 +97,7 @@ stats:
       label: "PROFILE VIEWS"
       icon: "eye"
       accent: "primary"
-      prefix: ""
+      prefix: "+"                       # Prefijo configurable (ej. "+" -> +87 Hits o "" -> 87 Hits)
       suffix: "Hits"
       sub: "live hit counter"
 ```
