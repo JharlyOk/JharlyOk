@@ -1,3 +1,24 @@
+<!-- ==============================================================================
+     JHARLYOK GITHUB PROFILE TEMPLATE (README.template.md)
+     Edita este archivo con total libertad para personalizar tu perfil.
+     
+     Puedes agregar texto libre, encabezados, citas, listas o secciones donde desees.
+     Etiquetas disponibles para insertar componentes:
+       - {header}             : Cabecera animada con typewriter y highlight cards
+       - {stats}              : Banner terminal (880px) de estadísticas de GitHub
+       - {banner}             : Editor Neovim con tu configuración TypeScript
+       - {projects}           : Terminal con árbol de proyectos activos
+       - {stack}              : Matriz terminal de tecnologías y herramientas
+       - {connect}            : Tarjeta terminal de canales de comunicación
+       - {badge:telegram}     : Badge individual de Telegram
+       - {badge:discord}      : Badge individual de Discord
+       - {badge:email}        : Badge individual de Email
+       - {badges}             : Todos los badges de redes sociales configurados
+       - {telemetry}          : Badges en vivo de métricas de GitHub (followers, repos, stars, views)
+       - {beacon}             : Contador de visitas invisible
+       - {footer}             : Pie de página del sistema
+     ============================================================================== -->
+
 <div align="center">
 
 <!-- HEADER — unified animated welcome typewriter + 4 active systems cards -->
@@ -20,7 +41,6 @@
 
 <br><br>
 
-<!-- QUICK-ACTION SOCIAL BADGES -->
 <a href="https://t.me/JharlyOk">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/badges/telegram-dark.svg">
@@ -44,7 +64,6 @@
     <img src="assets/badges/email-dark.svg" height="28" alt="Email" />
   </picture>
 </a>
-&nbsp;
 
 <br><br>
 

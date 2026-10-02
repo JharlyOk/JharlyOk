@@ -123,10 +123,22 @@ modules:
   * **Profile Views**: Contador de visitas en vivo (`58a6ff` Primary Blue).
 * **Statusline Inferior**: Línea de estado con antigüedad como desarrollador (Tenure: Since 2020), flota de bots autónomos y pipeline de audio.
 
-### 6. Badges Split-Pill Interactivos (`badges.py`)
-* **Aspecto**: Botones vectoriales individuales de 28px de alto con bordes redondeados (`rx=6`).
-* **Interacción Real**: Al insertarse en el `README.md` como etiquetas `<a><picture><img></picture></a>`, cada badge es un enlace 100% clickeable individualmente (Telegram, Discord, Email, GitHub, LinkedIn, X).
-* **Ubicación Flexible**: Con `badges.position: "header"` en `profile.config.yaml`, los badges se muestran inmediatamente debajo del saludo principal para interacción instantánea de los visitantes.
+### 6. Plantilla Personalizada y Badges Interactivos (`README.template.md`)
+* **Libertad Total de Maquetación**:
+  * Ahora el perfil utiliza un archivo base **`README.template.md`** donde puedes escribir texto libre, párrafos, citas o secciones en Markdown sin que ningún script lo sobreescriba.
+  * Los componentes y badges se insertan exactamente en la posición que desees mediante etiquetas dinámicas:
+    * `{{ header }}`: Cabecera animada con typewriter y highlight cards.
+    * `{{ stats }}`: Banner terminal (880px) de estadísticas de GitHub.
+    * `{{ banner }}`: Editor Neovim con tu configuración TypeScript.
+    * `{{ projects }}`: Terminal con árbol de proyectos activos.
+    * `{{ stack }}`: Matriz terminal de tecnologías y herramientas.
+    * `{{ connect }}`: Tarjeta terminal de canales de comunicación.
+    * `{{ badge:<id> }}`: Inserta un badge individual clickeable (ej. `{{ badge:telegram }}`, `{{ badge:discord }}`, `{{ badge:email }}`).
+    * `{{ badges }}`: Inserta todos los badges de redes sociales configurados.
+    * `{{ telemetry }}`: Inserta todos los badges de métricas dinámicas (seguidores, repos, estrellas, visitas).
+    * `{{ beacon }}`: Baliza invisible 1x1 para conteo de visitas.
+    * `{{ footer }}`: Pie de página con créditos del sistema SVG.
+* **Compilación**: Al correr `python scripts/build.py` (o en GitHub Actions), el motor compila los SVGs, reemplaza las etiquetas y genera el `README.md` final manteniendo al 100% todo tu texto personalizado.
 
 ---
 
