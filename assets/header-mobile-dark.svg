@@ -6,6 +6,9 @@
       @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
       .hdr-cursor { animation: cursorBlink 1s step-end infinite; }
     </style>
+    <clipPath id="hdr-m-tw-clip">
+      <rect x="34" y="0" width="193.4" height="46" />
+    </clipPath>
     <clipPath id="m-card-clip-0">
       <rect x="0" y="56" width="300" height="72" rx="8" />
     </clipPath>
@@ -19,39 +22,41 @@
       <rect x="0" y="302" width="300" height="72" rx="8" />
     </clipPath>
     <path id="hdr_path_0">
-      <animate id="hdr_anim_0" attributeName="d" begin="0s;hdr_anim_4.end" dur="6980ms" fill="remove" values="m34,24.0 h0 ; m34,24.0 h202 ; m34,24.0 h202 ; m34,24.0 h0" keyTimes="0; 0.244; 0.889; 1" />
+      <animate id="hdr_anim_0" attributeName="d" begin="0s;hdr_anim_4.end" dur="6980ms" fill="remove" values="m34,23.0 h0 ; m34,23.0 h193.4 ; m34,23.0 h193.4 ; m34,23.0 h0" keyTimes="0; 0.244; 0.889; 1" />
     </path>
     <path id="hdr_path_1">
-      <animate id="hdr_anim_1" attributeName="d" begin="hdr_anim_0.end" dur="6660ms" fill="remove" values="m34,24.0 h0 ; m34,24.0 h202 ; m34,24.0 h202 ; m34,24.0 h0" keyTimes="0; 0.223; 0.899; 1" />
+      <animate id="hdr_anim_1" attributeName="d" begin="hdr_anim_0.end" dur="6660ms" fill="remove" values="m34,23.0 h0 ; m34,23.0 h175.1 ; m34,23.0 h175.1 ; m34,23.0 h0" keyTimes="0; 0.223; 0.899; 1" />
     </path>
     <path id="hdr_path_2">
-      <animate id="hdr_anim_2" attributeName="d" begin="hdr_anim_1.end" dur="6660ms" fill="remove" values="m34,24.0 h0 ; m34,24.0 h202 ; m34,24.0 h202 ; m34,24.0 h0" keyTimes="0; 0.223; 0.899; 1" />
+      <animate id="hdr_anim_2" attributeName="d" begin="hdr_anim_1.end" dur="6660ms" fill="remove" values="m34,23.0 h0 ; m34,23.0 h175.1 ; m34,23.0 h175.1 ; m34,23.0 h0" keyTimes="0; 0.223; 0.899; 1" />
     </path>
     <path id="hdr_path_3">
-      <animate id="hdr_anim_3" attributeName="d" begin="hdr_anim_2.end" dur="6660ms" fill="remove" values="m34,24.0 h0 ; m34,24.0 h202 ; m34,24.0 h202 ; m34,24.0 h0" keyTimes="0; 0.223; 0.899; 1" />
+      <animate id="hdr_anim_3" attributeName="d" begin="hdr_anim_2.end" dur="6660ms" fill="remove" values="m34,23.0 h0 ; m34,23.0 h175.1 ; m34,23.0 h175.1 ; m34,23.0 h0" keyTimes="0; 0.223; 0.899; 1" />
     </path>
     <path id="hdr_path_4">
-      <animate id="hdr_anim_4" attributeName="d" begin="hdr_anim_3.end" dur="6980ms" fill="remove" values="m34,24.0 h0 ; m34,24.0 h202 ; m34,24.0 h202 ; m34,24.0 h0" keyTimes="0; 0.244; 0.889; 1" />
+      <animate id="hdr_anim_4" attributeName="d" begin="hdr_anim_3.end" dur="6980ms" fill="remove" values="m34,23.0 h0 ; m34,23.0 h193.4 ; m34,23.0 h193.4 ; m34,23.0 h0" keyTimes="0; 0.244; 0.889; 1" />
     </path>
   </defs>
 
   <rect x="0" y="0" width="300" height="46" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
-  <text x="12" y="24.0" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="700" dominant-baseline="middle"><tspan fill="#58a6ff">&gt;</tspan><tspan fill="#3fb950" class="hdr-cursor">_</tspan></text>
-  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="11.0" font-weight="500" dominant-baseline="middle">
+  <text x="12" y="23.0" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="700" dominant-baseline="central"><tspan fill="#58a6ff">&gt;</tspan><tspan fill="#3fb950" class="hdr-cursor">_</tspan></text>
+  <g clip-path="url(#hdr-m-tw-clip)">
+  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="10.1" font-weight="500" dominant-baseline="central">
     <textPath href="#hdr_path_0" xlink:href="#hdr_path_0">Hola, bienvenido a mi workspace</textPath>
   </text>
-  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="11.0" font-weight="500" dominant-baseline="middle">
+  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="10.1" font-weight="500" dominant-baseline="central">
     <textPath href="#hdr_path_1" xlink:href="#hdr_path_1">Construyendo bots autónomos</textPath>
   </text>
-  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="11.0" font-weight="500" dominant-baseline="middle">
+  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="10.1" font-weight="500" dominant-baseline="central">
     <textPath href="#hdr_path_2" xlink:href="#hdr_path_2">13+ bots en producción 24/7</textPath>
   </text>
-  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="11.0" font-weight="500" dominant-baseline="middle">
+  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="10.1" font-weight="500" dominant-baseline="central">
     <textPath href="#hdr_path_3" xlink:href="#hdr_path_3">Desarrollo acelerado con IA</textPath>
   </text>
-  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="11.0" font-weight="500" dominant-baseline="middle">
+  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="10.1" font-weight="500" dominant-baseline="central">
     <textPath href="#hdr_path_4" xlink:href="#hdr_path_4">Audio en tiempo real (Lavalink)</textPath>
   </text>
+  </g>
   <rect x="235.7" y="13.0" width="56.3" height="20" rx="4.0" fill="#1c2128" stroke="#21262d" stroke-width="0.8" />
   <circle cx="245.7" cy="23.0" r="2.5" fill="#3fb950" />
   <text x="252.9" y="23.0" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="8.5" font-weight="700" fill="#3fb950" dominant-baseline="central">ONLINE</text>
