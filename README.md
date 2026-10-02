@@ -11,43 +11,7 @@
 
 <br><br>
 
-<!-- CODE MANIFEST — TypeScript profile configuration (Neovim editor) -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
-  <img src="assets/banner-dark.svg" width="100%" alt="JharlyOk Code Manifest" />
-</picture>
-
-<br><br>
-
-<!-- ACTIVE PROJECTS — fleet portfolio overview (Terminal) -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/projects-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/projects-light.svg">
-  <img src="assets/projects-dark.svg" width="100%" alt="JharlyOk Active Projects" />
-</picture>
-
-<br><br>
-
-<!-- TECHNOLOGY STACK — categorized toolchain matrix (Terminal) -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.svg">
-  <img src="assets/stack-dark.svg" width="100%" alt="JharlyOk Technology Stack" />
-</picture>
-
-<br><br>
-
-<!-- CONNECT & ENDPOINTS CARD (Terminal) -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/connect-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/connect-light.svg">
-  <img src="assets/connect-dark.svg" width="100%" alt="JharlyOk Communication Endpoints" />
-</picture>
-
-<br><br>
-
-<!-- STANDALONE QUICK-ACTION BADGES -->
+<!-- QUICK-ACTION SOCIAL BADGES -->
 <a href="https://t.me/JharlyOk">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/badges/telegram-dark.svg">
@@ -99,6 +63,42 @@
 
 <br><br>
 
+<!-- CODE MANIFEST — TypeScript profile configuration (Neovim editor) -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
+  <img src="assets/banner-dark.svg" width="100%" alt="JharlyOk Code Manifest" />
+</picture>
+
+<br><br>
+
+<!-- ACTIVE PROJECTS — fleet portfolio overview (Terminal) -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/projects-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/projects-light.svg">
+  <img src="assets/projects-dark.svg" width="100%" alt="JharlyOk Active Projects" />
+</picture>
+
+<br><br>
+
+<!-- TECHNOLOGY STACK — categorized toolchain matrix (Terminal) -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.svg">
+  <img src="assets/stack-dark.svg" width="100%" alt="JharlyOk Technology Stack" />
+</picture>
+
+<br><br>
+
+<!-- GITHUB STATS & TELEMETRY DASHBOARD (Terminal) -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg">
+  <img src="assets/stats-dark.svg" width="100%" alt="JharlyOk GitHub Stats & Telemetry" />
+</picture>
+
+<br><br>
+
 <!-- DYNAMIC TELEMETRY & GITHUB METRICS -->
 <a href="https://github.com/JharlyOk?tab=followers">
   <picture>
@@ -132,6 +132,8 @@
   </picture>
 </a>
 &nbsp;
+
+<br><br>
 
 <!-- VISITOR HIT BEACON -->
 <img src="https://komarev.com/ghpvc/?username=JharlyOk" width="1" height="1" alt="" style="display:none" />

@@ -18,7 +18,8 @@ modules:
   banner: true       # Editor de código Neovim / VS Code con tu config
   projects: true     # Árbol de terminal con tus proyectos y repositorios
   stack: true        # Cuadrícula categorizada con tus tecnologías y herramientas
-  connect: true      # Terminal de contacto con endpoints, SLAs y canales
+  stats: true        # Dashboard grande (880px) de métricas de GitHub y telemetría
+  connect: false     # Terminal de canales (desactivada para priorizar badges clickeables)
   badges: true       # Botones vectoriales split-pill de redes sociales
   telemetry: true    # Badges dinámicos de métricas (followers, repos, stars, visitas)
 
@@ -363,11 +364,21 @@ socials:
     latency: "frequent"
 
 # ==============================================================================
-# 📊 8. TELEMETRÍA DINÁMICA DE GITHUB Y VISITAS (telemetry.py)
+# 🔘 8. POSICIONAMIENTO DE BADGES (badges.py)
+# Configura dónde se muestran los botones clicables de acción rápida
+# Opciones: "header" (inmediatamente bajo el saludo para clic rápido), "footer" (al final), "both"
+# ==============================================================================
+badges:
+  enabled: true
+  position: "header"
+
+# ==============================================================================
+# 📊 9. TELEMETRÍA DINÁMICA DE GITHUB Y VISITAS (telemetry.py)
 # Badges split-pill conectados en vivo con la API de GitHub y el contador de visitas
 # ==============================================================================
 telemetry:
   enabled: true
+  position: "footer"
   metrics:
     - id: "followers"
       label: "Followers"

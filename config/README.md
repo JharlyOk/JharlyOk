@@ -25,10 +25,13 @@ modules:
   banner: true       # Editor Neovim con código TypeScript
   projects: true     # Árbol de terminal con proyectos destacados
   stack: true        # Matriz de terminal con categorías de tecnologías
-  connect: true      # Tarjeta de terminal con canales de contacto y SLAs
-  badges: true       # Botones vectoriales split-pill de redes sociales
+  stats: true        # Dashboard banner unificado de telemetría y métricas GitHub (880px)
+  connect: false     # Terminal de canales (false recomendado si usas badges en cabecera)
+  badges: true       # Botones vectoriales split-pill de redes sociales (100% interactivos)
   telemetry: true    # Badges dinámicos de métricas (followers, repos, stars, visitas)
 ```
+
+> 💡 **Posición de Badges**: En `profile.config.yaml` puedes configurar `badges.position: "header"` para mostrar tus enlaces de contacto inmediatamente debajo del saludo principal, haciéndolos directamente clickeables sin redundancia.
 
 > Al ejecutar `python scripts/build.py`, los módulos desactivados se omiten automáticamente tanto en la compilación de SVGs como en el [README.md](../README.md).
 

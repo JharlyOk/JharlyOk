@@ -15,53 +15,60 @@
       "description": "Feature toggles: enable or disable individual SVG profile components.",
       "properties": {
         "header": {
-          "type": "object",
-          "description": "Typewriter welcome greeting + 4 active systems highlight cards.",
-          "properties": {
-            "enabled": { "type": "boolean", "default": true }
-          }
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object", "properties": { "enabled": { "type": "boolean" } } }
+          ],
+          "description": "Typewriter welcome greeting + 4 active systems highlight cards."
         },
         "banner": {
-          "type": "object",
-          "description": "Neovim/VS Code-style TypeScript code editor card with syntax highlighting.",
-          "properties": {
-            "enabled": { "type": "boolean", "default": true }
-          }
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object", "properties": { "enabled": { "type": "boolean" } } }
+          ],
+          "description": "Neovim/VS Code-style TypeScript code editor card with syntax highlighting."
         },
         "projects": {
-          "type": "object",
-          "description": "Terminal window showing active projects and repositories.",
-          "properties": {
-            "enabled": { "type": "boolean", "default": true }
-          }
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object", "properties": { "enabled": { "type": "boolean" } } }
+          ],
+          "description": "Terminal window showing active projects and repositories."
         },
         "stack": {
-          "type": "object",
-          "description": "Terminal grid matrix showing categorized tools, runtimes, and frameworks.",
-          "properties": {
-            "enabled": { "type": "boolean", "default": true }
-          }
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object", "properties": { "enabled": { "type": "boolean" } } }
+          ],
+          "description": "Terminal grid matrix showing categorized tools, runtimes, and frameworks."
+        },
+        "stats": {
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object", "properties": { "enabled": { "type": "boolean" } } }
+          ],
+          "description": "Terminal banner (880px) displaying unified GitHub stats, stars, repos, network, and telemetry."
         },
         "connect": {
-          "type": "object",
-          "description": "Terminal window displaying communication channels, handles, and SLAs.",
-          "properties": {
-            "enabled": { "type": "boolean", "default": true }
-          }
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object", "properties": { "enabled": { "type": "boolean" } } }
+          ],
+          "description": "Terminal window displaying communication channels, handles, and SLAs."
         },
         "badges": {
-          "type": "object",
-          "description": "Standalone clickable split-pill vector badges for social links.",
-          "properties": {
-            "enabled": { "type": "boolean", "default": true }
-          }
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object", "properties": { "enabled": { "type": "boolean" } } }
+          ],
+          "description": "Standalone clickable split-pill vector badges for social links."
         },
         "telemetry": {
-          "type": "object",
-          "description": "Dynamic GitHub telemetry and visitor metric split-pill badges.",
-          "properties": {
-            "enabled": { "type": "boolean", "default": true }
-          }
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object", "properties": { "enabled": { "type": "boolean" } } }
+          ],
+          "description": "Dynamic GitHub telemetry and visitor metric split-pill badges."
         }
       }
     },
@@ -209,6 +216,48 @@
           "tag": { "type": "string" },
           "description": { "type": "string" },
           "latency": { "type": "string" }
+        }
+      }
+    },
+
+    "badges": {
+      "type": "object",
+      "description": "Social badges positioning and configuration.",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "position": {
+          "type": "string",
+          "enum": ["header", "footer", "both", "top", "bottom"],
+          "default": "header",
+          "description": "Where social badges are placed in the README ('header' = under greeting, 'footer' = bottom, 'both' = header & footer)."
+        }
+      }
+    },
+
+    "telemetry": {
+      "type": "object",
+      "description": "Dynamic GitHub metrics and visitor telemetry configuration.",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "position": {
+          "type": "string",
+          "enum": ["header", "footer", "both", "top", "bottom"],
+          "default": "footer",
+          "description": "Where telemetry metrics are placed in the README ('footer' = bottom, 'header' = under greeting)."
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "label"],
+            "properties": {
+              "id": { "type": "string" },
+              "label": { "type": "string" },
+              "icon": { "type": "string" },
+              "accent": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
         }
       }
     }

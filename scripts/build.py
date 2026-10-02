@@ -101,6 +101,17 @@ def main() -> None:
     # Ensure assets directory exists
     assets_dir.mkdir(parents=True, exist_ok=True)
 
+    # Fetch telemetry stats if telemetry or stats module enabled
+    telemetry_stats = None
+    if is_module_enabled(config, "telemetry") or is_module_enabled(config, "stats"):
+        handle = config["identity"]["handle"]
+        telemetry_stats = fetch_telemetry(handle, cache_path)
+        _log(
+            f"  [ok] Telemetry: {telemetry_stats.get('followers', 0)} followers | "
+            f"{telemetry_stats.get('repos', 0)} repos | {telemetry_stats.get('stars', 0)} stars | "
+            f"{telemetry_stats.get('views', 0)} visitors"
+        )
+
     # Build all assets
     _log("")
     total_start = time.perf_counter()
@@ -110,12 +121,18 @@ def main() -> None:
         start = time.perf_counter()
 
         # Build dark variant
-        dark_svg = builder.build(config, dark_theme)
+        try:
+            dark_svg = builder.build(config, dark_theme, telemetry_stats=telemetry_stats)
+        except TypeError:
+            dark_svg = builder.build(config, dark_theme)
         dark_path = assets_dir / f"{name}-dark.svg"
         dark_path.write_text(dark_svg, encoding="utf-8")
 
         # Build light variant
-        light_svg = builder.build(config, light_theme)
+        try:
+            light_svg = builder.build(config, light_theme, telemetry_stats=telemetry_stats)
+        except TypeError:
+            light_svg = builder.build(config, light_theme)
         light_path = assets_dir / f"{name}-light.svg"
         light_path.write_text(light_svg, encoding="utf-8")
 
@@ -127,17 +144,6 @@ def main() -> None:
             f"  > {name:.<20s} "
             f"dark: {dark_kb:.1f}KB  light: {light_kb:.1f}KB  "
             f"({elapsed:.0f}ms)"
-        )
-
-    # Fetch telemetry stats if telemetry module enabled
-    telemetry_stats = None
-    if is_module_enabled(config, "telemetry"):
-        handle = config["identity"]["handle"]
-        telemetry_stats = fetch_telemetry(handle, cache_path)
-        _log(
-            f"  [ok] Telemetry: {telemetry_stats.get('followers', 0)} followers | "
-            f"{telemetry_stats.get('repos', 0)} repos | {telemetry_stats.get('stars', 0)} stars | "
-            f"{telemetry_stats.get('views', 0)} visitors"
         )
 
     # Build standalone badges (social links + dynamic telemetry)

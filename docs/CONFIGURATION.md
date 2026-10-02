@@ -45,8 +45,11 @@ JharlyOk/
 │           ├── banner.py      # Editor Neovim con resaltado de sintaxis
 │           ├── projects.py    # Terminal con árbol de proyectos
 │           ├── stack_matrix.py# Terminal con cuadrícula de tecnologías
+│           ├── stats.py       # Dashboard banner de telemetría y stats GitHub (880px)
 │           ├── connect.py     # Terminal con endpoints de comunicación
 │           └── badges.py      # Constructor de badges split-pill
+├── .cache/
+│   └── telemetry.json         # Caché local de métricas de GitHub y visitas
 └── themes/
     ├── github-dark.json       # Tokens de color oficiales de GitHub Dark
     └── github-light.json      # Tokens de color oficiales de GitHub Light
@@ -54,7 +57,7 @@ JharlyOk/
 
 ---
 
-## 🎛️ Control de Módulos (Feature Toggles)
+## 🎛️ Control de Módulos (Feature Toggles) y Posicionamiento
 
 En `config/profile.config.yaml`, la sección `modules` permite activar o desactivar componentes de forma limpia:
 
@@ -64,9 +67,22 @@ modules:
   banner: true       # Editor de código Neovim
   projects: true     # Árbol de proyectos en terminal
   stack: true        # Cuadrícula de tecnologías
-  connect: true      # Terminal de canales de contacto y SLAs
-  badges: true       # Botones split-pill de redes sociales
-  telemetry: true    # Métricas dinámicas (followers, repos, stars, visitas)
+  stats: true        # Dashboard banner unificado de telemetría (880px)
+  connect: false     # Terminal de canales (false recomendado si usas badges en cabecera)
+  badges: true       # Botones split-pill de redes sociales (100% interactivos)
+  telemetry: true    # Métricas dinámicas en badges (followers, repos, stars, visitas)
+```
+
+### 📍 Ubicación de Badges (`badges.position` y `telemetry.position`)
+
+Puedes posicionar tus badges de contacto en la cabecera para máxima interactividad:
+
+```yaml
+badges:
+  position: "header"    # "header" (debajo del saludo), "footer" (al final), o "both"
+
+telemetry:
+  position: "footer"    # "footer" (al pie) o "header"
 ```
 
 ### ¿Qué ocurre cuando desactivas un módulo?
@@ -102,9 +118,19 @@ modules:
 * **Personalización**:
   * Puedes agregar nuevas categorías en `config.stack`. El motor recalcula la altura dinámicamente y distribuye las columnas de forma equilibrada.
 
-### 5. Connect Card & Badges (`connect.py` y `badges.py`)
-* **Connect Card**: Ventana terminal con 6 tarjetas de canales (Telegram, Discord, Email, GitHub, LinkedIn, X), mostrando etiquetas de prioridad, handles y latencias de respuesta.
-* **Badges Split-Pill**: Botones vectoriales individuales de 28px de alto para colocar en cualquier parte de tu GitHub.
+### 5. GitHub Stats & Telemetry Dashboard (`stats.py`)
+* **Aspecto**: Banner panorámico de 880px con ventana macOS ejecutando `gh telemetry --overview`.
+* **Métricas Principales**: 4 tarjetas de alto impacto con acentos de color Primer:
+  * **Public Repos**: Repositorios públicos activos (`3fb950` Success).
+  * **Total Stars**: Estrellas acumuladas en proyectos (`d29922` Warning).
+  * **Dev Network**: Seguidores y red de desarrolladores (`bc8cff` Purple).
+  * **Profile Views**: Contador de visitas en vivo (`58a6ff` Primary Blue).
+* **Statusline Inferior**: Línea de estado con antigüedad como desarrollador (Tenure: Since 2020), flota de bots autónomos y pipeline de audio.
+
+### 6. Badges Split-Pill Interactivos (`badges.py`)
+* **Aspecto**: Botones vectoriales individuales de 28px de alto con bordes redondeados (`rx=6`).
+* **Interacción Real**: Al insertarse en el `README.md` como etiquetas `<a><picture><img></picture></a>`, cada badge es un enlace 100% clickeable individualmente (Telegram, Discord, Email, GitHub, LinkedIn, X).
+* **Ubicación Flexible**: Con `badges.position: "header"` en `profile.config.yaml`, los badges se muestran inmediatamente debajo del saludo principal para interacción instantánea de los visitantes.
 
 ---
 
@@ -143,7 +169,7 @@ Los colores de **todos** los componentes se extraen exclusivamente de `themes/gi
 
 ---
 
-### 6. Badges & Telemetría Dinámica (`badges.py` + `telemetry.py`)
+### 7. Badges & Telemetría Dinámica (`badges.py` + `telemetry.py`)
 * **Badges de Redes**:
   * Botones split-pill individuales (`assets/badges/{id}-dark.svg` y `light.svg`) con 28px de altura y bordes redondeados Primer (`rx=6`).
 * **Métricas Dinámicas de GitHub y Visitas**:
@@ -151,7 +177,7 @@ Los colores de **todos** los componentes se extraen exclusivamente de `themes/gi
   * Formatea números de manera inteligente (`k`, `M`, `+`).
   * Creados con clipPath simétrico, íconos Octicons oficiales (followers, repo, star, eye) y contraste exacto según el tema.
   * Incluye un píxel invisible de registro de visitas para garantizar que cada visita continúe incrementando el contador global.
-  * **Tolerancia a fallos**: Si estás offline, utiliza `config/telemetry_cache.json` como fallback seguro.
+  * **Tolerancia a fallos**: Si estás offline, utiliza `.cache/telemetry.json` como fallback seguro.
 
 ---
 
@@ -165,4 +191,4 @@ El repositorio cuenta con una GitHub Action en `.github/workflows/build-profile.
 2. **Seguridad y Rate Limits**:
    * Utiliza `${{ secrets.GITHUB_TOKEN }}` para disponer de 1,000 peticiones/hora en la API de GitHub.
 3. **Persistencia**:
-   * Commitea y sincroniza automáticamente `assets/`, `README.md` y `config/telemetry_cache.json` con etiqueta `[skip ci]`.
+   * Commitea y sincroniza automáticamente `assets/`, `README.md` y `.cache/telemetry.json` con etiqueta `[skip ci]`.

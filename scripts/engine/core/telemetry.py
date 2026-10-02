@@ -25,9 +25,12 @@ from typing import Any, Dict
 
 DEFAULT_STATS: Dict[str, Any] = {
     "followers": 0,
+    "following": 0,
     "repos": 8,
     "stars": 0,
     "views": 64,
+    "created_at": "2020-05-27T00:00:00Z",
+    "languages": {"Python": 2},
     "timestamp": "2026-10-01T00:00:00Z",
 }
 
@@ -59,21 +62,25 @@ def fetch_telemetry(handle: str, cache_path: Path | None = None) -> Dict[str, An
     headers = _get_auth_headers()
     api_success = False
 
-    # 2. Fetch user profile data (followers, public repos)
+    # 2. Fetch user profile data (followers, public repos, following, created_at)
     try:
         req = urllib.request.Request(f"https://api.github.com/users/{handle}", headers=headers)
         with urllib.request.urlopen(req, timeout=4) as resp:
             data = json.loads(resp.read().decode("utf-8"))
             if "followers" in data:
                 stats["followers"] = data["followers"]
+            if "following" in data:
+                stats["following"] = data["following"]
             if "public_repos" in data:
                 stats["repos"] = data["public_repos"]
+            if "created_at" in data:
+                stats["created_at"] = data["created_at"]
             api_success = True
     except Exception:
         # Graceful fallback to cached value
         pass
 
-    # 3. Fetch public repositories to sum total stars
+    # 3. Fetch public repositories to sum total stars & language distribution
     try:
         req = urllib.request.Request(
             f"https://api.github.com/users/{handle}/repos?per_page=100&type=public",
@@ -83,6 +90,13 @@ def fetch_telemetry(handle: str, cache_path: Path | None = None) -> Dict[str, An
             repos_data = json.loads(resp.read().decode("utf-8"))
             if isinstance(repos_data, list):
                 stats["stars"] = sum(r.get("stargazers_count", 0) for r in repos_data)
+                langs: Dict[str, int] = {}
+                for r in repos_data:
+                    lang = r.get("language")
+                    if lang:
+                        langs[lang] = langs.get(lang, 0) + 1
+                if langs:
+                    stats["languages"] = langs
                 api_success = True
     except Exception:
         pass

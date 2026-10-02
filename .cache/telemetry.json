@@ -1,7 +1,12 @@
 {
-  "followers": 0,
+  "followers": 1,
+  "following": 2,
   "repos": 8,
   "stars": 0,
-  "views": 67,
-  "timestamp": "2026-10-02T02:54:00.155073+00:00"
+  "views": 69,
+  "created_at": "2020-05-27T13:19:13Z",
+  "languages": {
+    "Python": 2
+  },
+  "timestamp": "2026-10-02T03:10:49.356889+00:00"
 }

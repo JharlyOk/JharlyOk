@@ -20,6 +20,8 @@ def load_config(config_path: Path) -> Dict[str, Any]:
         FileNotFoundError: If config file doesn't exist.
         yaml.YAMLError: If YAML syntax is invalid.
     """
+    if isinstance(config_path, str):
+        config_path = Path(config_path)
     if not config_path.exists():
         raise FileNotFoundError(
             f"Profile config not found at {config_path}. "

@@ -3,15 +3,78 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from ..core.config import is_module_enabled
+
+
+def _build_social_badges(config: Dict[str, Any]) -> List[str]:
+    """Build markdown links for standalone social badges."""
+    socials = config.get("socials", [])
+    if not socials:
+        return []
+    badge_links: list[str] = [
+        "<!-- QUICK-ACTION SOCIAL BADGES -->",
+    ]
+    for item in socials:
+        badge_id = item["id"]
+        label = item.get("label", badge_id.title())
+        url = item.get("url", "#")
+        badge_links.append(
+            f'<a href="{url}">\n'
+            f'  <picture>\n'
+            f'    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/{badge_id}-dark.svg">\n'
+            f'    <source media="(prefers-color-scheme: light)" srcset="assets/badges/{badge_id}-light.svg">\n'
+            f'    <img src="assets/badges/{badge_id}-dark.svg" height="28" alt="{label}" />\n'
+            f'  </picture>\n'
+            f'</a>\n'
+            f'&nbsp;'
+        )
+    return badge_links
+
+
+def _build_telemetry_badges(config: Dict[str, Any]) -> List[str]:
+    """Build markdown links for dynamic GitHub metric badges."""
+    handle = config.get("identity", {}).get("handle", "JharlyOk")
+    telemetry_cfg = config.get("telemetry", {})
+    default_metrics = [
+        {"id": "followers", "label": "Followers", "url": f"https://github.com/{handle}?tab=followers"},
+        {"id": "repos", "label": "Repos", "url": f"https://github.com/{handle}?tab=repositories"},
+        {"id": "stars", "label": "Stars", "url": f"https://github.com/{handle}?tab=stars"},
+        {"id": "views", "label": "Visitors", "url": f"https://komarev.com/ghpvc/?username={handle}"},
+    ]
+    metrics = telemetry_cfg.get("metrics", default_metrics) if isinstance(telemetry_cfg, dict) else default_metrics
+    metric_links: list[str] = [
+        "<!-- DYNAMIC TELEMETRY & GITHUB METRICS -->",
+    ]
+    for item in metrics:
+        metric_id = item["id"]
+        label = item.get("label", metric_id.title())
+        raw_url = item.get("url", f"https://github.com/{handle}")
+        url = raw_url.replace("{handle}", handle)
+        metric_links.append(
+            f'<a href="{url}">\n'
+            f'  <picture>\n'
+            f'    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/{metric_id}-dark.svg">\n'
+            f'    <source media="(prefers-color-scheme: light)" srcset="assets/badges/{metric_id}-light.svg">\n'
+            f'    <img src="assets/badges/{metric_id}-dark.svg" height="28" alt="{label}" />\n'
+            f'  </picture>\n'
+            f'</a>\n'
+            f'&nbsp;'
+        )
+    return metric_links
 
 
 def generate_readme(config: Dict[str, Any]) -> str:
     """Generate the full GitHub profile README.md markdown string."""
     handle = config["identity"]["handle"]
-    socials = config.get("socials", [])
+
+    # Positioning settings (default: badges in header, telemetry in footer)
+    badges_cfg = config.get("badges", {})
+    badges_pos = badges_cfg.get("position", "header") if isinstance(badges_cfg, dict) else "header"
+
+    telemetry_cfg = config.get("telemetry", {})
+    telemetry_pos = telemetry_cfg.get("position", "footer") if isinstance(telemetry_cfg, dict) else "footer"
 
     sections: list[str] = [
         '<div align="center">',
@@ -34,7 +97,20 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 2. Code Manifest (Neovim editor banner)
+    # 2. Header Badges (if position is header or both)
+    if is_module_enabled(config, "badges") and badges_pos in ("header", "top", "both"):
+        badge_links = _build_social_badges(config)
+        if badge_links:
+            sections.append("\n".join(badge_links))
+            sections.extend(["", "<br><br>", ""])
+
+    if is_module_enabled(config, "telemetry") and telemetry_pos in ("header", "top", "both"):
+        telemetry_links = _build_telemetry_badges(config)
+        if telemetry_links:
+            sections.append("\n".join(telemetry_links))
+            sections.extend(["", "<br><br>", ""])
+
+    # 3. Code Manifest (Neovim editor banner)
     if is_module_enabled(config, "banner"):
         sections.extend([
             "<!-- CODE MANIFEST — TypeScript profile configuration (Neovim editor) -->",
@@ -48,7 +124,7 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 3. Active Projects (Terminal tree)
+    # 4. Active Projects (Terminal tree)
     if is_module_enabled(config, "projects"):
         sections.extend([
             "<!-- ACTIVE PROJECTS — fleet portfolio overview (Terminal) -->",
@@ -62,7 +138,7 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 4. Tech Stack Matrix (Terminal grid)
+    # 5. Tech Stack Matrix (Terminal grid)
     if is_module_enabled(config, "stack"):
         sections.extend([
             "<!-- TECHNOLOGY STACK — categorized toolchain matrix (Terminal) -->",
@@ -76,7 +152,21 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 5. Connect Endpoints Card (Terminal channels)
+    # 6. GitHub Stats & Telemetry Dashboard (Terminal card)
+    if is_module_enabled(config, "stats"):
+        sections.extend([
+            "<!-- GITHUB STATS & TELEMETRY DASHBOARD (Terminal) -->",
+            "<picture>",
+            '  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">',
+            '  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg">',
+            f'  <img src="assets/stats-dark.svg" width="100%" alt="{handle} GitHub Stats & Telemetry" />',
+            "</picture>",
+            "",
+            "<br><br>",
+            "",
+        ])
+
+    # 7. Connect Endpoints Card (Terminal channels)
     if is_module_enabled(config, "connect"):
         sections.extend([
             "<!-- CONNECT & ENDPOINTS CARD (Terminal) -->",
@@ -90,64 +180,25 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 6. Standalone Split-Pill Badges
-    if is_module_enabled(config, "badges") and socials:
-        badge_links: list[str] = [
-            "<!-- STANDALONE QUICK-ACTION BADGES -->",
-        ]
-        for item in socials:
-            badge_id = item["id"]
-            label = item.get("label", badge_id.title())
-            url = item.get("url", "#")
-            badge_links.append(
-                f'<a href="{url}">\n'
-                f'  <picture>\n'
-                f'    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/{badge_id}-dark.svg">\n'
-                f'    <source media="(prefers-color-scheme: light)" srcset="assets/badges/{badge_id}-light.svg">\n'
-                f'    <img src="assets/badges/{badge_id}-dark.svg" height="28" alt="{label}" />\n'
-                f'  </picture>\n'
-                f'</a>\n'
-                f'&nbsp;'
-            )
-        sections.append("\n".join(badge_links))
-        sections.extend(["", "<br><br>", ""])
+    # 8. Footer Badges (if position is footer or both)
+    if is_module_enabled(config, "badges") and badges_pos in ("footer", "bottom", "both"):
+        badge_links = _build_social_badges(config)
+        if badge_links:
+            sections.append("\n".join(badge_links))
+            sections.extend(["", "<br><br>", ""])
 
-    # 7. Dynamic Telemetry & GitHub Metric Badges
-    if is_module_enabled(config, "telemetry"):
-        telemetry_cfg = config.get("telemetry", {})
-        default_metrics = [
-            {"id": "followers", "label": "Followers", "url": f"https://github.com/{handle}?tab=followers"},
-            {"id": "repos", "label": "Repos", "url": f"https://github.com/{handle}?tab=repositories"},
-            {"id": "stars", "label": "Stars", "url": f"https://github.com/{handle}?tab=stars"},
-            {"id": "views", "label": "Visitors", "url": f"https://komarev.com/ghpvc/?username={handle}"},
-        ]
-        metrics = telemetry_cfg.get("metrics", default_metrics)
-        metric_links: list[str] = [
-            "<!-- DYNAMIC TELEMETRY & GITHUB METRICS -->",
-        ]
-        for item in metrics:
-            metric_id = item["id"]
-            label = item.get("label", metric_id.title())
-            raw_url = item.get("url", f"https://github.com/{handle}")
-            url = raw_url.replace("{handle}", handle)
-            metric_links.append(
-                f'<a href="{url}">\n'
-                f'  <picture>\n'
-                f'    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/{metric_id}-dark.svg">\n'
-                f'    <source media="(prefers-color-scheme: light)" srcset="assets/badges/{metric_id}-light.svg">\n'
-                f'    <img src="assets/badges/{metric_id}-dark.svg" height="28" alt="{label}" />\n'
-                f'  </picture>\n'
-                f'</a>\n'
-                f'&nbsp;'
-            )
-        metric_links.append(
-            f'\n<!-- VISITOR HIT BEACON -->\n'
-            f'<img src="https://komarev.com/ghpvc/?username={handle}" width="1" height="1" alt="" style="display:none" />'
-        )
-        sections.append("\n".join(metric_links))
-        sections.extend(["", "<br><br>", ""])
+    if is_module_enabled(config, "telemetry") and telemetry_pos in ("footer", "bottom", "both"):
+        telemetry_links = _build_telemetry_badges(config)
+        if telemetry_links:
+            sections.append("\n".join(telemetry_links))
+            sections.extend(["", "<br><br>", ""])
 
+    # 9. Visitor Hit Beacon & Footer subtext
     sections.extend([
+        f'<!-- VISITOR HIT BEACON -->\n<img src="https://komarev.com/ghpvc/?username={handle}" width="1" height="1" alt="" style="display:none" />',
+        "",
+        "<br><br>",
+        "",
         '<sub>Built with a custom SVG engine · Dark/Light adaptive · Config-driven · <a href="scripts/">View source</a></sub>',
         "",
         "</div>\n",
