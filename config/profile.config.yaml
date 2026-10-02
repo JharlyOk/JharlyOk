@@ -303,39 +303,54 @@ stack:
 
 # ==============================================================================
 # 📊 6. DASHBOARD DE ESTADÍSTICAS Y TELEMETRÍA DE GITHUB (stats.py)
-# Control granular: personaliza títulos, textos secundarios, sufijos y activa/desactiva
-# Si desactivas una métrica con enabled: false, las tarjetas restantes se recalculan simétricamente
+# Control granular avanzado (igual a socials):
+# Personaliza títulos, iconos, colores de acento, prefijos, sufijos, subtextos,
+# valores manuales y activa o desactiva cualquier tarjeta independientemente.
+# Acentos válidos: success (verde), primary (azul), secondary (morado), warning (amarillo), danger (rojo) o hex #...
 # ==============================================================================
 stats:
   enabled: true                         # 🖥️ true = compila el Dashboard terminal grande (880px)
   badges: false                         # 🔘 true = compila badges sueltos de métricas (followers, repos, etc.) al pie (desactivados)
   command: "gh telemetry --overview"     # Comando simulado en la barra superior
-  badge_text: "LIVE TELEMETRY"          # Etiqueta verde superior derecha
+  badge_text: "LIVE TELEMETRY"          # Etiqueta de estado superior derecha
+  badge_accent: "success"               # Acento del tag: success, primary, secondary, warning, danger o hex (#...)
 
   metrics:
     repos:
       enabled: true                     # true = muestra la tarjeta en el banner
       label: "PUBLIC REPOS"             # Título superior de la tarjeta
-      sub: "open source systems"        # Subtexto descriptivo
+      icon: "repo"                      # Icono vectorial (repo, star, followers, eye, etc.)
+      accent: "success"                 # Color de acento
+      prefix: ""                        # Prefijo antes del número (ej. "> ")
       suffix: "Active"                  # Sufijo numérico (ej. 8 Active)
+      sub: "open source systems"        # Subtexto descriptivo
 
     stars:
       enabled: true                     # true = muestra la tarjeta en el banner
       label: "TOTAL STARS"
-      sub: "community stargazers"
+      icon: "star"
+      accent: "warning"
+      prefix: "★ "
       suffix: "Earned"
+      sub: "community stargazers"
 
     followers:
       enabled: true                     # true = muestra la tarjeta en el banner
       label: "DEV NETWORK"
-      sub: "{following} following developers"  # {following} se reemplaza en vivo
+      icon: "followers"
+      accent: "secondary"
+      prefix: ""
       suffix: "Followers"
+      sub: "{following} following developers"  # {following} se reemplaza en vivo
 
     views:
       enabled: true                     # true = muestra la tarjeta en el banner
       label: "PROFILE VIEWS"
-      sub: "live hit counter"
+      icon: "eye"
+      accent: "primary"
+      prefix: ""
       suffix: "Hits"
+      sub: "live hit counter"
 
   # Barra de estado inferior del terminal de stats
   statusline:
@@ -371,7 +386,7 @@ socials:
       enabled: true        # true = se dibuja en la tarjeta terminal de socials
       label: "Discord"
       handle: "JharlyOk"
-      url: "https://discord.com"
+      url: "https://discord.com/JharlyOk"
       accent: "secondary"
       tag: "COMMUNITY"
       description: "Voice audio pipelines & Discord bot fleet support"

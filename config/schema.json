@@ -140,7 +140,11 @@
                       "properties": {
                         "enabled": { "type": "boolean" },
                         "label": { "type": "string" },
-                        "icon": { "type": "string" }
+                        "icon": { "type": "string" },
+                        "accent": { "type": "string" },
+                        "prefix": { "type": "string" },
+                        "suffix": { "type": "string" },
+                        "sub": { "type": "string" }
                       }
                     }
                   ],
@@ -154,7 +158,11 @@
                       "properties": {
                         "enabled": { "type": "boolean" },
                         "label": { "type": "string" },
-                        "icon": { "type": "string" }
+                        "icon": { "type": "string" },
+                        "accent": { "type": "string" },
+                        "prefix": { "type": "string" },
+                        "suffix": { "type": "string" },
+                        "sub": { "type": "string" }
                       }
                     }
                   ],
@@ -168,7 +176,11 @@
                       "properties": {
                         "enabled": { "type": "boolean" },
                         "label": { "type": "string" },
-                        "icon": { "type": "string" }
+                        "icon": { "type": "string" },
+                        "accent": { "type": "string" },
+                        "prefix": { "type": "string" },
+                        "suffix": { "type": "string" },
+                        "sub": { "type": "string" }
                       }
                     }
                   ],
@@ -182,7 +194,11 @@
                       "properties": {
                         "enabled": { "type": "boolean" },
                         "label": { "type": "string" },
-                        "icon": { "type": "string" }
+                        "icon": { "type": "string" },
+                        "accent": { "type": "string" },
+                        "prefix": { "type": "string" },
+                        "suffix": { "type": "string" },
+                        "sub": { "type": "string" }
                       }
                     }
                   ],
@@ -307,66 +323,140 @@
         "badges": { "type": "boolean", "default": false, "description": "Whether to compile loose metric badges (followers, repos, stars, views) at the bottom." },
         "command": { "type": "string" },
         "badge_text": { "type": "string" },
+        "badge_accent": {
+          "type": "string",
+          "description": "Accent token (primary, secondary, success, warning, danger) or hex color for live badge."
+        },
         "metrics": {
-          "type": "object",
-          "properties": {
-            "repos": {
-              "oneOf": [
-                { "type": "boolean" },
-                {
-                  "type": "object",
-                  "properties": {
-                    "enabled": { "type": "boolean" },
-                    "label": { "type": "string" },
-                    "sub": { "type": "string" },
-                    "suffix": { "type": "string" }
-                  }
+          "description": "Granular metric cards configuration (as map or list, equal to socials).",
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "repos": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "enabled": { "type": "boolean" },
+                        "label": { "type": "string" },
+                        "badge_label": { "type": "string" },
+                        "icon": { "type": "string" },
+                        "accent": { "type": "string" },
+                        "prefix": { "type": "string" },
+                        "suffix": { "type": "string" },
+                        "sub": { "type": "string" },
+                        "value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                        "display_value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                        "url": { "type": "string" }
+                      }
+                    }
+                  ]
+                },
+                "stars": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "enabled": { "type": "boolean" },
+                        "label": { "type": "string" },
+                        "badge_label": { "type": "string" },
+                        "icon": { "type": "string" },
+                        "accent": { "type": "string" },
+                        "prefix": { "type": "string" },
+                        "suffix": { "type": "string" },
+                        "sub": { "type": "string" },
+                        "value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                        "display_value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                        "url": { "type": "string" }
+                      }
+                    }
+                  ]
+                },
+                "followers": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "enabled": { "type": "boolean" },
+                        "label": { "type": "string" },
+                        "badge_label": { "type": "string" },
+                        "icon": { "type": "string" },
+                        "accent": { "type": "string" },
+                        "prefix": { "type": "string" },
+                        "suffix": { "type": "string" },
+                        "sub": { "type": "string" },
+                        "value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                        "display_value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                        "url": { "type": "string" }
+                      }
+                    }
+                  ]
+                },
+                "views": {
+                  "oneOf": [
+                    { "type": "boolean" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "enabled": { "type": "boolean" },
+                        "label": { "type": "string" },
+                        "badge_label": { "type": "string" },
+                        "icon": { "type": "string" },
+                        "accent": { "type": "string" },
+                        "prefix": { "type": "string" },
+                        "suffix": { "type": "string" },
+                        "sub": { "type": "string" },
+                        "value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                        "display_value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                        "url": { "type": "string" }
+                      }
+                    }
+                  ]
                 }
-              ]
+              },
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "enabled": { "type": "boolean" },
+                  "label": { "type": "string" },
+                  "badge_label": { "type": "string" },
+                  "icon": { "type": "string" },
+                  "accent": { "type": "string" },
+                  "prefix": { "type": "string" },
+                  "suffix": { "type": "string" },
+                  "sub": { "type": "string" },
+                  "value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                  "display_value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                  "url": { "type": "string" }
+                }
+              }
             },
-            "stars": {
-              "oneOf": [
-                { "type": "boolean" },
-                {
-                  "type": "object",
-                  "properties": {
-                    "enabled": { "type": "boolean" },
-                    "label": { "type": "string" },
-                    "sub": { "type": "string" },
-                    "suffix": { "type": "string" }
-                  }
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                  "id": { "type": "string" },
+                  "enabled": { "type": "boolean" },
+                  "label": { "type": "string" },
+                  "badge_label": { "type": "string" },
+                  "icon": { "type": "string" },
+                  "accent": { "type": "string" },
+                  "prefix": { "type": "string" },
+                  "suffix": { "type": "string" },
+                  "sub": { "type": "string" },
+                  "value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                  "display_value": { "oneOf": [{ "type": "string" }, { "type": "number" }] },
+                  "url": { "type": "string" }
                 }
-              ]
-            },
-            "followers": {
-              "oneOf": [
-                { "type": "boolean" },
-                {
-                  "type": "object",
-                  "properties": {
-                    "enabled": { "type": "boolean" },
-                    "label": { "type": "string" },
-                    "sub": { "type": "string" },
-                    "suffix": { "type": "string" }
-                  }
-                }
-              ]
-            },
-            "views": {
-              "oneOf": [
-                { "type": "boolean" },
-                {
-                  "type": "object",
-                  "properties": {
-                    "enabled": { "type": "boolean" },
-                    "label": { "type": "string" },
-                    "sub": { "type": "string" },
-                    "suffix": { "type": "string" }
-                  }
-                }
-              ]
+              }
             }
-          }
+          ]
         },
         "statusline": {
           "type": "object",

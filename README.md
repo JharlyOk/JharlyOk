@@ -72,7 +72,7 @@
   </picture>
 </a>
 &nbsp;
-<a href="https://discord.com">
+<a href="https://discord.com/JharlyOk">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/badges/discord-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/badges/discord-light.svg">

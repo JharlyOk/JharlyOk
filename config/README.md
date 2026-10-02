@@ -58,18 +58,51 @@ identity:
 ```
 
 ### 2.2 Estadísticas y Telemetría (`stats`)
+Al igual que `socials`, la sección `stats` cuenta con configuración granular avanzada. Puedes personalizar o sobreescribir cada tarjeta del dashboard terminal:
 ```yaml
 stats:
   enabled: true       # Dashboard terminal grande (880px)
-  badges: false       # Badges individuales de métricas al pie
+  badges: false       # Badges individuales de métricas al pie (split-pill)
   command: "gh telemetry --overview"
+  badge_text: "LIVE TELEMETRY"
+  badge_accent: "success"  # success, primary, secondary, warning, danger o hex (#...)
   metrics:
     repos:
+      enabled: true                     # Mostrar u ocultar la tarjeta
+      label: "PUBLIC REPOS"             # Título de la tarjeta
+      icon: "repo"                      # Icono vectorial (repo, star, followers, eye, etc.)
+      accent: "success"                 # Color de acento
+      prefix: ""                        # Prefijo antes del número (ej. "> ")
+      suffix: "Active"                  # Sufijo descriptivo
+      sub: "open source systems"        # Subtexto descriptivo
+      # value: "10+"                    # (Opcional) Valor manual fijo en vez de la API
+    stars:
       enabled: true
-      label: "PUBLIC REPOS"
-      sub: "open source systems"
-      suffix: "Active"
+      label: "TOTAL STARS"
+      icon: "star"
+      accent: "warning"
+      prefix: "★ "
+      suffix: "Earned"
+      sub: "community stargazers"
+    followers:
+      enabled: true
+      label: "DEV NETWORK"
+      icon: "followers"
+      accent: "secondary"
+      prefix: ""
+      suffix: "Followers"
+      sub: "{following} following developers"
+    views:
+      enabled: true
+      label: "PROFILE VIEWS"
+      icon: "eye"
+      accent: "primary"
+      prefix: ""
+      suffix: "Hits"
+      sub: "live hit counter"
 ```
+> [!TIP]
+> Si desactivas cualquier tarjeta con `enabled: false`, las tarjetas restantes redistribuyen su ancho simétricamente de forma automática en el grid de 880px. También puedes agregar métricas personalizadas (ej. `uptime`, `commits`, etc.) con su propio `value` y `sub`.
 
 ### 2.3 Editor Neovim (`banner`)
 ```yaml

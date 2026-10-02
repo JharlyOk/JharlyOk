@@ -196,7 +196,11 @@ TELEMETRY_METRICS_SPEC: Dict[str, Dict[str, Any]] = {
 
 
 def resolve_theme_accent(theme: Any, accent_name: str) -> str:
-    """Map an accent key string (primary, secondary, etc.) to a Theme color."""
+    """Map an accent key string or raw hex code to a Theme color."""
+    if not accent_name:
+        return getattr(theme, "accent_primary", "#58a6ff")
+    if str(accent_name).startswith("#"):
+        return str(accent_name)
     mapping = {
         "primary": getattr(theme, "accent_primary", "#58a6ff"),
         "secondary": getattr(theme, "accent_secondary", "#bc8cff"),
@@ -204,7 +208,7 @@ def resolve_theme_accent(theme: Any, accent_name: str) -> str:
         "warning": getattr(theme, "accent_warning", "#d29922"),
         "danger": getattr(theme, "accent_danger", "#f85149"),
     }
-    return mapping.get(accent_name, getattr(theme, "accent_primary", "#58a6ff"))
+    return mapping.get(str(accent_name).lower(), getattr(theme, "accent_primary", "#58a6ff"))
 
 
 def get_telemetry_dashboard_cards(
@@ -217,45 +221,86 @@ def get_telemetry_dashboard_cards(
     metrics_cfg = stats_cfg.get("metrics", {})
     following = stats.get("following", 0)
 
+    # Normalize metrics_cfg: support both dict ({repos: {...}}) and list ([{id: "repos", ...}])
+    metrics_dict: Dict[str, Any] = {}
+    if isinstance(metrics_cfg, list):
+        for item in metrics_cfg:
+            if isinstance(item, dict) and "id" in item:
+                metrics_dict[item["id"]] = item
+    elif isinstance(metrics_cfg, dict):
+        metrics_dict = dict(metrics_cfg)
+
+    # Collect metric keys: preserve user order first, then append any canonical spec keys not in config
+    all_keys: list[str] = list(metrics_dict.keys())
+    for default_key in TELEMETRY_METRICS_SPEC.keys():
+        if default_key not in all_keys:
+            all_keys.append(default_key)
+
     cards: list[Dict[str, Any]] = []
 
-    for mid, spec in TELEMETRY_METRICS_SPEC.items():
-        user_cfg = metrics_cfg.get(mid, {})
+    for mid in all_keys:
+        spec = TELEMETRY_METRICS_SPEC.get(mid, {
+            "id": mid,
+            "default_label": mid.replace("_", " ").upper(),
+            "default_sub": "",
+            "default_suffix": "",
+            "icon": mid if mid in ("repo", "star", "followers", "eye", "web", "github") else "repo",
+            "accent": "primary",
+            "prefix": "",
+            "suffix": "",
+        })
+
+        user_cfg = metrics_dict.get(mid, {})
         if isinstance(user_cfg, bool):
             enabled = user_cfg
             label = spec["default_label"]
-            sub = spec["default_sub"]
-            suffix = spec["default_suffix"]
+            sub = spec.get("default_sub", "")
+            suffix = spec.get("default_suffix", "")
+            prefix = spec.get("prefix", "")
+            icon = spec.get("icon", "repo")
+            accent_key = spec.get("accent", "primary")
+            custom_val = None
         elif isinstance(user_cfg, dict):
             enabled = user_cfg.get("enabled", True)
-            label = user_cfg.get("label", spec["default_label"])
-            sub = user_cfg.get("sub", spec["default_sub"])
-            suffix = user_cfg.get("suffix", spec["default_suffix"])
+            label = user_cfg.get("label", spec.get("default_label", mid.replace("_", " ").upper()))
+            sub = user_cfg.get("sub", spec.get("default_sub", ""))
+            suffix = user_cfg.get("suffix", spec.get("default_suffix", ""))
+            prefix = user_cfg.get("prefix", spec.get("prefix", ""))
+            icon = user_cfg.get("icon", spec.get("icon", "repo"))
+            accent_key = user_cfg.get("accent", spec.get("accent", "primary"))
+            custom_val = user_cfg.get("display_value", user_cfg.get("value"))
         else:
             enabled = True
-            label = spec["default_label"]
-            sub = spec["default_sub"]
-            suffix = spec["default_suffix"]
+            label = spec.get("default_label", mid.replace("_", " ").upper())
+            sub = spec.get("default_sub", "")
+            suffix = spec.get("default_suffix", "")
+            prefix = spec.get("prefix", "")
+            icon = spec.get("icon", "repo")
+            accent_key = spec.get("accent", "primary")
+            custom_val = None
 
         if not enabled:
             continue
 
-        raw_val = stats.get(mid, 0)
-        formatted_val = format_metric_value(raw_val)
-        prefix = spec.get("prefix", "")
+        if custom_val is not None:
+            formatted_val = str(custom_val)
+        else:
+            raw_val = stats.get(mid, 0)
+            formatted_val = format_metric_value(raw_val)
+
         extra_suffix = spec.get("suffix", "")
         val_core = f"{prefix}{formatted_val}{extra_suffix}".strip()
         val_str = f"{val_core} {suffix}".strip() if suffix else val_core
 
         sub_str = sub.replace("{following}", str(following))
-        accent_color = resolve_theme_accent(theme, spec["accent"])
+        accent_color = resolve_theme_accent(theme, accent_key)
 
         cards.append({
             "id": mid,
             "label": label,
             "val": val_str,
             "sub": sub_str,
-            "icon": spec["icon"],
+            "icon": icon,
             "accent": accent_color,
             "enabled": True,
         })
@@ -281,6 +326,16 @@ def get_active_telemetry_metrics(
         metrics_cfg = config.get("stats", {}).get("metrics", {})
 
     stats_metrics_cfg = config.get("stats", {}).get("metrics", {})
+    if isinstance(stats_metrics_cfg, list):
+        stats_metrics_cfg = {
+            m["id"]: m for m in stats_metrics_cfg if isinstance(m, dict) and "id" in m
+        }
+
+    if isinstance(metrics_cfg, list):
+        metrics_cfg = {
+            m["id"]: m for m in metrics_cfg if isinstance(m, dict) and "id" in m
+        }
+
     active: list[Dict[str, Any]] = []
 
     for mid, spec in TELEMETRY_METRICS_SPEC.items():
@@ -291,28 +346,52 @@ def get_active_telemetry_metrics(
         enabled = True
         label_override = None
         icon_override = None
+        prefix_override = None
+        accent_override = None
+        value_override = None
 
         if isinstance(user_override, dict):
             enabled = user_override.get("enabled", True)
-            label_override = user_override.get("label")
+            label_override = user_override.get("badge_label", user_override.get("label"))
             icon_override = user_override.get("icon")
+            prefix_override = user_override.get("prefix")
+            accent_override = user_override.get("accent")
+            value_override = user_override.get("display_value", user_override.get("value"))
 
         if not enabled:
             continue
 
-        # Inherit customized labels from stats.metrics if not explicitly overridden
-        if not label_override and isinstance(stats_metrics_cfg, dict):
+        # Inherit customized labels, icons, prefixes, accents from stats.metrics if not explicitly overridden
+        if isinstance(stats_metrics_cfg, dict):
             stats_m = stats_metrics_cfg.get(mid)
-            if isinstance(stats_m, dict) and "label" in stats_m:
-                label_override = stats_m["label"]
+            if isinstance(stats_m, dict):
+                if not label_override and "badge_label" in stats_m:
+                    label_override = stats_m["badge_label"]
+                elif not label_override and "label" in stats_m:
+                    label_override = stats_m["label"]
+                if not icon_override and "icon" in stats_m:
+                    icon_override = stats_m["icon"]
+                if prefix_override is None and "prefix" in stats_m:
+                    prefix_override = stats_m["prefix"]
+                if not accent_override and "accent" in stats_m:
+                    accent_override = stats_m["accent"]
+                if value_override is None and ("display_value" in stats_m or "value" in stats_m):
+                    value_override = stats_m.get("display_value", stats_m.get("value"))
 
-        label = label_override or spec["default_label"]
+        label = label_override or spec.get("badge_label", spec["default_label"])
         icon = icon_override or spec["icon"]
-        raw_val = stats.get(mid, 0)
-        formatted_val = format_metric_value(raw_val)
-        val_str = f"{spec['prefix']}{formatted_val}{spec['suffix']}"
+        prefix = spec["prefix"] if prefix_override is None else prefix_override
+        accent_key = accent_override or spec["accent"]
 
-        accent_color = resolve_theme_accent(theme, spec["accent"])
+        if value_override is not None:
+            formatted_val = str(value_override)
+            raw_val = value_override
+        else:
+            raw_val = stats.get(mid, 0)
+            formatted_val = format_metric_value(raw_val)
+
+        val_str = f"{prefix}{formatted_val}{spec.get('suffix', '')}"
+        accent_color = resolve_theme_accent(theme, accent_key)
 
         active.append({
             "id": mid,

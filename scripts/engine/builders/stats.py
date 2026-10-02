@@ -15,7 +15,7 @@ from typing import Any, Dict
 
 from ..core.registry import BaseBuilder, register_builder
 from ..core.theme import Theme
-from ..core.telemetry import get_telemetry_dashboard_cards
+from ..core.telemetry import get_telemetry_dashboard_cards, resolve_theme_accent
 from ..svg.icons import render_icon
 from ..svg.primitives import (
     svg_open, svg_close, rect, text, circle, line, _esc,
@@ -48,6 +48,7 @@ class StatsBuilder(BaseBuilder):
         stats_cfg = config.get("stats", {})
         command_text = stats_cfg.get("command", "gh telemetry --overview")
         badge_text = stats_cfg.get("badge_text", "LIVE TELEMETRY")
+        badge_accent = resolve_theme_accent(theme, stats_cfg.get("badge_accent", "success"))
 
         statusline_cfg = stats_cfg.get("statusline", {})
         has_statusline = statusline_cfg.get("enabled", True)
@@ -86,9 +87,9 @@ class StatsBuilder(BaseBuilder):
             f'{handle.lower()}@dev:~$ <tspan fill="{theme.fg_default}">{_esc(command_text)}</tspan></text>\n',
             # Right Live Telemetry Tag
             rect(width - 150, 10, 130, 20, rx=4, fill=theme.bg_inset),
-            circle(width - 138, 20, 3.5, fill=theme.accent_success),
+            circle(width - 138, 20, 3.5, fill=badge_accent),
             f'  <text x="{width - 128}" y="24" font-family="{theme.font_mono}" font-size="10" '
-            f'font-weight="700" fill="{theme.accent_success}">{_esc(badge_text)}</text>\n',
+            f'font-weight="700" fill="{badge_accent}">{_esc(badge_text)}</text>\n',
         ]
 
         active_cards = get_telemetry_dashboard_cards(config, stats, theme)

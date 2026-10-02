@@ -11,14 +11,18 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from ..core.config import is_module_enabled
-from ..core.telemetry import format_metric_value, TELEMETRY_METRICS_SPEC
+from ..core.telemetry import format_metric_value, TELEMETRY_METRICS_SPEC, get_active_telemetry_metrics
 from ..core.theme import Theme
 from ..svg.icons import render_icon
 from ..svg.primitives import _esc
 
 
 def _resolve_accent_color(accent_name: str, theme: Theme) -> str:
-    """Map accent name string to theme accent color."""
+    """Map accent name string or hex code to theme accent color."""
+    if not accent_name:
+        return theme.accent_primary
+    if str(accent_name).startswith("#"):
+        return str(accent_name)
     mapping = {
         "primary": theme.accent_primary,
         "secondary": theme.accent_secondary,
@@ -26,7 +30,7 @@ def _resolve_accent_color(accent_name: str, theme: Theme) -> str:
         "warning": theme.accent_warning,
         "danger": theme.accent_danger,
     }
-    return mapping.get(accent_name, theme.accent_primary)
+    return mapping.get(str(accent_name).lower(), theme.accent_primary)
 
 
 def build_badge_svg(
@@ -125,44 +129,16 @@ def compile_all_badges(
 
     # 2. Dynamic Telemetry Metric Badges
     if is_module_enabled(config, "telemetry"):
-        telemetry_cfg = config.get("telemetry", {})
-        metrics = telemetry_cfg.get("metrics")
         stats = telemetry_stats or {}
+        active_metrics = get_active_telemetry_metrics(config, stats, theme, scope="stats")
 
-        items_to_render: list[dict[str, Any]] = []
-        if isinstance(metrics, list):
-            items_to_render = metrics
-        elif isinstance(metrics, dict):
-            for mid, active in metrics.items():
-                if active and mid in TELEMETRY_METRICS_SPEC:
-                    spec = TELEMETRY_METRICS_SPEC[mid]
-                    items_to_render.append({
-                        "id": mid,
-                        "label": spec.get("badge_label", spec["default_label"]),
-                        "icon": spec["icon"],
-                        "accent": spec["accent"],
-                    })
-        else:
-            for spec in TELEMETRY_METRICS_SPEC.values():
-                items_to_render.append({
-                    "id": spec["id"],
-                    "label": spec.get("badge_label", spec["default_label"]),
-                    "icon": spec["icon"],
-                    "accent": spec["accent"],
-                })
-
-        for m in items_to_render:
+        for m in active_metrics:
             m_id = m["id"]
-            raw_val = stats.get(m_id, 0)
-            formatted_val = format_metric_value(raw_val)
-            if m_id == "views":
-                formatted_val = f"{formatted_val}+"
-
             badge_item = {
                 "id": m_id,
                 "label": m.get("label", m_id.title()),
                 "icon": m.get("icon", m_id),
-                "value": formatted_val,
+                "value": m.get("val", ""),
                 "accent": m.get("accent", "primary"),
             }
             svg_content = build_badge_svg(badge_item, theme)
