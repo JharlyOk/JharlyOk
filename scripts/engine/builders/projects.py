@@ -34,7 +34,11 @@ class ProjectsBuilder(BaseBuilder):
     PADDING_TOP = 14
 
     def build(self, config: Dict[str, Any], theme: Theme) -> str:
-        projects: List[dict] = config.get("projects", [])
+        proj_data = config.get("projects", [])
+        if isinstance(proj_data, dict):
+            projects: List[dict] = proj_data.get("items", [])
+        else:
+            projects = proj_data or []
         num_projects = len(projects)
 
         # Calculate height dynamically

@@ -45,7 +45,11 @@ class SocialsBuilder(BaseBuilder):
     GAP_Y = 10
 
     def build(self, config: Dict[str, Any], theme: Theme) -> str:
-        raw_socials: List[dict] = config.get("socials", [])
+        raw_socials_data = config.get("socials", [])
+        if isinstance(raw_socials_data, dict):
+            raw_socials: List[dict] = raw_socials_data.get("links", raw_socials_data.get("items", []))
+        else:
+            raw_socials = raw_socials_data or []
         socials = [s for s in raw_socials if s.get("enabled", True)]
         num_items = len(socials)
         num_rows = math.ceil(num_items / self.COLS) if num_items else 1

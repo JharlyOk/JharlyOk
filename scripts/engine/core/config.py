@@ -62,15 +62,67 @@ def _validate_config(config: Dict[str, Any]) -> None:
 def is_module_enabled(config: Dict[str, Any], module_name: str) -> bool:
     """Check if a specific profile module is enabled.
 
-    Defaults to True if modules section is missing or module is not specified.
-    Supports either {"header": true} or {"header": {"enabled": true}}.
+    Resolves directly from each section's own configuration (decentralized),
+    with fallback to top-level modules mapping if present.
     """
+    # 1. Header / Identity
+    if module_name in ("header", "identity"):
+        sec = config.get("identity", {}) or config.get("header", {})
+        if isinstance(sec, dict) and "enabled" in sec:
+            return bool(sec["enabled"])
+
+    # 2. Neovim code manifest
+    elif module_name == "banner":
+        sec = config.get("banner", {})
+        if isinstance(sec, dict) and "enabled" in sec:
+            return bool(sec["enabled"])
+
+    # 3. Active projects
+    elif module_name == "projects":
+        sec = config.get("projects", {})
+        if isinstance(sec, dict) and "enabled" in sec:
+            return bool(sec["enabled"])
+
+    # 4. Tech stack matrix
+    elif module_name == "stack":
+        sec = config.get("stack", {})
+        if isinstance(sec, dict) and "enabled" in sec:
+            return bool(sec["enabled"])
+
+    # 5. Stats dashboard (terminal card)
+    elif module_name in ("stats", "stats:banner"):
+        sec = config.get("stats", {})
+        if isinstance(sec, dict) and "enabled" in sec:
+            return bool(sec["enabled"])
+
+    # 6. Telemetry metric badges (split-pill badges)
+    elif module_name in ("telemetry", "stats:badges"):
+        sec = config.get("stats", {})
+        if isinstance(sec, dict) and "badges" in sec:
+            return bool(sec["badges"])
+
+    # 7. Socials terminal banner
+    elif module_name in ("socials", "socials:banner", "connect"):
+        sec = config.get("socials", {})
+        if isinstance(sec, dict):
+            if "banner" in sec:
+                return bool(sec["banner"])
+            if "enabled" in sec:
+                return bool(sec["enabled"])
+
+    # 8. Social badges (split-pill badges)
+    elif module_name in ("badges", "socials:badges"):
+        sec = config.get("socials", {})
+        if isinstance(sec, dict) and "badges" in sec:
+            return bool(sec["badges"])
+
+    # Fallback to legacy top-level modules dictionary if present
     modules = config.get("modules", {})
-    if module_name not in modules:
-        return True
-    mod_val = modules[module_name]
-    if isinstance(mod_val, bool):
-        return mod_val
-    if isinstance(mod_val, dict):
-        return bool(mod_val.get("enabled", True))
+    if module_name in modules:
+        mod_val = modules[module_name]
+        if isinstance(mod_val, bool):
+            return mod_val
+        if isinstance(mod_val, dict):
+            return bool(mod_val.get("enabled", True))
+
     return True

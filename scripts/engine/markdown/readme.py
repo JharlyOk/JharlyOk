@@ -42,7 +42,11 @@ def _build_single_badge_markup(
 
 def _build_social_badges(config: Dict[str, Any]) -> List[str]:
     """Build markdown links for all configured active social badges."""
-    socials = config.get("socials", [])
+    raw_socials = config.get("socials", [])
+    if isinstance(raw_socials, dict):
+        socials = raw_socials.get("links", raw_socials.get("items", []))
+    else:
+        socials = raw_socials or []
     if not socials:
         return []
     badge_links: list[str] = [
@@ -156,8 +160,12 @@ def render_component(tag: str, config: Dict[str, Any]) -> str:
         return "\n".join(badges)
     elif tag_clean.startswith("badge:") or tag_clean.startswith("social:") or tag_clean.startswith("stat:"):
         badge_name = tag_clean.split(":", 1)[1]
-        # Check socials
-        socials = {item["id"]: item for item in config.get("socials", [])}
+        raw_socials = config.get("socials", [])
+        if isinstance(raw_socials, dict):
+            s_list = raw_socials.get("links", raw_socials.get("items", []))
+        else:
+            s_list = raw_socials or []
+        socials = {item["id"]: item for item in s_list}
         if badge_name in socials:
             item = socials[badge_name]
             return _build_single_badge_markup(badge_name, item.get("label", badge_name.title()), item.get("url", "#"))

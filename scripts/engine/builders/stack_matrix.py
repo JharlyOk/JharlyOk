@@ -41,7 +41,7 @@ class StackMatrixBuilder(BaseBuilder):
 
     def build(self, config: Dict[str, Any], theme: Theme) -> str:
         stack = config.get("stack", {})
-        categories = list(stack.items())
+        categories = [item for item in stack.items() if item[0] != "enabled"]
         num_cats = len(categories)
 
         # Calculate rows needed

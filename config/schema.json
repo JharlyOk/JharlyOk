@@ -78,6 +78,11 @@
       "description": "Profile owner identity, titles, highlights, and welcome animation messages.",
       "required": ["handle", "role", "tagline"],
       "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to render and compile the header component."
+        },
         "handle": {
           "type": "string",
           "description": "GitHub username or main alias (e.g. JharlyOk)."
@@ -205,6 +210,11 @@
       "description": "Configuration for the Neovim code manifest card.",
       "required": ["filename", "code_lines"],
       "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to compile and render the Neovim code manifest banner."
+        },
         "filename": { "type": "string", "description": "Tab name in editor header." },
         "filepath": { "type": "string", "description": "Relative path in project." },
         "language": { "type": "string", "description": "Language label for the badge." },
@@ -236,23 +246,49 @@
     },
 
     "projects": {
-      "type": "array",
       "description": "Active projects featured in the projects terminal card.",
-      "items": {
-        "type": "object",
-        "required": ["name", "type", "description"],
-        "properties": {
-          "name": { "type": "string" },
-          "type": { "type": "string" },
-          "description": { "type": "string" },
-          "tags": { "type": "array", "items": { "type": "string" } }
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "type", "description"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "type": { "type": "string" },
+                  "description": { "type": "string" },
+                  "tags": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "type", "description"],
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "description": { "type": "string" },
+              "tags": { "type": "array", "items": { "type": "string" } }
+            }
+          }
         }
-      }
+      ]
     },
 
     "stack": {
       "type": "object",
       "description": "Categorized technology stack displayed in the matrix grid.",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true, "description": "Whether to compile the stack matrix." }
+      },
       "additionalProperties": {
         "type": "object",
         "required": ["label", "items"],
@@ -267,6 +303,8 @@
       "type": "object",
       "description": "Granular metric cards and statusline configuration for GitHub stats banner.",
       "properties": {
+        "enabled": { "type": "boolean", "default": true, "description": "Whether to compile the 880px stats terminal banner card." },
+        "badges": { "type": "boolean", "default": false, "description": "Whether to compile loose metric badges (followers, repos, stars, views) at the bottom." },
         "command": { "type": "string" },
         "badge_text": { "type": "string" },
         "metrics": {
@@ -347,33 +385,72 @@
     },
 
     "socials": {
-      "type": "array",
       "description": "Communication endpoints, social networks, and handles.",
-      "items": {
-        "type": "object",
-        "required": ["id", "label", "handle", "url"],
-        "properties": {
-          "id": {
-            "type": "string",
-            "enum": ["telegram", "discord", "email", "github", "linkedin", "x", "web"]
-          },
-          "enabled": {
-            "type": "boolean",
-            "description": "Whether to render this channel in the socials terminal card."
-          },
-          "label": { "type": "string" },
-          "handle": { "type": "string" },
-          "display_handle": { "type": "string" },
-          "url": { "type": "string" },
-          "accent": {
-            "type": "string",
-            "enum": ["primary", "secondary", "success", "warning", "danger"]
-          },
-          "tag": { "type": "string" },
-          "description": { "type": "string" },
-          "latency": { "type": "string" }
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "banner": { "type": "boolean", "default": false, "description": "Whether to compile the 880px terminal banner card." },
+            "badges": { "type": "boolean", "default": true, "description": "Whether to compile the split-pill badge buttons." },
+            "links": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "label", "handle", "url"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "enum": ["telegram", "discord", "email", "github", "linkedin", "x", "web"]
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to render this channel in the socials terminal card."
+                  },
+                  "label": { "type": "string" },
+                  "handle": { "type": "string" },
+                  "display_handle": { "type": "string" },
+                  "url": { "type": "string" },
+                  "accent": {
+                    "type": "string",
+                    "enum": ["primary", "secondary", "success", "warning", "danger"]
+                  },
+                  "tag": { "type": "string" },
+                  "description": { "type": "string" },
+                  "latency": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "handle", "url"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": ["telegram", "discord", "email", "github", "linkedin", "x", "web"]
+              },
+              "enabled": {
+                "type": "boolean",
+                "description": "Whether to render this channel in the socials terminal card."
+              },
+              "label": { "type": "string" },
+              "handle": { "type": "string" },
+              "display_handle": { "type": "string" },
+              "url": { "type": "string" },
+              "accent": {
+                "type": "string",
+                "enum": ["primary", "secondary", "success", "warning", "danger"]
+              },
+              "tag": { "type": "string" },
+              "description": { "type": "string" },
+              "latency": { "type": "string" }
+            }
+          }
         }
-      }
+      ]
     }
   }
 }

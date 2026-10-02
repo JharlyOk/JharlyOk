@@ -10,23 +10,10 @@
 # ==============================================================================
 
 # ==============================================================================
-# 🎛️ 1. MÓDULOS ACTIVOS (Feature Toggles)
-# Define qué secciones se compilan y aparecen en tu README (true = activo, false = oculto)
-# ==============================================================================
-modules:
-  header: true       # Saludo máquina de escribir animado + 4 highlight cards + telemetría
-  banner: true       # Editor de código Neovim / VS Code con tu config
-  projects: true     # Árbol de terminal con tus proyectos y repositorios
-  stack: true        # Cuadrícula categorizada con tus tecnologías y herramientas
-  stats: true        # Dashboard grande (880px) de métricas de GitHub y telemetría
-  socials: false     # Terminal completa (880px) de canales de comunicación (desactivada)
-  badges: true       # Botones vectoriales split-pill de redes sociales (100% interactivos)
-  telemetry: false   # Badges sueltos de métricas (followers, repos, stars, visitas) al pie (desactivados)
-
-# ==============================================================================
-# 👤 2. IDENTIDAD Y BIENVENIDA (header.py)
+# 👤 1. IDENTIDAD Y BIENVENIDA (header.py)
 # ==============================================================================
 identity:
+  enabled: true       # true = compila y muestra la cabecera animada en tu README
   handle: "JharlyOk"
   role: "AI-Assisted Systems Builder & Bot Architect"
   tagline: "Transforming complex distributed ideas into production software through AI acceleration"
@@ -79,6 +66,7 @@ themes:
 # Simula una sesión de Neovim/VS Code mostrando tu configuración en TypeScript
 # ==============================================================================
 banner:
+  enabled: true       # true = compila el editor Neovim con tu configuración TypeScript
   filename: "JharlyOk.config.ts"
   filepath: "src/core/"
   language: "TypeScript"
@@ -236,36 +224,39 @@ banner:
 # Árbol de terminal que muestra tus sistemas y frameworks en producción
 # ==============================================================================
 projects:
-  - name: "epic-ai-agents"
-    type: "AI Context Framework"
-    description: "System prompt architecture for LLM-assisted bot development"
-    tags:
-      - "Two-Phase Init"
-      - "Zero-Trust"
-      - "Repository Pattern"
+  enabled: true       # true = compila el árbol de proyectos activos
+  items:
+    - name: "epic-ai-agents"
+      type: "AI Context Framework"
+      description: "System prompt architecture for LLM-assisted bot development"
+      tags:
+        - "Two-Phase Init"
+        - "Zero-Trust"
+        - "Repository Pattern"
 
-  - name: "EpicBot v4"
-    type: "Discord Bot Engine"
-    description: "Sharded TypeScript bot with Lavalink audio streaming"
-    tags:
-      - "Discord.js v14"
-      - "Redis"
-      - "Lavalink v4"
+    - name: "EpicBot v4"
+      type: "Discord Bot Engine"
+      description: "Sharded TypeScript bot with Lavalink audio streaming"
+      tags:
+        - "Discord.js v14"
+        - "Redis"
+        - "Lavalink v4"
 
-  - name: "Epic Telegram Suite"
-    type: "Autonomous Bot Fleet"
-    description: "13+ specialized content automation bots"
-    tags:
-      - "Telethon"
-      - "Pyrogram"
-      - "Gemini AI"
-      - "SQLite WAL"
+    - name: "Epic Telegram Suite"
+      type: "Autonomous Bot Fleet"
+      description: "13+ specialized content automation bots"
+      tags:
+        - "Telethon"
+        - "Pyrogram"
+        - "Gemini AI"
+        - "SQLite WAL"
 
 # ==============================================================================
 # 🛠️ 6. MATRIZ DE STACK Y TECNOLOGÍAS (stack_matrix.py)
 # Categorías y badges en cuadrícula terminal
 # ==============================================================================
 stack:
+  enabled: true       # true = compila la cuadrícula terminal de stack y herramientas
   ai_toolchain:
     label: "AI & LLM Toolkit"
     items:
@@ -316,6 +307,8 @@ stack:
 # Si desactivas una métrica con enabled: false, las tarjetas restantes se recalculan simétricamente
 # ==============================================================================
 stats:
+  enabled: true                         # 🖥️ true = compila el Dashboard terminal grande (880px)
+  badges: false                         # 🔘 true = compila badges sueltos de métricas (followers, repos, etc.) al pie (desactivados)
   command: "gh telemetry --overview"     # Comando simulado en la barra superior
   badge_text: "LIVE TELEMETRY"          # Etiqueta verde superior derecha
 
@@ -361,65 +354,68 @@ stats:
 # Acentos válidos: primary (azul), secondary (morado), success (verde), warning (amarillo), danger (rojo)
 # ==============================================================================
 socials:
-  - id: "telegram"
-    enabled: true        # true = se dibuja en la tarjeta terminal de socials
-    label: "Telegram"
-    handle: "@JharlyOk"
-    url: "https://t.me/JharlyOk"
-    accent: "primary"
-    tag: "DIRECT CHAT"
-    description: "Direct message, bot deployments & custom inquiries"
-    latency: "< 1h avg response"
+  banner: false        # 🖥️ true = compila la tarjeta terminal grande (880px) socials --endpoints (desactivada)
+  badges: true         # 🔘 true = compila los botones vectoriales clicables split-pill (activados)
+  links:
+    - id: "telegram"
+      enabled: true        # true = se dibuja en la tarjeta terminal de socials
+      label: "Telegram"
+      handle: "@JharlyOk"
+      url: "https://t.me/JharlyOk"
+      accent: "primary"
+      tag: "DIRECT CHAT"
+      description: "Direct message, bot deployments & custom inquiries"
+      latency: "< 1h avg response"
 
-  - id: "discord"
-    enabled: true        # true = se dibuja en la tarjeta terminal de socials
-    label: "Discord"
-    handle: "JharlyOk"
-    url: "https://discord.com"
-    accent: "secondary"
-    tag: "COMMUNITY"
-    description: "Voice audio pipelines & Discord bot fleet support"
-    latency: "real-time voice"
+    - id: "discord"
+      enabled: true        # true = se dibuja en la tarjeta terminal de socials
+      label: "Discord"
+      handle: "JharlyOk"
+      url: "https://discord.com"
+      accent: "secondary"
+      tag: "COMMUNITY"
+      description: "Voice audio pipelines & Discord bot fleet support"
+      latency: "real-time voice"
 
-  - id: "email"
-    enabled: true        # true = se dibuja en la tarjeta terminal de socials
-    label: "Email"
-    handle: "jhefcarrascojesus2001@gmail.com"
-    display_handle: "Contact"
-    url: "mailto:jhefcarrascojesus2001@gmail.com"
-    accent: "danger"
-    tag: "FORMAL"
-    description: "Enterprise consulting & system architecture contracts"
-    latency: "24h SLA"
+    - id: "email"
+      enabled: true        # true = se dibuja en la tarjeta terminal de socials
+      label: "Email"
+      handle: "jhefcarrascojesus2001@gmail.com"
+      display_handle: "Contact"
+      url: "mailto:jhefcarrascojesus2001@gmail.com"
+      accent: "danger"
+      tag: "FORMAL"
+      description: "Enterprise consulting & system architecture contracts"
+      latency: "24h SLA"
 
-  - id: "github"
-    enabled: true        # true = se dibuja en la tarjeta terminal de socials
-    label: "GitHub"
-    handle: "JharlyOk"
-    url: "https://github.com/JharlyOk"
-    accent: "primary"
-    tag: "CODE"
-    description: "Open source repositories, stars & autonomous bots"
-    latency: "active daily"
+    - id: "github"
+      enabled: true        # true = se dibuja en la tarjeta terminal de socials
+      label: "GitHub"
+      handle: "JharlyOk"
+      url: "https://github.com/JharlyOk"
+      accent: "primary"
+      tag: "CODE"
+      description: "Open source repositories, stars & autonomous bots"
+      latency: "active daily"
 
-  - id: "linkedin"
-    enabled: true        # true = se dibuja en la tarjeta terminal de socials
-    label: "LinkedIn"
-    handle: "Jharly Carrasco"
-    display_handle: "JharlyOk"
-    url: "https://www.linkedin.com/in/jharlyok"
-    accent: "primary"
-    tag: "NETWORK"
-    description: "Professional engineering network & track record"
-    latency: "async connect"
+    - id: "linkedin"
+      enabled: true        # true = se dibuja en la tarjeta terminal de socials
+      label: "LinkedIn"
+      handle: "Jharly Carrasco"
+      display_handle: "JharlyOk"
+      url: "https://www.linkedin.com/in/jharlyok"
+      accent: "primary"
+      tag: "NETWORK"
+      description: "Professional engineering network & track record"
+      latency: "async connect"
 
-  - id: "x"
-    enabled: true        # true = se dibuja en la tarjeta terminal de socials
-    label: "X"
-    handle: "@JharlyOk"
-    url: "https://x.com/JharlyOk"
-    accent: "primary"
-    tag: "UPDATES"
-    description: "System architecture notes & AI engineering logs"
-    latency: "frequent"
+    - id: "x"
+      enabled: true        # true = se dibuja en la tarjeta terminal de socials
+      label: "X"
+      handle: "@JharlyOk"
+      url: "https://x.com/JharlyOk"
+      accent: "primary"
+      tag: "UPDATES"
+      description: "System architecture notes & AI engineering logs"
+      latency: "frequent"
 

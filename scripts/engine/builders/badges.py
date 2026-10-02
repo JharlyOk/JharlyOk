@@ -111,7 +111,11 @@ def compile_all_badges(
 
     # 1. Standalone Social Badges
     if is_module_enabled(config, "badges"):
-        socials: List[dict] = config.get("socials", [])
+        raw_socials_data = config.get("socials", [])
+        if isinstance(raw_socials_data, dict):
+            socials: List[dict] = raw_socials_data.get("links", raw_socials_data.get("items", []))
+        else:
+            socials = raw_socials_data or []
         for item in socials:
             badge_id = item["id"]
             svg_content = build_badge_svg(item, theme)
