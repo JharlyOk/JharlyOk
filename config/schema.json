@@ -49,12 +49,12 @@
           ],
           "description": "Terminal banner (880px) displaying unified GitHub stats, stars, repos, network, and telemetry."
         },
-        "connect": {
+        "socials": {
           "oneOf": [
             { "type": "boolean" },
             { "type": "object", "properties": { "enabled": { "type": "boolean" } } }
           ],
-          "description": "Terminal window displaying communication channels, handles, and SLAs."
+          "description": "Terminal banner (880px) displaying communication channels, handles, and SLAs."
         },
         "badges": {
           "oneOf": [

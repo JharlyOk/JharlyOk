@@ -1,4 +1,4 @@
-"""Connect builder — Terminal-style communication & social endpoints card.
+"""Socials builder — Terminal-style communication & social endpoints card.
 
 Generates a unified 880px terminal card displaying all communication channels,
 response SLAs, and social endpoints in a structured, high-tech grid.
@@ -29,9 +29,9 @@ def _resolve_accent(name: str, theme: Theme) -> str:
     return mapping.get(name, theme.accent_primary)
 
 
-@register_builder("connect")
-class ConnectBuilder(BaseBuilder):
-    """Generates the connect endpoints terminal card SVG."""
+@register_builder("socials")
+class SocialsBuilder(BaseBuilder):
+    """Generates the socials communication endpoints terminal card SVG."""
 
     WIDTH = 880
     HEADER_H = 36
@@ -80,7 +80,7 @@ class ConnectBuilder(BaseBuilder):
             x = self.PADDING_X + col * (card_w + self.GAP_X)
             y = self.HEADER_H + self.PADDING_TOP + row * (self.CARD_H + self.GAP_Y)
             defs_parts.append(
-                f'    <clipPath id="conn-clip-{i}">\n'
+                f'    <clipPath id="soc-clip-{i}">\n'
                 f'      <rect x="{x}" y="{y}" width="{card_w}" height="{self.CARD_H}" rx="{self.CARD_RX}" />\n'
                 f'    </clipPath>'
             )
@@ -96,7 +96,7 @@ class ConnectBuilder(BaseBuilder):
         # ── Terminal Header ─────────────────────────────────────
         parts.append(terminal_header(
             self.WIDTH,
-            "connect --endpoints",
+            "socials --endpoints",
             theme,
             self.HEADER_H,
             status_text="24/7 REACHABLE",
@@ -127,7 +127,7 @@ class ConnectBuilder(BaseBuilder):
             # Top accent bar — clipped to rounded corners
             parts.append(
                 f'  <rect x="{x}" y="{y}" width="{card_w}" height="3" '
-                f'fill="{accent}" clip-path="url(#conn-clip-{i})" />\n'
+                f'fill="{accent}" clip-path="url(#soc-clip-{i})" />\n'
             )
 
             # Icon

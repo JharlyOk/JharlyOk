@@ -2,16 +2,16 @@
 
 Supported template tags in README.template.md:
   - {{ header }}              : Welcome typewriter + highlights card picture
-  - {{ stats }}               : GitHub Stats & Telemetry terminal banner
+  - {{ stats }}               : GitHub Stats & Telemetry terminal banner (880px)
+  - {{ stats:banner }}        : Alias for {{ stats }}
+  - {{ stats:badges }}        : All GitHub telemetry badges (followers, repos, stars, views)
   - {{ banner }}              : Neovim TypeScript code manifest banner
   - {{ projects }}            : Active projects terminal banner
   - {{ stack }}               : Technology stack terminal matrix
-  - {{ connect }}             : Contact endpoints terminal card
-  - {{ badge:<id> }}          : Single social or telemetry badge (e.g. {{ badge:telegram }}, {{ badge:views }})
-  - {{ badges }} / {{ badges:socials }}   : All active social badges
-  - {{ telemetry }} / {{ badges:telemetry }}: All live metric badges
-  - {{ beacon }}              : Invisible 1x1 hit counter
-  - {{ footer }}              : Engineering footer subtext
+  - {{ socials }}             : Social communication channels terminal banner (880px)
+  - {{ socials:banner }}      : Alias for {{ socials }}
+  - {{ socials:badges }}      : All configured social badges
+  - {{ badge:<id> }}          : Single social or telemetry badge (e.g. {{ badge:telegram }}, {{ badge:followers }})
 """
 
 from __future__ import annotations
@@ -100,7 +100,7 @@ def render_component(tag: str, config: Dict[str, Any]) -> str:
             f'  </picture>\n'
             f'</a>'
         )
-    elif tag_clean == "stats":
+    elif tag_clean in ("stats", "stats:banner"):
         return (
             "<!-- GITHUB STATS & TELEMETRY DASHBOARD (Terminal) -->\n"
             "<picture>\n"
@@ -136,22 +136,22 @@ def render_component(tag: str, config: Dict[str, Any]) -> str:
             f'  <img src="assets/stack-dark.svg" width="100%" alt="{handle} Technology Stack" />\n'
             "</picture>"
         )
-    elif tag_clean == "connect":
+    elif tag_clean in ("socials", "socials:banner", "connect"):
         return (
-            "<!-- CONNECT & ENDPOINTS CARD (Terminal) -->\n"
+            "<!-- SOCIALS & ENDPOINTS CARD (Terminal) -->\n"
             "<picture>\n"
-            '  <source media="(prefers-color-scheme: dark)" srcset="assets/connect-dark.svg">\n'
-            '  <source media="(prefers-color-scheme: light)" srcset="assets/connect-light.svg">\n'
-            f'  <img src="assets/connect-dark.svg" width="100%" alt="{handle} Communication Endpoints" />\n'
+            '  <source media="(prefers-color-scheme: dark)" srcset="assets/socials-dark.svg">\n'
+            '  <source media="(prefers-color-scheme: light)" srcset="assets/socials-light.svg">\n'
+            f'  <img src="assets/socials-dark.svg" width="100%" alt="{handle} Communication Endpoints" />\n'
             "</picture>"
         )
-    elif tag_clean in ("badges", "badges:socials"):
+    elif tag_clean in ("socials:badges", "badges:socials", "badges"):
         badges = _build_social_badges(config)
         return "\n".join(badges)
-    elif tag_clean in ("telemetry", "badges:telemetry"):
+    elif tag_clean in ("stats:badges", "badges:stats", "telemetry"):
         badges = _build_telemetry_badges(config)
         return "\n".join(badges)
-    elif tag_clean.startswith("badge:"):
+    elif tag_clean.startswith("badge:") or tag_clean.startswith("social:") or tag_clean.startswith("stat:"):
         badge_name = tag_clean.split(":", 1)[1]
         # Check socials
         socials = {item["id"]: item for item in config.get("socials", [])}
@@ -172,7 +172,7 @@ def render_component(tag: str, config: Dict[str, Any]) -> str:
     elif tag_clean == "beacon":
         return f'<!-- VISITOR HIT BEACON -->\n<img src="https://komarev.com/ghpvc/?username={handle}" width="1" height="1" alt="" style="display:none" />'
     elif tag_clean == "footer":
-        return '<sub>Built with a custom SVG engine · Dark/Light adaptive · Config-driven · <a href="scripts/">View source</a></sub>'
+        return ""
 
     return f"<!-- Unknown tag: {tag} -->"
 
@@ -190,14 +190,12 @@ def render_template(template_text: str, config: Dict[str, Any]) -> str:
 
 def generate_readme(config: Dict[str, Any]) -> str:
     """Generate the full GitHub profile README.md markdown string as fallback."""
-    handle = config["identity"]["handle"]
-
     sections: list[str] = [
         '<div align="center">',
         "",
     ]
 
-    # 1. Header (Welcome typewriter + Highlight cards)
+    # 1. Header
     if is_module_enabled(config, "header"):
         sections.extend([
             render_component("header", config),
@@ -206,7 +204,7 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 2. GitHub Stats & Telemetry Dashboard (Terminal card)
+    # 2. GitHub Stats Dashboard
     if is_module_enabled(config, "stats"):
         sections.extend([
             render_component("stats", config),
@@ -222,7 +220,7 @@ def generate_readme(config: Dict[str, Any]) -> str:
             sections.append("\n".join(badges))
             sections.extend(["", "<br><br>", ""])
 
-    # 4. Code Manifest (Neovim editor banner)
+    # 4. Code Manifest
     if is_module_enabled(config, "banner"):
         sections.extend([
             render_component("banner", config),
@@ -231,7 +229,7 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 5. Active Projects (Terminal tree)
+    # 5. Active Projects
     if is_module_enabled(config, "projects"):
         sections.extend([
             render_component("projects", config),
@@ -240,7 +238,7 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 6. Tech Stack Matrix (Terminal grid)
+    # 6. Tech Stack Matrix
     if is_module_enabled(config, "stack"):
         sections.extend([
             render_component("stack", config),
@@ -249,43 +247,48 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 7. Connect Endpoints Card (Terminal channels)
-    if is_module_enabled(config, "connect"):
+    # 7. Socials Endpoints Card
+    if is_module_enabled(config, "socials") or is_module_enabled(config, "connect"):
         sections.extend([
-            render_component("connect", config),
+            render_component("socials", config),
             "",
             "<br><br>",
             "",
         ])
 
-    # 8. Dynamic Telemetry & GitHub Metric Badges
+    # 8. Dynamic Telemetry Badges
     if is_module_enabled(config, "telemetry"):
         telemetry_links = _build_telemetry_badges(config)
         if telemetry_links:
             sections.append("\n".join(telemetry_links))
             sections.extend(["", "<br><br>", ""])
 
-    # 9. Visitor Hit Beacon & Footer subtext
-    sections.extend([
-        render_component("beacon", config),
-        "",
-        "<br><br>",
-        "",
-        render_component("footer", config),
-        "",
-        "</div>\n",
-    ])
-
+    sections.append("</div>\n")
     return "\n".join(sections)
 
 
 def update_readme_file(config: Dict[str, Any], readme_path: Path) -> bool:
     """Generate and write the updated README.md file using template if present."""
     template_path = readme_path.parent / "README.template.md"
+    handle = config.get("identity", {}).get("handle", "JharlyOk")
+    beacon_markup = f'\n<!-- VISITOR HIT BEACON -->\n<img src="https://komarev.com/ghpvc/?username={handle}" width="1" height="1" alt="" style="display:none" />\n'
+
     if template_path.exists():
         template_str = template_path.read_text(encoding="utf-8")
         content = render_template(template_str, config)
+        # Automatically inject invisible hit beacon if not already present
+        if "<!-- VISITOR HIT BEACON -->" not in content:
+            if "</div>" in content:
+                content = content.replace("</div>", f"{beacon_markup}</div>")
+            else:
+                content += beacon_markup
     else:
         content = generate_readme(config)
+        if "<!-- VISITOR HIT BEACON -->" not in content:
+            if "</div>" in content:
+                content = content.replace("</div>", f"{beacon_markup}</div>")
+            else:
+                content += beacon_markup
+
     readme_path.write_text(content, encoding="utf-8")
     return True

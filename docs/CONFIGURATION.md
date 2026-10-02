@@ -15,7 +15,7 @@ JharlyOk/
 │   ├── banner-dark.svg / banner-light.svg
 │   ├── projects-dark.svg / projects-light.svg
 │   ├── stack-dark.svg / stack-light.svg
-│   ├── connect-dark.svg / connect-light.svg
+│   ├── socials-dark.svg / socials-light.svg
 │   └── badges/                # Badges vectoriales split-pill individuales
 │       ├── telegram-dark.svg / telegram-light.svg
 │       └── ...
@@ -46,7 +46,7 @@ JharlyOk/
 │           ├── projects.py    # Terminal con árbol de proyectos
 │           ├── stack_matrix.py# Terminal con cuadrícula de tecnologías
 │           ├── stats.py       # Dashboard banner de telemetría y stats GitHub (880px)
-│           ├── connect.py     # Terminal con endpoints de comunicación
+│           ├── socials.py     # Terminal con canales de comunicación y endpoints
 │           └── badges.py      # Constructor de badges split-pill
 ├── .cache/
 │   └── telemetry.json         # Caché local de métricas de GitHub y visitas
@@ -68,7 +68,7 @@ modules:
   projects: true     # Árbol de proyectos en terminal
   stack: true        # Cuadrícula de tecnologías
   stats: true        # Dashboard banner unificado de telemetría y métricas GitHub (880px)
-  connect: true      # Terminal completa (880px) de canales de comunicación, SLAs y tags
+  socials: true      # Terminal completa (880px) de canales de comunicación, SLAs y tags
   badges: true       # Botones split-pill de redes sociales (100% interactivos en cabecera)
   telemetry: true    # Badges sueltos de métricas (followers, repos, stars, visitas) al pie
 ```
@@ -128,16 +128,15 @@ modules:
   * Ahora el perfil utiliza un archivo base **`README.template.md`** donde puedes escribir texto libre, párrafos, citas o secciones en Markdown sin que ningún script lo sobreescriba.
   * Los componentes y badges se insertan exactamente en la posición que desees mediante etiquetas dinámicas:
     * `{{ header }}`: Cabecera animada con typewriter y highlight cards.
-    * `{{ stats }}`: Banner terminal (880px) de estadísticas de GitHub.
+    * `{{ stats }}` / `{{ stats:banner }}`: Banner terminal (880px) de estadísticas de GitHub.
+    * `{{ stats:badges }}`: Todos los badges de estadísticas de GitHub (followers, repos, stars, views).
     * `{{ banner }}`: Editor Neovim con tu configuración TypeScript.
     * `{{ projects }}`: Terminal con árbol de proyectos activos.
     * `{{ stack }}`: Matriz terminal de tecnologías y herramientas.
-    * `{{ connect }}`: Tarjeta terminal de canales de comunicación.
-    * `{{ badge:<id> }}`: Inserta un badge individual clickeable (ej. `{{ badge:telegram }}`, `{{ badge:discord }}`, `{{ badge:email }}`).
-    * `{{ badges }}`: Inserta todos los badges de redes sociales configurados.
-    * `{{ telemetry }}`: Inserta todos los badges de métricas dinámicas (seguidores, repos, estrellas, visitas).
-    * `{{ beacon }}`: Baliza invisible 1x1 para conteo de visitas.
-    * `{{ footer }}`: Pie de página con créditos del sistema SVG.
+    * `{{ socials }}` / `{{ socials:banner }}`: Terminal de canales de comunicación (880px).
+    * `{{ socials:badges }}`: Todos los badges de redes sociales configurados.
+    * `{{ badge:<id> }}`: Inserta un badge individual clickeable (ej. `{{ badge:telegram }}`, `{{ badge:discord }}`, `{{ badge:followers }}`, `{{ badge:views }}`).
+* **Baliza de Visitas Invisible**: El compilador inyecta automáticamente la baliza invisible de conteo de visitas al compilar el `README.md`, manteniendo tu plantilla 100% limpia.
 * **Compilación**: Al correr `python scripts/build.py` (o en GitHub Actions), el motor compila los SVGs, reemplaza las etiquetas y genera el `README.md` final manteniendo al 100% todo tu texto personalizado.
 
 ---

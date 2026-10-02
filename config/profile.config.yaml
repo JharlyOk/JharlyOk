@@ -19,7 +19,7 @@ modules:
   projects: true     # Árbol de terminal con tus proyectos y repositorios
   stack: true        # Cuadrícula categorizada con tus tecnologías y herramientas
   stats: true        # Dashboard grande (880px) de métricas de GitHub y telemetría
-  connect: true      # Terminal completa (880px) de canales de comunicación, SLAs y tags
+  socials: true      # Terminal completa (880px) de canales de comunicación, SLAs y tags
   badges: true       # Botones vectoriales split-pill de redes sociales (100% interactivos)
   telemetry: true    # Badges sueltos de métricas (followers, repos, stars, visitas) al pie
 
@@ -311,7 +311,7 @@ stack:
       - "Pterodactyl"
 
 # ==============================================================================
-# 🌐 7. CANALES DE CONTACTO Y REDES SOCIALES (connect.py & badges.py)
+# 🌐 7. CANALES DE CONTACTO Y REDES SOCIALES (socials.py & badges.py)
 # Genera tanto la terminal de comunicación como los badges individuales split-pill
 # Acentos válidos: primary (azul), secondary (morado), success (verde), warning (amarillo), danger (rojo)
 # ==============================================================================

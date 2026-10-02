@@ -3,20 +3,16 @@
      Edita este archivo con total libertad para personalizar tu perfil.
      
      Puedes agregar texto libre, encabezados, citas, listas o secciones donde desees.
-     Etiquetas disponibles para insertar componentes:
+     Etiquetas dinámicas disponibles:
        - {header}             : Cabecera animada con typewriter y highlight cards
        - {stats}              : Banner terminal (880px) de estadísticas de GitHub
+       - {stats:badges}       : Todos los badges de estadísticas (followers, repos, stars, views)
        - {banner}             : Editor Neovim con tu configuración TypeScript
        - {projects}           : Terminal con árbol de proyectos activos
        - {stack}              : Matriz terminal de tecnologías y herramientas
-       - {connect}            : Tarjeta terminal de canales de comunicación
-       - {badge:telegram}     : Badge individual de Telegram
-       - {badge:discord}      : Badge individual de Discord
-       - {badge:email}        : Badge individual de Email
-       - {badges}             : Todos los badges de redes sociales configurados
-       - {telemetry}          : Badges en vivo de métricas de GitHub (followers, repos, stars, views)
-       - {beacon}             : Contador de visitas invisible
-       - {footer}             : Pie de página del sistema
+       - {socials}            : Banner terminal (880px) de canales de comunicación
+       - {socials:badges}     : Todos los badges de redes sociales configurados
+       - {badge:<id>}         : Badge individual (ej. {badge:telegram}, {badge:followers}, {badge:views})
      ============================================================================== -->
 
 <div align="center">
@@ -94,11 +90,11 @@
 
 <br><br>
 
-<!-- CONNECT & ENDPOINTS CARD (Terminal) -->
+<!-- SOCIALS & ENDPOINTS CARD (Terminal) -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/connect-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/connect-light.svg">
-  <img src="assets/connect-dark.svg" width="100%" alt="JharlyOk Communication Endpoints" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/socials-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/socials-light.svg">
+  <img src="assets/socials-dark.svg" width="100%" alt="JharlyOk Communication Endpoints" />
 </picture>
 
 <br><br>
@@ -137,13 +133,7 @@
 </a>
 &nbsp;
 
-<br><br>
 
 <!-- VISITOR HIT BEACON -->
 <img src="https://komarev.com/ghpvc/?username=JharlyOk" width="1" height="1" alt="" style="display:none" />
-
-<br><br>
-
-<sub>Built with a custom SVG engine · Dark/Light adaptive · Config-driven · <a href="scripts/">View source</a></sub>
-
 </div>

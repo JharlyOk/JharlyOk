@@ -3,20 +3,16 @@
      Edita este archivo con total libertad para personalizar tu perfil.
      
      Puedes agregar texto libre, encabezados, citas, listas o secciones donde desees.
-     Etiquetas disponibles para insertar componentes:
+     Etiquetas dinámicas disponibles:
        - {header}             : Cabecera animada con typewriter y highlight cards
        - {stats}              : Banner terminal (880px) de estadísticas de GitHub
+       - {stats:badges}       : Todos los badges de estadísticas (followers, repos, stars, views)
        - {banner}             : Editor Neovim con tu configuración TypeScript
        - {projects}           : Terminal con árbol de proyectos activos
        - {stack}              : Matriz terminal de tecnologías y herramientas
-       - {connect}            : Tarjeta terminal de canales de comunicación
-       - {badge:telegram}     : Badge individual de Telegram
-       - {badge:discord}      : Badge individual de Discord
-       - {badge:email}        : Badge individual de Email
-       - {badges}             : Todos los badges de redes sociales configurados
-       - {telemetry}          : Badges en vivo de métricas de GitHub (followers, repos, stars, views)
-       - {beacon}             : Contador de visitas invisible
-       - {footer}             : Pie de página del sistema
+       - {socials}            : Banner terminal (880px) de canales de comunicación
+       - {socials:badges}     : Todos los badges de redes sociales configurados
+       - {badge:<id>}         : Badge individual (ej. {badge:telegram}, {badge:followers}, {badge:views})
      ============================================================================== -->
 
 <div align="center">
@@ -49,18 +45,10 @@
 
 <br><br>
 
-{{ connect }}
+{{ socials }}
 
 <br><br>
 
-{{ telemetry }}
-
-<br><br>
-
-{{ beacon }}
-
-<br><br>
-
-{{ footer }}
+{{ stats:badges }}
 
 </div>

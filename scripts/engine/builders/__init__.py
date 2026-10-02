@@ -8,7 +8,7 @@ from . import header
 from . import banner
 from . import projects
 from . import stack_matrix
-from . import connect
+from . import socials
 from . import stats
 from . import badges
 from .badges import compile_all_badges
@@ -18,9 +18,8 @@ __all__ = [
     "banner",
     "projects",
     "stack_matrix",
-    "connect",
+    "socials",
     "stats",
     "badges",
     "compile_all_badges",
 ]
-
