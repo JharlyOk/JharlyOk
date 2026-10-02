@@ -38,19 +38,67 @@
 
 <br><br>
 
-<!-- CONNECT & TELEMETRY -->
+<!-- CONNECT & ENDPOINTS CARD (Terminal) -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/connect-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/connect-light.svg">
+  <img src="assets/connect-dark.svg" width="100%" alt="JharlyOk Communication Endpoints" />
+</picture>
+
+<br><br>
+
+<!-- STANDALONE QUICK-ACTION BADGES -->
 <a href="https://t.me/JharlyOk">
-  <img src="https://img.shields.io/badge/Telegram-@JharlyOk-58A6FF?style=flat-square&logo=telegram&logoColor=white" alt="Telegram" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/telegram-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/badges/telegram-light.svg">
+    <img src="assets/badges/telegram-dark.svg" height="28" alt="Telegram" />
+  </picture>
 </a>
 &nbsp;
 <a href="https://discord.com">
-  <img src="https://img.shields.io/badge/Discord-JharlyOk-bc8cff?style=flat-square&logo=discord&logoColor=white" alt="Discord" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/discord-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/badges/discord-light.svg">
+    <img src="assets/badges/discord-dark.svg" height="28" alt="Discord" />
+  </picture>
 </a>
 &nbsp;
 <a href="mailto:jhefcarrascojesus2001@gmail.com">
-  <img src="https://img.shields.io/badge/Email-Contact-f85149?style=flat-square&logo=gmail&logoColor=white" alt="Email" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/email-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/badges/email-light.svg">
+    <img src="assets/badges/email-dark.svg" height="28" alt="Email" />
+  </picture>
 </a>
 &nbsp;
+<a href="https://github.com/JharlyOk">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/github-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/badges/github-light.svg">
+    <img src="assets/badges/github-dark.svg" height="28" alt="GitHub" />
+  </picture>
+</a>
+&nbsp;
+<a href="https://www.linkedin.com/in/jharlyok">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/linkedin-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/badges/linkedin-light.svg">
+    <img src="assets/badges/linkedin-dark.svg" height="28" alt="LinkedIn" />
+  </picture>
+</a>
+&nbsp;
+<a href="https://x.com/JharlyOk">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/x-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/badges/x-light.svg">
+    <img src="assets/badges/x-dark.svg" height="28" alt="X" />
+  </picture>
+</a>
+
+<br><br>
+
+<!-- TELEMETRY COUNTERS -->
 ![Profile Views](https://komarev.com/ghpvc/?username=JharlyOk&color=58A6FF&style=flat-square&label=visitors)
 &nbsp;
 [![GitHub](https://img.shields.io/github/followers/JharlyOk?label=Follow&style=flat-square&color=30363d&labelColor=21262d)](https://github.com/JharlyOk)

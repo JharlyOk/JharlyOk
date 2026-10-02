@@ -8,3 +8,4 @@ from . import header
 from . import banner
 from . import projects
 from . import stack_matrix
+from . import connect

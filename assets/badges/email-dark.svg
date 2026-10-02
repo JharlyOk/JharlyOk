@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 28" width="140" height="28" role="img" aria-label="Email: Contact">
+  <defs>
+    <clipPath id="pill-clip">
+      <rect width="140" height="28" rx="6" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#pill-clip)">
+    <!-- Left Section: Platform -->
+    <rect x="0" y="0" width="71" height="28" fill="#1c2128" />
+    <!-- Right Section: Handle -->
+    <rect x="71" y="0" width="69" height="28" fill="#f85149" />
+  </g>
+
+  <!-- Pill Border -->
+  <rect x="0.5" y="0.5" width="139" height="27" rx="6" fill="none" stroke="#30363d" stroke-width="1" />
+  <line x1="71" y1="0" x2="71" y2="28" stroke="#21262d" stroke-width="1" />
+
+  <!-- Icon -->
+  <g transform="translate(8, 7.0) scale(0.5833)">
+    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#f0f6fc" />
+  </g>
+  <!-- Platform Label -->
+  <text x="28" y="17.5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="600" fill="#f0f6fc">Email</text>
+
+  <!-- Handle -->
+  <text x="81" y="17.5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700" fill="#010409">Contact</text>
+</svg>

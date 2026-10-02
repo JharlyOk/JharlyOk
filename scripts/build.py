@@ -114,8 +114,16 @@ def main() -> None:
             f"({elapsed:.0f}ms)"
         )
 
+    # Build standalone badges
+    from engine.builders.badges import compile_all_badges
+    badges_dir = assets_dir / "badges"
+    dark_badges = compile_all_badges(config, dark_theme, badges_dir)
+    light_badges = compile_all_badges(config, light_theme, badges_dir)
+    total_badges = len(dark_badges) + len(light_badges)
+    _log(f"  > badges.............. {total_badges} vector badges generated in assets/badges/")
+
     total_elapsed = (time.perf_counter() - total_start) * 1000
-    total_files = len(builders) * 2
+    total_files = len(builders) * 2 + total_badges
     _log(f"\n  [ok] Done: {total_files} files compiled in {total_elapsed:.0f}ms")
     _log(f"  [ok] Output: {assets_dir.relative_to(PROJECT_ROOT)}/")
 
