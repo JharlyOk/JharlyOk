@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 880 132" width="880" height="132" role="img" aria-labelledby="svgTitle svgDesc">
   <title id="svgTitle">JharlyOk — Workspace Header</title>
-  <desc id="svgDesc">Transforming complex distributed ideas into production software through AI acceleration</desc>
+  <desc id="svgDesc">Transformando ideas complejas en software de producción mediante aceleración con IA</desc>
   <defs>
     <style>
       @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
@@ -19,38 +19,38 @@
       <rect x="667.5" y="56" width="212.5" height="76" rx="8" />
     </clipPath>
     <path id="hdr_path_0">
-      <animate id="hdr_anim_0" attributeName="d" begin="0s;hdr_anim_4.end" dur="6740ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.228; 0.896; 1" />
+      <animate id="hdr_anim_0" attributeName="d" begin="0s;hdr_anim_4.end" dur="6980ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.244; 0.889; 1" />
     </path>
     <path id="hdr_path_1">
-      <animate id="hdr_anim_1" attributeName="d" begin="hdr_anim_0.end" dur="7220ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.259; 0.882; 1" />
+      <animate id="hdr_anim_1" attributeName="d" begin="hdr_anim_0.end" dur="7860ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.294; 0.866; 1" />
     </path>
     <path id="hdr_path_2">
-      <animate id="hdr_anim_2" attributeName="d" begin="hdr_anim_1.end" dur="7060ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.249; 0.887; 1" />
+      <animate id="hdr_anim_2" attributeName="d" begin="hdr_anim_1.end" dur="7380ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.268; 0.878; 1" />
     </path>
     <path id="hdr_path_3">
-      <animate id="hdr_anim_3" attributeName="d" begin="hdr_anim_2.end" dur="7619ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.281; 0.872; 1" />
+      <animate id="hdr_anim_3" attributeName="d" begin="hdr_anim_2.end" dur="8100ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.306; 0.861; 1" />
     </path>
     <path id="hdr_path_4">
-      <animate id="hdr_anim_4" attributeName="d" begin="hdr_anim_3.end" dur="7700ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.286; 0.87; 1" />
+      <animate id="hdr_anim_4" attributeName="d" begin="hdr_anim_3.end" dur="8100ms" fill="remove" values="m48,24.0 h0 ; m48,24.0 h816 ; m48,24.0 h816 ; m48,24.0 h0" keyTimes="0; 0.306; 0.861; 1" />
     </path>
   </defs>
 
   <rect x="0" y="0" width="880" height="46" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
   <text x="18" y="24.0" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="14" font-weight="700" dominant-baseline="middle"><tspan fill="#58a6ff">&gt;</tspan><tspan fill="#3fb950" class="hdr-cursor">_</tspan></text>
   <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="13.5" font-weight="500" dominant-baseline="middle">
-    <textPath href="#hdr_path_0" xlink:href="#hdr_path_0">Hey, welcome to my workspace</textPath>
+    <textPath href="#hdr_path_0" xlink:href="#hdr_path_0">Hola, bienvenido a mi workspace</textPath>
   </text>
   <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="13.5" font-weight="500" dominant-baseline="middle">
-    <textPath href="#hdr_path_1" xlink:href="#hdr_path_1">Building autonomous bot ecosystems</textPath>
+    <textPath href="#hdr_path_1" xlink:href="#hdr_path_1">Construyendo ecosistemas de bots autónomos</textPath>
   </text>
   <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="13.5" font-weight="500" dominant-baseline="middle">
-    <textPath href="#hdr_path_2" xlink:href="#hdr_path_2">13+ production bots running 24/7</textPath>
+    <textPath href="#hdr_path_2" xlink:href="#hdr_path_2">13+ bots en producción operando 24/7</textPath>
   </text>
   <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="13.5" font-weight="500" dominant-baseline="middle">
-    <textPath href="#hdr_path_3" xlink:href="#hdr_path_3">AI-accelerated dev with Gemini &amp; Claude</textPath>
+    <textPath href="#hdr_path_3" xlink:href="#hdr_path_3">Desarrollo acelerado con IA (Gemini &amp; Claude)</textPath>
   </text>
   <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="13.5" font-weight="500" dominant-baseline="middle">
-    <textPath href="#hdr_path_4" xlink:href="#hdr_path_4">Real-time audio routing with Lavalink v4</textPath>
+    <textPath href="#hdr_path_4" xlink:href="#hdr_path_4">Ruteo de audio en tiempo real con Lavalink v4</textPath>
   </text>
   <rect x="753.6" y="11.0" width="112.4" height="24" rx="4" fill="#1c2128" stroke="#21262d" stroke-width="0.8" />
   <circle cx="763.6" cy="23.0" r="3" fill="#3fb950" />
@@ -58,28 +58,28 @@
   <rect x="0.0" y="56" width="212.5" height="76" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
   <rect x="0.0" y="56" width="212.5" height="3" fill="#58a6ff" clip-path="url(#card-clip-0)" />
   <circle cx="16.0" cy="82" r="3.5" fill="#58a6ff" />
-  <text x="28.0" y="86" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">13+ Production Bots</text>
-  <text x="16.0" y="105" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Telegram &amp; Discord fleet</text>
+  <text x="28.0" y="86" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">13+ Bots en Producción</text>
+  <text x="16.0" y="105" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Flota para Telegram &amp; Discord</text>
   <circle cx="18.0" cy="118.5" r="2.5" fill="#3fb950" />
   <text x="25.0" y="121.5" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" letter-spacing="0.3">always online</text>
   <rect x="222.5" y="56" width="212.5" height="76" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
   <rect x="222.5" y="56" width="212.5" height="3" fill="#bc8cff" clip-path="url(#card-clip-1)" />
   <circle cx="238.5" cy="82" r="3.5" fill="#bc8cff" />
-  <text x="250.5" y="86" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Real-Time Audio</text>
-  <text x="238.5" y="105" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Lavalink v4 + LavaSrc pipeline</text>
+  <text x="250.5" y="86" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Audio en Tiempo Real</text>
+  <text x="238.5" y="105" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Pipeline Lavalink v4 + LavaSrc</text>
   <circle cx="240.5" cy="118.5" r="2.5" fill="#3fb950" />
   <text x="247.5" y="121.5" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" letter-spacing="0.3">real-time</text>
   <rect x="445.0" y="56" width="212.5" height="76" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
   <rect x="445.0" y="56" width="212.5" height="3" fill="#3fb950" clip-path="url(#card-clip-2)" />
   <circle cx="461.0" cy="82" r="3.5" fill="#3fb950" />
-  <text x="473.0" y="86" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Multi-LLM Development</text>
+  <text x="473.0" y="86" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Desarrollo Multi-LLM</text>
   <text x="461.0" y="105" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Gemini, Claude, Cursor, LLM Arena</text>
   <circle cx="463.0" cy="118.5" r="2.5" fill="#3fb950" />
   <text x="470.0" y="121.5" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" letter-spacing="0.3">multi-model</text>
   <rect x="667.5" y="56" width="212.5" height="76" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
   <rect x="667.5" y="56" width="212.5" height="3" fill="#d29922" clip-path="url(#card-clip-3)" />
   <circle cx="683.5" cy="82" r="3.5" fill="#d29922" />
-  <text x="695.5" y="86" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Self-Hosted Infra</text>
+  <text x="695.5" y="86" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="12.5" font-weight="700">Infraestructura Propia</text>
   <text x="683.5" y="105" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5">Docker + Linux VPS + Pterodactyl</text>
   <circle cx="685.5" cy="118.5" r="2.5" fill="#3fb950" />
   <text x="692.5" y="121.5" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" letter-spacing="0.3">self-hosted</text>

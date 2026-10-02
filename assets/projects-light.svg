@@ -18,9 +18,9 @@
   <line x1="24" y1="64" x2="856" y2="64" stroke="#d8dee4" stroke-width="0.5" />
   <text x="24" y="88" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">├─</text>
   <text x="50" y="88" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="600">epic-ai-agents</text>
-  <rect x="200" y="76" width="144.0" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
-  <text x="272.0" y="88" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">AI Context Framework</text>
-  <text x="400" y="88" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">System prompt architecture for LLM-assisted bot development</text>
+  <rect x="200" y="76" width="170.0" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
+  <text x="285.0" y="88" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">Framework de Contexto IA</text>
+  <text x="400" y="88" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">Arquitectura de prompts y contexto para desarrollo de bots con LLMs</text>
   <text x="24" y="110" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">│</text>
   <rect x="50" y="99" width="109.2" height="17" rx="4" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.6" />
   <text x="104.6" y="110.5" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="500" text-anchor="middle">Two-Phase Init</text>
@@ -30,9 +30,9 @@
   <text x="325.4" y="110.5" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="500" text-anchor="middle">Repository Pattern</text>
   <text x="24" y="152" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">├─</text>
   <text x="50" y="152" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="600">EpicBot v4</text>
-  <rect x="200" y="140" width="131.0" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
-  <text x="265.5" y="152" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">Discord Bot Engine</text>
-  <text x="400" y="152" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">Sharded TypeScript bot with Lavalink audio streaming</text>
+  <rect x="200" y="140" width="170.0" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
+  <text x="285.0" y="152" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">Motor de Bots de Discord</text>
+  <text x="400" y="152" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">Bot shardeado en TypeScript con streaming de audio Lavalink</text>
   <text x="24" y="174" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">│</text>
   <rect x="50" y="163" width="109.2" height="17" rx="4" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.6" />
   <text x="104.6" y="174.5" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="500" text-anchor="middle">Discord.js v14</text>
@@ -42,9 +42,9 @@
   <text x="267.59999999999997" y="174.5" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="500" text-anchor="middle">Lavalink v4</text>
   <text x="24" y="216" fill="#6e7681" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13">└─</text>
   <text x="50" y="216" fill="#1f2328" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="600">Epic Telegram Suite</text>
-  <rect x="200" y="204" width="144.0" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
-  <text x="272.0" y="216" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">Autonomous Bot Fleet</text>
-  <text x="400" y="216" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">13+ specialized content automation bots</text>
+  <rect x="200" y="204" width="163.5" height="18" rx="4" fill="#eaeef2" stroke="#d8dee4" stroke-width="0.6" />
+  <text x="281.75" y="216" fill="#8250df" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" text-anchor="middle">Flota de Bots Autónomos</text>
+  <text x="400" y="216" fill="#656d76" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11.5">13+ bots especializados en automatización de contenido</text>
   <rect x="50" y="227" width="68.4" height="17" rx="4" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.6" />
   <text x="84.2" y="238.5" fill="#0969da" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5" font-weight="500" text-anchor="middle">Telethon</text>
   <rect x="126.4" y="227" width="68.4" height="17" rx="4" fill="#f6f8fa" stroke="#d8dee4" stroke-width="0.6" />
