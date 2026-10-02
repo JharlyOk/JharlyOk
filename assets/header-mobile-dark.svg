@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 430 210" width="430" height="210" role="img" aria-labelledby="svgMobileTitle svgMobileDesc">
+  <title id="svgMobileTitle">JharlyOk — Mobile Header</title>
+  <desc id="svgMobileDesc">Transformando ideas complejas en software de producción mediante aceleración con IA</desc>
+  <defs>
+    <style>
+      @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+      .hdr-cursor { animation: cursorBlink 1s step-end infinite; }
+    </style>
+    <clipPath id="m-card-clip-0">
+      <rect x="0" y="56" width="210" height="72" rx="8" />
+    </clipPath>
+    <clipPath id="m-card-clip-1">
+      <rect x="220" y="56" width="210" height="72" rx="8" />
+    </clipPath>
+    <clipPath id="m-card-clip-2">
+      <rect x="0" y="138" width="210" height="72" rx="8" />
+    </clipPath>
+    <clipPath id="m-card-clip-3">
+      <rect x="220" y="138" width="210" height="72" rx="8" />
+    </clipPath>
+    <path id="hdr_path_0">
+      <animate id="hdr_anim_0" attributeName="d" begin="0s;hdr_anim_4.end" dur="6980ms" fill="remove" values="m38,24.0 h0 ; m38,24.0 h310 ; m38,24.0 h310 ; m38,24.0 h0" keyTimes="0; 0.244; 0.889; 1" />
+    </path>
+    <path id="hdr_path_1">
+      <animate id="hdr_anim_1" attributeName="d" begin="hdr_anim_0.end" dur="7860ms" fill="remove" values="m38,24.0 h0 ; m38,24.0 h310 ; m38,24.0 h310 ; m38,24.0 h0" keyTimes="0; 0.294; 0.866; 1" />
+    </path>
+    <path id="hdr_path_2">
+      <animate id="hdr_anim_2" attributeName="d" begin="hdr_anim_1.end" dur="7380ms" fill="remove" values="m38,24.0 h0 ; m38,24.0 h310 ; m38,24.0 h310 ; m38,24.0 h0" keyTimes="0; 0.268; 0.878; 1" />
+    </path>
+    <path id="hdr_path_3">
+      <animate id="hdr_anim_3" attributeName="d" begin="hdr_anim_2.end" dur="8100ms" fill="remove" values="m38,24.0 h0 ; m38,24.0 h310 ; m38,24.0 h310 ; m38,24.0 h0" keyTimes="0; 0.306; 0.861; 1" />
+    </path>
+    <path id="hdr_path_4">
+      <animate id="hdr_anim_4" attributeName="d" begin="hdr_anim_3.end" dur="8100ms" fill="remove" values="m38,24.0 h0 ; m38,24.0 h310 ; m38,24.0 h310 ; m38,24.0 h0" keyTimes="0; 0.306; 0.861; 1" />
+    </path>
+  </defs>
+
+  <rect x="0" y="0" width="430" height="46" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
+  <text x="14" y="24.0" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="13" font-weight="700" dominant-baseline="middle"><tspan fill="#58a6ff">&gt;</tspan><tspan fill="#3fb950" class="hdr-cursor">_</tspan></text>
+  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="11.0" font-weight="500" dominant-baseline="middle">
+    <textPath href="#hdr_path_0" xlink:href="#hdr_path_0">Hola, bienvenido a mi workspace</textPath>
+  </text>
+  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="11.0" font-weight="500" dominant-baseline="middle">
+    <textPath href="#hdr_path_1" xlink:href="#hdr_path_1">Construyendo ecosistemas de bots autónomos</textPath>
+  </text>
+  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="11.0" font-weight="500" dominant-baseline="middle">
+    <textPath href="#hdr_path_2" xlink:href="#hdr_path_2">13+ bots en producción operando 24/7</textPath>
+  </text>
+  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="11.0" font-weight="500" dominant-baseline="middle">
+    <textPath href="#hdr_path_3" xlink:href="#hdr_path_3">Desarrollo acelerado con IA (Gemini &amp; Claude)</textPath>
+  </text>
+  <text font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" fill="#f0f6fc" font-size="11.0" font-weight="500" dominant-baseline="middle">
+    <textPath href="#hdr_path_4" xlink:href="#hdr_path_4">Ruteo de audio en tiempo real con Lavalink v4</textPath>
+  </text>
+  <rect x="356" y="12.0" width="64" height="22" rx="4" fill="#1c2128" stroke="#21262d" stroke-width="0.8" />
+  <circle cx="365" cy="23.0" r="3" fill="#3fb950" />
+  <text x="374" y="26.5" fill="#3fb950" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9" font-weight="700">ONLINE</text>
+  <rect x="0" y="56" width="210" height="72" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
+  <rect x="0" y="56" width="210" height="3" fill="#58a6ff" clip-path="url(#m-card-clip-0)" />
+  <g transform="translate(12, 68) scale(0.6667)">
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm7.93 9h-3.18a15.68 15.68 0 0 0-1.38-5.36A8.02 8.02 0 0 1 19.93 11zM12 4.07a14.09 14.09 0 0 1 1.83 6.93h-3.66A14.09 14.09 0 0 1 12 4.07zM4.07 13h3.18a15.68 15.68 0 0 0 1.38 5.36A8.02 8.02 0 0 1 4.07 13zm3.18-2H4.07a8.02 8.02 0 0 1 3.38-5.36A15.68 15.68 0 0 0 7.25 11zM12 19.93a14.09 14.09 0 0 1-1.83-6.93h3.66a14.09 14.09 0 0 1-1.83 6.93zm4.63-1.57A15.68 15.68 0 0 0 18.01 13h3.18a8.02 8.02 0 0 1-4.56 5.36z" fill="#58a6ff" />
+  </g>
+  <circle cx="196" cy="74" r="3" fill="#3fb950" />
+  <text x="12" y="100" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700">13+ Bots en Producción</text>
+  <text x="12" y="116" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5">Flota para Telegram &amp; Discord</text>
+  <rect x="220" y="56" width="210" height="72" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
+  <rect x="220" y="56" width="210" height="3" fill="#bc8cff" clip-path="url(#m-card-clip-1)" />
+  <g transform="translate(232, 68) scale(0.6667)">
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm7.93 9h-3.18a15.68 15.68 0 0 0-1.38-5.36A8.02 8.02 0 0 1 19.93 11zM12 4.07a14.09 14.09 0 0 1 1.83 6.93h-3.66A14.09 14.09 0 0 1 12 4.07zM4.07 13h3.18a15.68 15.68 0 0 0 1.38 5.36A8.02 8.02 0 0 1 4.07 13zm3.18-2H4.07a8.02 8.02 0 0 1 3.38-5.36A15.68 15.68 0 0 0 7.25 11zM12 19.93a14.09 14.09 0 0 1-1.83-6.93h3.66a14.09 14.09 0 0 1-1.83 6.93zm4.63-1.57A15.68 15.68 0 0 0 18.01 13h3.18a8.02 8.02 0 0 1-4.56 5.36z" fill="#bc8cff" />
+  </g>
+  <circle cx="416" cy="74" r="3" fill="#3fb950" />
+  <text x="232" y="100" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700">Audio en Tiempo Real</text>
+  <text x="232" y="116" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5">Pipeline Lavalink v4 + LavaSrc</text>
+  <rect x="0" y="138" width="210" height="72" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
+  <rect x="0" y="138" width="210" height="3" fill="#3fb950" clip-path="url(#m-card-clip-2)" />
+  <g transform="translate(12, 150) scale(0.6667)">
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm7.93 9h-3.18a15.68 15.68 0 0 0-1.38-5.36A8.02 8.02 0 0 1 19.93 11zM12 4.07a14.09 14.09 0 0 1 1.83 6.93h-3.66A14.09 14.09 0 0 1 12 4.07zM4.07 13h3.18a15.68 15.68 0 0 0 1.38 5.36A8.02 8.02 0 0 1 4.07 13zm3.18-2H4.07a8.02 8.02 0 0 1 3.38-5.36A15.68 15.68 0 0 0 7.25 11zM12 19.93a14.09 14.09 0 0 1-1.83-6.93h3.66a14.09 14.09 0 0 1-1.83 6.93zm4.63-1.57A15.68 15.68 0 0 0 18.01 13h3.18a8.02 8.02 0 0 1-4.56 5.36z" fill="#3fb950" />
+  </g>
+  <circle cx="196" cy="156" r="3" fill="#3fb950" />
+  <text x="12" y="182" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700">Desarrollo Multi-LLM</text>
+  <text x="12" y="198" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5">Gemini, Claude, Cursor, LLM Arena</text>
+  <rect x="220" y="138" width="210" height="72" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1" />
+  <rect x="220" y="138" width="210" height="3" fill="#d29922" clip-path="url(#m-card-clip-3)" />
+  <g transform="translate(232, 150) scale(0.6667)">
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm7.93 9h-3.18a15.68 15.68 0 0 0-1.38-5.36A8.02 8.02 0 0 1 19.93 11zM12 4.07a14.09 14.09 0 0 1 1.83 6.93h-3.66A14.09 14.09 0 0 1 12 4.07zM4.07 13h3.18a15.68 15.68 0 0 0 1.38 5.36A8.02 8.02 0 0 1 4.07 13zm3.18-2H4.07a8.02 8.02 0 0 1 3.38-5.36A15.68 15.68 0 0 0 7.25 11zM12 19.93a14.09 14.09 0 0 1-1.83-6.93h3.66a14.09 14.09 0 0 1-1.83 6.93zm4.63-1.57A15.68 15.68 0 0 0 18.01 13h3.18a8.02 8.02 0 0 1-4.56 5.36z" fill="#d29922" />
+  </g>
+  <circle cx="416" cy="156" r="3" fill="#3fb950" />
+  <text x="232" y="182" fill="#f0f6fc" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700">Infraestructura Propia</text>
+  <text x="232" y="198" fill="#8b949e" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="9.5">Docker + Linux VPS + Pterodactyl</text>
+</svg>
