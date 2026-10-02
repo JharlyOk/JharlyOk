@@ -20,10 +20,10 @@
 <!-- HEADER — unified animated welcome typewriter + 4 active systems cards -->
 <a href="https://github.com/JharlyOk">
   <picture>
-    <source media="(max-width: 768px) and (prefers-color-scheme: dark)" srcset="assets/header-mobile-dark.svg">
-    <source media="(max-width: 768px) and (prefers-color-scheme: light)" srcset="assets/header-mobile-light.svg">
-    <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
+    <source media="(min-width: 551px) and (prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
+    <source media="(min-width: 551px) and (prefers-color-scheme: light)" srcset="assets/header-light.svg">
+    <source media="(max-width: 550px) and (prefers-color-scheme: dark)" srcset="assets/header-mobile-dark.svg">
+    <source media="(max-width: 550px) and (prefers-color-scheme: light)" srcset="assets/header-mobile-light.svg">
     <img src="assets/header-dark.svg" width="100%" alt="JharlyOk Workspace Header" />
   </picture>
 </a>
@@ -34,10 +34,10 @@
 
 <!-- GITHUB STATS & TELEMETRY DASHBOARD (Terminal) -->
 <picture>
-  <source media="(max-width: 768px) and (prefers-color-scheme: dark)" srcset="assets/stats-mobile-dark.svg">
-  <source media="(max-width: 768px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg">
+  <source media="(min-width: 551px) and (prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">
+  <source media="(min-width: 551px) and (prefers-color-scheme: light)" srcset="assets/stats-light.svg">
+  <source media="(max-width: 550px) and (prefers-color-scheme: dark)" srcset="assets/stats-mobile-dark.svg">
+  <source media="(max-width: 550px) and (prefers-color-scheme: light)" srcset="assets/stats-mobile-light.svg">
   <img src="assets/stats-dark.svg" width="100%" alt="JharlyOk GitHub Stats & Telemetry" />
 </picture>
 
@@ -47,10 +47,10 @@
 
 <!-- CODE MANIFEST — TypeScript profile configuration (Neovim editor) -->
 <picture>
-  <source media="(max-width: 768px) and (prefers-color-scheme: dark)" srcset="assets/banner-mobile-dark.svg">
-  <source media="(max-width: 768px) and (prefers-color-scheme: light)" srcset="assets/banner-mobile-light.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
+  <source media="(min-width: 551px) and (prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+  <source media="(min-width: 551px) and (prefers-color-scheme: light)" srcset="assets/banner-light.svg">
+  <source media="(max-width: 550px) and (prefers-color-scheme: dark)" srcset="assets/banner-mobile-dark.svg">
+  <source media="(max-width: 550px) and (prefers-color-scheme: light)" srcset="assets/banner-mobile-light.svg">
   <img src="assets/banner-dark.svg" width="100%" alt="JharlyOk Code Manifest" />
 </picture>
 
@@ -60,10 +60,10 @@
 
 <!-- ACTIVE PROJECTS — fleet portfolio overview (Terminal) -->
 <picture>
-  <source media="(max-width: 768px) and (prefers-color-scheme: dark)" srcset="assets/projects-mobile-dark.svg">
-  <source media="(max-width: 768px) and (prefers-color-scheme: light)" srcset="assets/projects-mobile-light.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="assets/projects-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/projects-light.svg">
+  <source media="(min-width: 551px) and (prefers-color-scheme: dark)" srcset="assets/projects-dark.svg">
+  <source media="(min-width: 551px) and (prefers-color-scheme: light)" srcset="assets/projects-light.svg">
+  <source media="(max-width: 550px) and (prefers-color-scheme: dark)" srcset="assets/projects-mobile-dark.svg">
+  <source media="(max-width: 550px) and (prefers-color-scheme: light)" srcset="assets/projects-mobile-light.svg">
   <img src="assets/projects-dark.svg" width="100%" alt="JharlyOk Active Projects" />
 </picture>
 
@@ -73,10 +73,10 @@
 
 <!-- TECHNOLOGY STACK — categorized toolchain matrix (Terminal) -->
 <picture>
-  <source media="(max-width: 768px) and (prefers-color-scheme: dark)" srcset="assets/stack-mobile-dark.svg">
-  <source media="(max-width: 768px) and (prefers-color-scheme: light)" srcset="assets/stack-mobile-light.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.svg">
+  <source media="(min-width: 551px) and (prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">
+  <source media="(min-width: 551px) and (prefers-color-scheme: light)" srcset="assets/stack-light.svg">
+  <source media="(max-width: 550px) and (prefers-color-scheme: dark)" srcset="assets/stack-mobile-dark.svg">
+  <source media="(max-width: 550px) and (prefers-color-scheme: light)" srcset="assets/stack-mobile-light.svg">
   <img src="assets/stack-dark.svg" width="100%" alt="JharlyOk Technology Stack" />
 </picture>
 
