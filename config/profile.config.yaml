@@ -60,7 +60,7 @@ identity:
 
   # 📊 Telemetría en vivo integrada al pie del header SVG (control granular)
   telemetry:
-    enabled: true              # true = dibuja una 3ra fila de métricas dentro del Header SVG
+    enabled: false              # true = dibuja una 3ra fila de métricas dentro del Header SVG
     metrics:
       followers: true          # 👥 1 Followers (red de desarrolladores)
       repos: true              # 📦 8 Repos (código público activo)
@@ -321,6 +321,7 @@ socials:
     handle: "@JharlyOk"
     url: "https://t.me/JharlyOk"
     accent: "primary"
+    badge: true        # Muestra badge individual debajo del banner de stats
     tag: "DIRECT CHAT"
     description: "Direct message, bot deployments & custom inquiries"
     latency: "< 1h avg response"
@@ -330,6 +331,7 @@ socials:
     handle: "JharlyOk"
     url: "https://discord.com"
     accent: "secondary"
+    badge: true        # Muestra badge individual debajo del banner de stats
     tag: "COMMUNITY"
     description: "Voice audio pipelines & Discord bot fleet support"
     latency: "real-time voice"
@@ -340,6 +342,7 @@ socials:
     display_handle: "Contact"
     url: "mailto:jhefcarrascojesus2001@gmail.com"
     accent: "danger"
+    badge: true        # Muestra badge individual debajo del banner de stats
     tag: "FORMAL"
     description: "Enterprise consulting & system architecture contracts"
     latency: "24h SLA"
@@ -349,6 +352,7 @@ socials:
     handle: "JharlyOk"
     url: "https://github.com/JharlyOk"
     accent: "primary"
+    badge: false       # Solo en la tarjeta grande de canales
     tag: "CODE"
     description: "Open source repositories, stars & autonomous bots"
     latency: "active daily"
@@ -359,6 +363,7 @@ socials:
     display_handle: "JharlyOk"
     url: "https://www.linkedin.com/in/jharlyok"
     accent: "primary"
+    badge: false       # Solo en la tarjeta grande de canales
     tag: "NETWORK"
     description: "Professional engineering network & track record"
     latency: "async connect"
@@ -368,6 +373,7 @@ socials:
     handle: "@JharlyOk"
     url: "https://x.com/JharlyOk"
     accent: "primary"
+    badge: false       # Solo en la tarjeta grande de canales
     tag: "UPDATES"
     description: "System architecture notes & AI engineering logs"
     latency: "frequent"

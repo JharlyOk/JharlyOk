@@ -17,6 +17,8 @@ def _build_social_badges(config: Dict[str, Any]) -> List[str]:
         "<!-- QUICK-ACTION SOCIAL BADGES -->",
     ]
     for item in socials:
+        if not item.get("badge", True):
+            continue
         badge_id = item["id"]
         label = item.get("label", badge_id.title())
         url = item.get("url", "#")
@@ -69,13 +71,6 @@ def generate_readme(config: Dict[str, Any]) -> str:
     """Generate the full GitHub profile README.md markdown string."""
     handle = config["identity"]["handle"]
 
-    # Positioning settings (default: badges in header, telemetry in footer)
-    badges_cfg = config.get("badges", {})
-    badges_pos = badges_cfg.get("position", "header") if isinstance(badges_cfg, dict) else "header"
-
-    telemetry_cfg = config.get("telemetry", {})
-    telemetry_pos = telemetry_cfg.get("position", "footer") if isinstance(telemetry_cfg, dict) else "footer"
-
     sections: list[str] = [
         '<div align="center">',
         "",
@@ -97,20 +92,28 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 2. Header Badges (if position is header or both)
-    if is_module_enabled(config, "badges") and badges_pos in ("header", "top", "both"):
+    # 2. GitHub Stats & Telemetry Dashboard (Terminal card) — directly under header
+    if is_module_enabled(config, "stats"):
+        sections.extend([
+            "<!-- GITHUB STATS & TELEMETRY DASHBOARD (Terminal) -->",
+            "<picture>",
+            '  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">',
+            '  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg">',
+            f'  <img src="assets/stats-dark.svg" width="100%" alt="{handle} GitHub Stats & Telemetry" />',
+            "</picture>",
+            "",
+            "<br><br>",
+            "",
+        ])
+
+    # 3. Quick-Action Social Badges (directly under stats banner)
+    if is_module_enabled(config, "badges"):
         badge_links = _build_social_badges(config)
         if badge_links:
             sections.append("\n".join(badge_links))
             sections.extend(["", "<br><br>", ""])
 
-    if is_module_enabled(config, "telemetry") and telemetry_pos in ("header", "top", "both"):
-        telemetry_links = _build_telemetry_badges(config)
-        if telemetry_links:
-            sections.append("\n".join(telemetry_links))
-            sections.extend(["", "<br><br>", ""])
-
-    # 3. Code Manifest (Neovim editor banner)
+    # 4. Code Manifest (Neovim editor banner)
     if is_module_enabled(config, "banner"):
         sections.extend([
             "<!-- CODE MANIFEST — TypeScript profile configuration (Neovim editor) -->",
@@ -124,7 +127,7 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 4. Active Projects (Terminal tree)
+    # 5. Active Projects (Terminal tree)
     if is_module_enabled(config, "projects"):
         sections.extend([
             "<!-- ACTIVE PROJECTS — fleet portfolio overview (Terminal) -->",
@@ -138,7 +141,7 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 5. Tech Stack Matrix (Terminal grid)
+    # 6. Tech Stack Matrix (Terminal grid)
     if is_module_enabled(config, "stack"):
         sections.extend([
             "<!-- TECHNOLOGY STACK — categorized toolchain matrix (Terminal) -->",
@@ -146,20 +149,6 @@ def generate_readme(config: Dict[str, Any]) -> str:
             '  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">',
             '  <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.svg">',
             f'  <img src="assets/stack-dark.svg" width="100%" alt="{handle} Technology Stack" />',
-            "</picture>",
-            "",
-            "<br><br>",
-            "",
-        ])
-
-    # 6. GitHub Stats & Telemetry Dashboard (Terminal card)
-    if is_module_enabled(config, "stats"):
-        sections.extend([
-            "<!-- GITHUB STATS & TELEMETRY DASHBOARD (Terminal) -->",
-            "<picture>",
-            '  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">',
-            '  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg">',
-            f'  <img src="assets/stats-dark.svg" width="100%" alt="{handle} GitHub Stats & Telemetry" />',
             "</picture>",
             "",
             "<br><br>",
@@ -180,14 +169,8 @@ def generate_readme(config: Dict[str, Any]) -> str:
             "",
         ])
 
-    # 8. Footer Badges (if position is footer or both)
-    if is_module_enabled(config, "badges") and badges_pos in ("footer", "bottom", "both"):
-        badge_links = _build_social_badges(config)
-        if badge_links:
-            sections.append("\n".join(badge_links))
-            sections.extend(["", "<br><br>", ""])
-
-    if is_module_enabled(config, "telemetry") and telemetry_pos in ("footer", "bottom", "both"):
+    # 8. Dynamic Telemetry & GitHub Metric Badges
+    if is_module_enabled(config, "telemetry"):
         telemetry_links = _build_telemetry_badges(config)
         if telemetry_links:
             sections.append("\n".join(telemetry_links))
