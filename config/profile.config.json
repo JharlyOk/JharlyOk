@@ -14,7 +14,14 @@
       {"icon": "ai", "label": "Multi-LLM Development", "detail": "Gemini, Claude, Cursor, LLM Arena"},
       {"icon": "infra", "label": "Self-Hosted Infra", "detail": "Docker + Linux VPS + Pterodactyl"}
     ],
-    "methodology": "Vibe Coding · Multi-LLM Orchestration · Zero-Trust Architecture"
+    "methodology": "Vibe Coding · Multi-LLM Orchestration · Zero-Trust Architecture",
+    "welcome_messages": [
+      "Hey, welcome to my workspace",
+      "Building autonomous bot ecosystems",
+      "13+ production bots running 24/7",
+      "AI-accelerated dev with Gemini & Claude",
+      "Real-time audio routing with Lavalink v4"
+    ]
   },
 
   "themes": {

@@ -1,16 +1,13 @@
 <div align="center">
 
-<!-- TYPING WELCOME — animated greeting + mission statements -->
-<a href="https://github.com/JharlyOk">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=1500&color=58A6FF&center=true&vCenter=true&width=800&height=45&lines=%F0%9F%91%8B+Hey%2C+welcome+to+my+workspace;Building+autonomous+bot+ecosystems;13%2B+production+bots+running+24%2F7;AI-accelerated+development+with+Gemini+%26+Claude;Real-time+audio+routing+with+Lavalink+v4;Prompt+architecture+%26+LLM+context+orchestration" alt="Typing SVG" />
-</a>
-
-<!-- HIGHLIGHT CARDS — what I build, at a glance -->
+<!-- HEADER — animated welcome + highlight cards (CSS animation inside SVG) -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
-  <img src="assets/header-dark.svg" width="100%" alt="JharlyOk Active Systems" />
+  <img src="assets/header-dark.svg" width="100%" alt="JharlyOk — Active Systems" />
 </picture>
+
+<br>
 
 ![Profile Views](https://komarev.com/ghpvc/?username=JharlyOk&color=58A6FF&style=flat-square&label=visitors)
 &nbsp;
