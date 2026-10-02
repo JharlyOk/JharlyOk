@@ -43,8 +43,4 @@
 &nbsp;
 {{ badge:email }}
 
-<br><br>
-
-{{ stats:badges }}
-
 </div>

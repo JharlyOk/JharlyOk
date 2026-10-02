@@ -21,7 +21,7 @@ modules:
   stats: true        # Dashboard grande (880px) de métricas de GitHub y telemetría
   socials: false     # Terminal completa (880px) de canales de comunicación (desactivada)
   badges: true       # Botones vectoriales split-pill de redes sociales (100% interactivos)
-  telemetry: true    # Badges sueltos de métricas (followers, repos, stars, visitas) al pie
+  telemetry: false   # Badges sueltos de métricas (followers, repos, stars, visitas) al pie (desactivados)
 
 # ==============================================================================
 # 👤 2. IDENTIDAD Y BIENVENIDA (header.py)
