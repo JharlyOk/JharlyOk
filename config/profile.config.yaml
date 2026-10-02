@@ -64,7 +64,7 @@ identity:
     metrics:
       followers: true          # 👥 1 Followers (red de desarrolladores)
       repos: true              # 📦 8 Repos (código público activo)
-      stars: false             # ⭐ Oculta las estrellas (ideal mientras tengas 0)
+      stars: true             # ⭐ Oculta las estrellas (ideal mientras tengas 0)
       views: true              # 👁️ 73+ Views (contador de visitas en vivo)
 
 # ==============================================================================

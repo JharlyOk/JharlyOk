@@ -42,17 +42,18 @@ def build_badge_svg(
 
     height = 28
     rx = 6
-    char_w = 7.0
+    char_w = 6.4
 
     # Layout dimensions
-    pad_left = 8
+    pad_left = 7
     icon_size = 14
-    icon_gap = 6
+    icon_gap = 5
     label_w = round(len(label) * char_w)
-    left_w = pad_left + icon_size + icon_gap + label_w + 8
+    left_w = pad_left + icon_size + icon_gap + label_w + 6
 
+    pad_right = 8
     handle_w = round(len(handle) * char_w)
-    right_w = 10 + handle_w + 10
+    right_w = pad_right + handle_w + pad_right
     total_w = left_w + right_w
 
     icon_y = (height - icon_size) / 2
@@ -89,7 +90,7 @@ def build_badge_svg(
         f'font-family="{theme.font_mono}" font-size="11" font-weight="600" fill="{theme.fg_default}">'
         f'{_esc(label)}</text>\n\n'
         f'  <!-- Value/Handle -->\n'
-        f'  <text x="{left_w + 10}" y="{text_y}" '
+        f'  <text x="{left_w + pad_right}" y="{text_y}" '
         f'font-family="{theme.font_mono}" font-size="11" font-weight="700" fill="{right_fg}">'
         f'{_esc(handle)}</text>\n'
         f'</svg>\n'

@@ -1,28 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 126 28" width="126" height="28" role="img" aria-label="X: @JharlyOk">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 28" width="112" height="28" role="img" aria-label="X: @JharlyOk">
   <defs>
     <clipPath id="pill-clip">
-      <rect width="126" height="28" rx="6" />
+      <rect width="112" height="28" rx="6" />
     </clipPath>
   </defs>
 
   <g clip-path="url(#pill-clip)">
     <!-- Left Section: Platform/Metric -->
-    <rect x="0" y="0" width="43" height="28" fill="#eaeef2" />
+    <rect x="0" y="0" width="38" height="28" fill="#eaeef2" />
     <!-- Right Section: Handle/Count -->
-    <rect x="43" y="0" width="83" height="28" fill="#0969da" />
+    <rect x="38" y="0" width="74" height="28" fill="#0969da" />
   </g>
 
   <!-- Pill Border -->
-  <rect x="0.5" y="0.5" width="125" height="27" rx="6" fill="none" stroke="#d0d7de" stroke-width="1" />
-  <line x1="43" y1="0" x2="43" y2="28" stroke="#d8dee4" stroke-width="1" />
+  <rect x="0.5" y="0.5" width="111" height="27" rx="6" fill="none" stroke="#d0d7de" stroke-width="1" />
+  <line x1="38" y1="0" x2="38" y2="28" stroke="#d8dee4" stroke-width="1" />
 
   <!-- Icon -->
-  <g transform="translate(8, 7.0) scale(0.5833)">
+  <g transform="translate(7, 7.0) scale(0.5833)">
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#1f2328" />
   </g>
   <!-- Platform/Metric Label -->
-  <text x="28" y="17.5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="600" fill="#1f2328">X</text>
+  <text x="26" y="17.5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="600" fill="#1f2328">X</text>
 
   <!-- Value/Handle -->
-  <text x="53" y="17.5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700" fill="#ffffff">@JharlyOk</text>
+  <text x="46" y="17.5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700" fill="#ffffff">@JharlyOk</text>
 </svg>
