@@ -147,18 +147,18 @@ class ProjectsBuilder(BaseBuilder):
 
             tags = project.get("tags", [])
             for tag in tags:
-                tag_w = len(tag) * 6.5 + 12
+                tag_w = len(tag) * 6.8 + 14
                 parts.append(rect(
-                    tag_x, tag_y - 11, tag_w, 16,
-                    theme.bg_subtle, rx=3,
-                    stroke=theme.border_muted, stroke_width=0.5,
+                    tag_x, tag_y - 11, tag_w, 17,
+                    theme.bg_subtle, rx=4,
+                    stroke=theme.border_muted, stroke_width=0.6,
                 ))
                 parts.append(text(
-                    tag_x + tag_w / 2, tag_y,
+                    tag_x + tag_w / 2, tag_y + 0.5,
                     tag, theme.accent_primary, theme.font_mono,
-                    font_size=9.5, text_anchor="middle",
+                    font_size=9.5, font_weight=500, text_anchor="middle",
                 ))
-                tag_x += tag_w + 6
+                tag_x += tag_w + 8
 
             row_y += self.PROJECT_HEIGHT
 

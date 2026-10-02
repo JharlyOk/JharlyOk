@@ -30,14 +30,15 @@ class StackMatrixBuilder(BaseBuilder):
 
     WIDTH = 880
     HEADER_H = 36
-    COL_WIDTH = 275
     COLS_PER_ROW = 3
-    CATEGORY_HEIGHT = 28
-    ITEM_HEIGHT = 24
+    CATEGORY_HEIGHT = 32
+    PILL_HEIGHT = 22
+    ITEM_GAP = 9
+    ITEM_HEIGHT = PILL_HEIGHT + ITEM_GAP  # 31px total per item (9px visible gap)
     PADDING_X = 24
-    PADDING_Y = 16
-    GAP_X = 10
-    GAP_Y = 14
+    PADDING_Y = 20
+    GAP_X = 16
+    GAP_Y = 22
 
     def build(self, config: Dict[str, Any], theme: Theme) -> str:
         stack = config.get("stack", {})
@@ -46,6 +47,12 @@ class StackMatrixBuilder(BaseBuilder):
 
         # Calculate rows needed
         num_rows = math.ceil(num_cats / self.COLS_PER_ROW)
+
+        col_w = (
+            self.WIDTH
+            - (2 * self.PADDING_X)
+            - ((self.COLS_PER_ROW - 1) * self.GAP_X)
+        ) / self.COLS_PER_ROW
 
         # Height per row = category header + max items in row + gaps
         row_heights = []
@@ -59,7 +66,7 @@ class StackMatrixBuilder(BaseBuilder):
             row_h = (
                 self.CATEGORY_HEIGHT
                 + (max_items * self.ITEM_HEIGHT)
-                + self.GAP_Y * 2
+                + self.GAP_Y
             )
             row_heights.append(row_h)
 
@@ -101,7 +108,7 @@ class StackMatrixBuilder(BaseBuilder):
                 label = cat_data["label"]
                 items = cat_data["items"]
 
-                col_x = self.PADDING_X + (col_offset * (self.COL_WIDTH + self.GAP_X))
+                col_x = self.PADDING_X + (col_offset * (col_w + self.GAP_X))
 
                 # Category label
                 parts.append(text(
@@ -113,25 +120,25 @@ class StackMatrixBuilder(BaseBuilder):
 
                 # Underline
                 parts.append(line(
-                    col_x, cursor_y + 20,
-                    col_x + self.COL_WIDTH - 20, cursor_y + 20,
+                    col_x, cursor_y + 22,
+                    col_x + col_w - 20, cursor_y + 22,
                     theme.border_muted, 0.5,
                 ))
 
-                # Items as pills
-                item_y = cursor_y + self.CATEGORY_HEIGHT + 6
+                # Items as pills with clean breathing room
+                item_y = cursor_y + self.CATEGORY_HEIGHT + 8
 
                 for item_text in items:
-                    pill_w = len(item_text) * 7 + 18
+                    pill_w = len(item_text) * 7.2 + 20
                     parts.append(rect(
-                        col_x, item_y, pill_w, 20,
-                        theme.bg_subtle, rx=4,
-                        stroke=theme.border_muted, stroke_width=0.5,
+                        col_x, item_y, pill_w, self.PILL_HEIGHT,
+                        fill=theme.bg_subtle, rx=5,
+                        stroke=theme.border_muted, stroke_width=0.8,
                     ))
                     parts.append(text(
-                        col_x + 9, item_y + 14,
+                        col_x + 10, item_y + 15,
                         item_text, theme.fg_default, theme.font_mono,
-                        font_size=11,
+                        font_size=11, font_weight=500,
                     ))
                     item_y += self.ITEM_HEIGHT
 
