@@ -92,8 +92,10 @@ def _get_active_header_metrics(
     stats: Dict[str, Any],
 ) -> List[Dict[str, Any]]:
     """Extract and format active telemetry metrics configured for the header."""
-    header_cfg = config.get("header", {})
-    telem_cfg = header_cfg.get("telemetry", {})
+    # Look for telemetry inside identity first, fallback to header
+    telem_cfg = config.get("identity", {}).get("telemetry", {})
+    if not telem_cfg:
+        telem_cfg = config.get("header", {}).get("telemetry", {})
     if not telem_cfg.get("enabled", False):
         return []
 

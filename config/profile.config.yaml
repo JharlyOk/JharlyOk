@@ -14,17 +14,17 @@
 # Define qué secciones se compilan y aparecen en tu README (true = activo, false = oculto)
 # ==============================================================================
 modules:
-  header: true       # Saludo máquina de escribir animado + 4 highlight cards
+  header: true       # Saludo máquina de escribir animado + 4 highlight cards + telemetría
   banner: true       # Editor de código Neovim / VS Code con tu config
   projects: true     # Árbol de terminal con tus proyectos y repositorios
   stack: true        # Cuadrícula categorizada con tus tecnologías y herramientas
   stats: true        # Dashboard grande (880px) de métricas de GitHub y telemetría
-  connect: false     # Terminal de canales (desactivada para priorizar badges clickeables)
+  connect: true      # Terminal completa (880px) de canales de comunicación, SLAs y tags
   badges: true       # Botones vectoriales split-pill de redes sociales (100% interactivos)
-  telemetry: false   # Badges sueltos al pie (false recomendado si ya los integras en el Header)
+  telemetry: true    # Badges sueltos de métricas (followers, repos, stars, visitas) al pie
 
 # ==============================================================================
-# 👤 2. IDENTIDAD Y SALUDO (header.py)
+# 👤 2. IDENTIDAD Y BIENVENIDA (header.py)
 # ==============================================================================
 identity:
   handle: "JharlyOk"
@@ -58,22 +58,17 @@ identity:
     - "AI-accelerated dev with Gemini & Claude"
     - "Real-time audio routing with Lavalink v4"
 
-# ==============================================================================
-# 🔘 3. TELEMETRÍA INTEGRADA EN EL HEADER (header.py)
-# Configura métricas en vivo integradas directamente en el lienzo del Header SVG
-# Control granular: activa o desactiva individualmente cada métrica a tu gusto
-# ==============================================================================
-header:
+  # 📊 Telemetría en vivo integrada al pie del header SVG (control granular)
   telemetry:
     enabled: true              # true = dibuja una 3ra fila de métricas dentro del Header SVG
     metrics:
       followers: true          # 👥 1 Followers (red de desarrolladores)
       repos: true              # 📦 8 Repos (código público activo)
       stars: false             # ⭐ Oculta las estrellas (ideal mientras tengas 0)
-      views: true              # 👁️ 69+ Views (contador de visitas en vivo)
+      views: true              # 👁️ 73+ Views (contador de visitas en vivo)
 
 # ==============================================================================
-# 🎨 4. TEMAS DE COLOR (themes/github-dark.json & github-light.json)
+# 🎨 3. TEMAS DE COLOR (themes/github-dark.json & github-light.json)
 # ==============================================================================
 themes:
   dark: "github-dark"
@@ -377,43 +372,3 @@ socials:
     description: "System architecture notes & AI engineering logs"
     latency: "frequent"
 
-# ==============================================================================
-# 🔘 8. POSICIONAMIENTO DE BADGES (badges.py)
-# Configura dónde se muestran los botones clicables de acción rápida
-# Opciones: "header" (inmediatamente bajo el saludo para clic rápido), "footer" (al final), "both"
-# ==============================================================================
-badges:
-  enabled: true
-  position: "header"
-
-# ==============================================================================
-# 📊 9. TELEMETRÍA DINÁMICA DE GITHUB Y VISITAS (telemetry.py)
-# Badges split-pill conectados en vivo con la API de GitHub y el contador de visitas
-# ==============================================================================
-telemetry:
-  enabled: true
-  position: "footer"
-  metrics:
-    - id: "followers"
-      label: "Followers"
-      icon: "followers"
-      accent: "secondary"
-      url: "https://github.com/{handle}?tab=followers"
-
-    - id: "repos"
-      label: "Repos"
-      icon: "repo"
-      accent: "success"
-      url: "https://github.com/{handle}?tab=repositories"
-
-    - id: "stars"
-      label: "Stars"
-      icon: "star"
-      accent: "warning"
-      url: "https://github.com/{handle}?tab=stars"
-
-    - id: "views"
-      label: "Visitors"
-      icon: "eye"
-      accent: "primary"
-      url: "https://komarev.com/ghpvc/?username={handle}"

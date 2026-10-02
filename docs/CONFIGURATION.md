@@ -63,26 +63,14 @@ En `config/profile.config.yaml`, la sección `modules` permite activar o desacti
 
 ```yaml
 modules:
-  header: true       # Saludo máquina de escribir + highlight cards
+  header: true       # Saludo máquina de escribir + 4 highlight cards + telemetría
   banner: true       # Editor de código Neovim
   projects: true     # Árbol de proyectos en terminal
   stack: true        # Cuadrícula de tecnologías
-  stats: true        # Dashboard banner unificado de telemetría (880px)
-  connect: false     # Terminal de canales (false recomendado si usas badges en cabecera)
-  badges: true       # Botones split-pill de redes sociales (100% interactivos)
-  telemetry: true    # Métricas dinámicas en badges (followers, repos, stars, visitas)
-```
-
-### 📍 Ubicación de Badges (`badges.position` y `telemetry.position`)
-
-Puedes posicionar tus badges de contacto en la cabecera para máxima interactividad:
-
-```yaml
-badges:
-  position: "header"    # "header" (debajo del saludo), "footer" (al final), o "both"
-
-telemetry:
-  position: "footer"    # "footer" (al pie) o "header"
+  stats: true        # Dashboard banner unificado de telemetría y métricas GitHub (880px)
+  connect: true      # Terminal completa (880px) de canales de comunicación, SLAs y tags
+  badges: true       # Botones split-pill de redes sociales (100% interactivos en cabecera)
+  telemetry: true    # Badges sueltos de métricas (followers, repos, stars, visitas) al pie
 ```
 
 ### ¿Qué ocurre cuando desactivas un módulo?

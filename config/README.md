@@ -21,17 +21,15 @@ Puedes encender o apagar cualquier ventana o módulo de tu perfil con un simple 
 
 ```yaml
 modules:
-  header: true       # Barra de bienvenida typewriter + 4 Highlight cards
+  header: true       # Barra de bienvenida typewriter + 4 Highlight cards + telemetría
   banner: true       # Editor Neovim con código TypeScript
   projects: true     # Árbol de terminal con proyectos destacados
   stack: true        # Matriz de terminal con categorías de tecnologías
   stats: true        # Dashboard banner unificado de telemetría y métricas GitHub (880px)
-  connect: false     # Terminal de canales (false recomendado si usas badges en cabecera)
+  connect: true      # Terminal completa de canales de comunicación y SLAs (880px)
   badges: true       # Botones vectoriales split-pill de redes sociales (100% interactivos)
-  telemetry: true    # Badges dinámicos de métricas (followers, repos, stars, visitas)
+  telemetry: true    # Badges sueltos de métricas (followers, repos, stars, visitas) al pie
 ```
-
-> 💡 **Posición de Badges**: En `profile.config.yaml` puedes configurar `badges.position: "header"` para mostrar tus enlaces de contacto inmediatamente debajo del saludo principal, haciéndolos directamente clickeables sin redundancia.
 
 > Al ejecutar `python scripts/build.py`, los módulos desactivados se omiten automáticamente tanto en la compilación de SVGs como en el [README.md](../README.md).
 
@@ -57,10 +55,19 @@ identity:
     - "Hey, welcome to my workspace"
     - "Building autonomous bot ecosystems"
     - "13+ production bots running 24/7"
+
+  telemetry:
+    enabled: true
+    metrics:
+      followers: true
+      repos: true
+      stars: false
+      views: true
 ```
 
 * **`welcome_messages`**: Lista de textos que la animación SMIL Typewriter escribe, pausa y borra cíclicamente.
 * **`highlights`**: 4 tarjetas horizontales en cuadrícula con puntos de estado en tiempo real.
+* **`telemetry`**: Pastillas vectoriales integradas al pie del Header con control granular de métricas.
 
 ---
 

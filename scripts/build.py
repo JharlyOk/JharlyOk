@@ -102,8 +102,10 @@ def main() -> None:
     assets_dir.mkdir(parents=True, exist_ok=True)
 
     # Fetch telemetry stats if telemetry, stats, or header.telemetry module enabled
-    telemetry_stats = None
-    hdr_telem = config.get("header", {}).get("telemetry", {}).get("enabled", False)
+    hdr_telem = (
+        config.get("identity", {}).get("telemetry", {}).get("enabled", False)
+        or config.get("header", {}).get("telemetry", {}).get("enabled", False)
+    )
     if is_module_enabled(config, "telemetry") or is_module_enabled(config, "stats") or hdr_telem:
         handle = config["identity"]["handle"]
         telemetry_stats = fetch_telemetry(handle, cache_path)

@@ -117,14 +117,7 @@
           "type": "array",
           "description": "List of strings cycled by the typewriter SMIL animation in the header.",
           "items": { "type": "string" }
-        }
-      }
-    },
-
-    "header": {
-      "type": "object",
-      "description": "Header builder custom layout and telemetry options.",
-      "properties": {
+        },
         "telemetry": {
           "type": "object",
           "description": "Live telemetry pills integrated directly within the header SVG.",
@@ -240,48 +233,6 @@
           "tag": { "type": "string" },
           "description": { "type": "string" },
           "latency": { "type": "string" }
-        }
-      }
-    },
-
-    "badges": {
-      "type": "object",
-      "description": "Social badges positioning and configuration.",
-      "properties": {
-        "enabled": { "type": "boolean", "default": true },
-        "position": {
-          "type": "string",
-          "enum": ["header", "footer", "both", "top", "bottom"],
-          "default": "header",
-          "description": "Where social badges are placed in the README ('header' = under greeting, 'footer' = bottom, 'both' = header & footer)."
-        }
-      }
-    },
-
-    "telemetry": {
-      "type": "object",
-      "description": "Dynamic GitHub metrics and visitor telemetry configuration.",
-      "properties": {
-        "enabled": { "type": "boolean", "default": true },
-        "position": {
-          "type": "string",
-          "enum": ["header", "footer", "both", "top", "bottom"],
-          "default": "footer",
-          "description": "Where telemetry metrics are placed in the README ('footer' = bottom, 'header' = under greeting)."
-        },
-        "metrics": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": ["id", "label"],
-            "properties": {
-              "id": { "type": "string" },
-              "label": { "type": "string" },
-              "icon": { "type": "string" },
-              "accent": { "type": "string" },
-              "url": { "type": "string" }
-            }
-          }
         }
       }
     }
