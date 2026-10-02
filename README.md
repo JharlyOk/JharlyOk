@@ -28,6 +28,8 @@
 
 <br><br>
 
+## `$ gh telemetry --overview`
+
 <!-- GITHUB STATS & TELEMETRY DASHBOARD (Terminal) -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">
@@ -36,6 +38,8 @@
 </picture>
 
 <br><br>
+
+## `$ nvim JharlyOk.config.ts`
 
 <!-- CODE MANIFEST — TypeScript profile configuration (Neovim editor) -->
 <picture>
@@ -46,6 +50,8 @@
 
 <br><br>
 
+## `$ ls -la ~/projects`
+
 <!-- ACTIVE PROJECTS — fleet portfolio overview (Terminal) -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/projects-dark.svg">
@@ -55,6 +61,8 @@
 
 <br><br>
 
+## `$ cat tech-stack.yaml`
+
 <!-- TECHNOLOGY STACK — categorized toolchain matrix (Terminal) -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">
@@ -63,6 +71,8 @@
 </picture>
 
 <br><br>
+
+## `$ connect --endpoints`
 
 <a href="https://t.me/JharlyOk">
   <picture>
@@ -88,7 +98,10 @@
   </picture>
 </a>
 
+<br><br>
+
 
 <!-- VISITOR HIT BEACON -->
 <img src="https://komarev.com/ghpvc/?username=JharlyOk" width="1" height="1" alt="" style="display:none" />
 </div>
+
