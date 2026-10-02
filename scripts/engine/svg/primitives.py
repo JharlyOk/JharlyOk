@@ -8,7 +8,7 @@ these primitives to ensure consistency across all cards.
 from __future__ import annotations
 
 from typing import List, Optional
-from .theme_loader import Theme
+from ..core.theme import Theme
 
 
 def _esc(text: str) -> str:
@@ -157,24 +157,18 @@ def window_chrome(
     theme: Theme,
     header_height: int = 42,
 ) -> str:
-    """Render macOS-style window chrome (background + traffic lights).
-
-    Returns the outer rect, header bar, and three colored dots.
-    Does NOT close the container — caller adds content and closes.
-    """
+    """Render macOS-style window chrome (background + traffic lights)."""
     # Main container
     out = rect(0, 0, width, height, theme.bg_canvas, rx=10,
                stroke=theme.border_default, stroke_width=1)
 
     # Header bar
     out += rect(0, 0, width, header_height, theme.bg_inset, rx=10)
-    # Clip the bottom corners of the header (they're rounded but shouldn't be)
     out += rect(0, header_height - 10, width, 10, theme.bg_inset)
-    # Header bottom border
     out += line(0, header_height, width, header_height,
                 theme.border_default, 1)
 
-    # Traffic light dots
+    # Traffic light dots with theme colors
     dot_y = header_height // 2
     out += circle(20, dot_y, 5.5, theme.accent_danger)   # Close (red)
     out += circle(38, dot_y, 5.5, theme.accent_warning)  # Minimize (yellow)
@@ -229,18 +223,13 @@ def code_line_numbered(
     code_x: int = 52,
     is_active: bool = False,
 ) -> str:
-    """Render a single line of code with a line number and syntax tokens.
-
-    Each token is a dict: {"type": "keyword|string|...", "text": "..."}.
-    The token type maps to a color in theme.syntax.
-    """
+    """Render a single line of code with a line number and syntax tokens."""
     # Line number
     ln_color = theme.accent_primary if is_active else theme.fg_subtle
     ln_weight = 700 if is_active else "normal"
     out = text(gutter_x, y, str(line_num), ln_color, theme.font_mono,
                font_size=14, font_weight=ln_weight, text_anchor="end")
 
-    # Empty line
     if not tokens:
         return out
 
@@ -270,10 +259,7 @@ def status_bar(
     segments: List[dict],
     theme: Theme,
 ) -> str:
-    """Render a Neovim-style status bar.
-
-    Each segment: {"text": str, "bg": str|None, "fg": str, "bold": bool}.
-    """
+    """Render a Neovim-style status bar."""
     out = rect(x, y, width, height, theme.bg_inset)
     out += line(x, y, x + width, y, theme.border_default, 1)
 
@@ -285,7 +271,6 @@ def status_bar(
         seg_bold = seg.get("bold", False)
 
         if seg_bg:
-            # Badge-style segment
             text_w = len(seg_text) * 7.5 + 16
             out += rect(cursor_x, y + 5, text_w, height - 10,
                         seg_bg, rx=3)
@@ -296,7 +281,6 @@ def status_bar(
             )
             cursor_x += text_w + 12
         else:
-            # Plain text segment
             out += text(
                 cursor_x, y + height / 2 + 4,
                 seg_text, seg_fg, theme.font_mono,
@@ -316,13 +300,12 @@ def terminal_header(
     status_color: Optional[str] = None,
 ) -> str:
     """Render a terminal-style header with prompt and optional status badge."""
-    # Header background
     out = rect(0, 0, width, header_height, theme.bg_inset, rx=10)
     out += rect(0, header_height - 10, width, 10, theme.bg_inset)
     out += line(0, header_height, width, header_height,
                 theme.border_default, 1)
 
-    # Traffic lights
+    # Traffic lights with theme accents
     dot_y = header_height // 2
     out += circle(16, dot_y, 4.5, theme.accent_danger)
     out += circle(32, dot_y, 4.5, theme.accent_warning)
@@ -330,8 +313,6 @@ def terminal_header(
 
     # Prompt & command
     prompt_x = 68
-
-    # User@host portion
     prompt_parts = (
         f'<tspan fill="{theme.accent_success}" font-weight="600">'
         f'{_esc("jharlyok@dev")}</tspan>'
@@ -347,7 +328,6 @@ def terminal_header(
         f'{prompt_parts}</text>\n'
     )
 
-    # Status badge (right side)
     if status_text:
         s_color = status_color or theme.accent_success
         badge_w = len(status_text) * 7 + 24
@@ -374,8 +354,6 @@ def cursor_blink_style() -> str:
         '    }\n'
     )
 
-
-# ── Internal helpers ───────────────────────────────────────────────
 
 def _resolve_syntax_color(token_type: str, theme: Theme) -> str:
     """Map a token type string to the corresponding theme color."""

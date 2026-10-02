@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict
 
-from .config_loader import is_module_enabled
+from ..core.config import is_module_enabled
 
 
 def generate_readme(config: Dict[str, Any]) -> str:

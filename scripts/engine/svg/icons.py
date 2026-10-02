@@ -1,7 +1,4 @@
-"""Vector icons catalog — normalized 24x24 SVG path definitions.
-
-All icons are precision-engineered vector paths ready for SVG inclusion.
-"""
+"""Vector icons catalog — normalized 24x24 SVG path definitions."""
 
 from __future__ import annotations
 

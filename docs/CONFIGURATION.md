@@ -27,14 +27,17 @@ JharlyOk/
 │   └── CONFIGURATION.md       # Este documento
 ├── scripts/
 │   ├── build.py               # CLI principal de compilación y orquestación
-│   └── engine/                # Motor modular SVG
-│       ├── config_loader.py   # Validador y cargador de configuración
-│       ├── theme_loader.py    # Mapeo de tokens de diseño Primer
-│       ├── svg_primitives.py  # Primitivas SVG (rect, text, circle, terminal_header, etc.)
-│       ├── icons.py           # Catálogo de paths vectoriales (24x24)
-│       ├── registry.py        # Decorador y registro dinámico de builders
-│       ├── readme_builder.py  # Generador dinámico de README.md
-│       └── builders/          # Módulos constructores independientes
+│   └── engine/                # Motor modular SVG (Arquitectura por capas)
+│       ├── core/              # Núcleo del sistema
+│       │   ├── config.py      # Validador y cargador de configuración
+│       │   ├── theme.py       # Mapeo de tokens de diseño Primer (Dark/Light)
+│       │   └── registry.py    # Decorador @register_builder y registro dinámico
+│       ├── svg/               # Capa gráfica y vectores
+│       │   ├── primitives.py  # Primitivas SVG (rect, text, circle, terminal_header, etc.)
+│       │   └── icons.py       # Catálogo de paths vectoriales (24x24)
+│       ├── markdown/          # Capa de documentación
+│       │   └── readme.py      # Ensamblador dinámico de README.md
+│       └── builders/          # Constructores visuales de componentes
 │           ├── header.py      # Typewriter SMIL + Highlight cards
 │           ├── banner.py      # Editor Neovim con resaltado de sintaxis
 │           ├── projects.py    # Terminal con árbol de proyectos

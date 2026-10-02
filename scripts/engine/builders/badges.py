@@ -10,9 +10,9 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict, List
 
-from ..theme_loader import Theme
-from ..icons import render_icon
-from ..svg_primitives import _esc
+from ..core.theme import Theme
+from ..svg.icons import render_icon
+from ..svg.primitives import _esc
 
 
 def _resolve_accent_color(accent_name: str, theme: Theme) -> str:

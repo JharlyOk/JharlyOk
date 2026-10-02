@@ -15,9 +15,9 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from ..registry import BaseBuilder, register_builder
-from ..theme_loader import Theme
-from ..svg_primitives import (
+from ..core.registry import BaseBuilder, register_builder
+from ..core.theme import Theme
+from ..svg.primitives import (
     svg_open, svg_close, style_block,
     window_chrome, file_tab, code_line_numbered,
     status_bar, cursor_blink_style, text, rect, line, circle,

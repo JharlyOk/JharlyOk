@@ -14,9 +14,9 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-from ..registry import BaseBuilder, register_builder
-from ..theme_loader import Theme
-from ..svg_primitives import (
+from ..core.registry import BaseBuilder, register_builder
+from ..core.theme import Theme
+from ..svg.primitives import (
     svg_open, svg_close,
     rect, text, line, circle,
     terminal_header, _esc,

@@ -25,9 +25,11 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
-from engine.config_loader import load_config
-from engine.theme_loader import load_theme_pair
-from engine.registry import get_all_builders, get_builder
+from engine.core.config import load_config, is_module_enabled
+from engine.core.theme import load_theme_pair
+from engine.core.registry import get_all_builders, get_builder
+from engine.markdown.readme import update_readme_file
+from engine.builders.badges import compile_all_badges
 
 # Import builders to trigger registration
 import engine.builders  # noqa: F401
@@ -81,8 +83,6 @@ def main() -> None:
             _log(f"    - {b.builder_name}")
         return
 
-    from engine.config_loader import is_module_enabled
-
     if args.only:
         builders = [get_builder(args.only)]
     else:
@@ -130,7 +130,6 @@ def main() -> None:
     # Build standalone badges
     total_badges = 0
     if is_module_enabled(config, "badges"):
-        from engine.builders.badges import compile_all_badges
         badges_dir = assets_dir / "badges"
         dark_badges = compile_all_badges(config, dark_theme, badges_dir)
         light_badges = compile_all_badges(config, light_theme, badges_dir)
@@ -141,7 +140,6 @@ def main() -> None:
 
     # Sync README.md if not disabled
     if not args.no_readme and not args.only:
-        from engine.readme_builder import update_readme_file
         update_readme_file(config, readme_path)
         _log("  [ok] README.md synchronized with active modules")
 

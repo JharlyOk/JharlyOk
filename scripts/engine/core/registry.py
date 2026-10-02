@@ -11,7 +11,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, ClassVar, Dict, List, Type
 
-from .theme_loader import Theme
+from .theme import Theme
 
 
 class BaseBuilder(ABC):

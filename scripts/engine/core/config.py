@@ -69,4 +69,3 @@ def is_module_enabled(config: Dict[str, Any], module_name: str) -> bool:
     if isinstance(mod_val, dict):
         return bool(mod_val.get("enabled", True))
     return True
-
