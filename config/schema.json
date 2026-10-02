@@ -121,6 +121,30 @@
       }
     },
 
+    "header": {
+      "type": "object",
+      "description": "Header builder custom layout and telemetry options.",
+      "properties": {
+        "telemetry": {
+          "type": "object",
+          "description": "Live telemetry pills integrated directly within the header SVG.",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "metrics": {
+              "type": "object",
+              "description": "Granular toggles for each telemetry metric in the header.",
+              "properties": {
+                "followers": { "type": "boolean", "default": true },
+                "repos": { "type": "boolean", "default": true },
+                "stars": { "type": "boolean", "default": false },
+                "views": { "type": "boolean", "default": true }
+              }
+            }
+          }
+        }
+      }
+    },
+
     "themes": {
       "type": "object",
       "description": "Active theme identifiers mapped to themes/<name>.json.",

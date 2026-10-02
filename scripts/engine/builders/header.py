@@ -8,10 +8,14 @@ Generates a unified SVG header containing:
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+import json
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 from ..core.registry import BaseBuilder, register_builder
 from ..core.theme import Theme
+from ..core.telemetry import format_metric_value
+from ..svg.icons import render_icon
 from ..svg.primitives import (
     svg_close, rect, text, circle, _esc,
 )
@@ -82,9 +86,77 @@ def _build_typewriter(
     return paths_str, texts_str
 
 
+def _get_active_header_metrics(
+    config: Dict[str, Any],
+    theme: Theme,
+    stats: Dict[str, Any],
+) -> List[Dict[str, Any]]:
+    """Extract and format active telemetry metrics configured for the header."""
+    header_cfg = config.get("header", {})
+    telem_cfg = header_cfg.get("telemetry", {})
+    if not telem_cfg.get("enabled", False):
+        return []
+
+    metrics_cfg = telem_cfg.get("metrics", {})
+    followers = stats.get("followers", 0)
+    repos = stats.get("repos", 0)
+    stars = stats.get("stars", 0)
+    views = stats.get("views", 0)
+
+    catalog = {
+        "followers": {
+            "id": "followers",
+            "val": f"{followers}",
+            "label": "Followers",
+            "icon": "followers",
+            "accent": theme.accent_secondary,
+        },
+        "repos": {
+            "id": "repos",
+            "val": f"{repos}",
+            "label": "Public Repos",
+            "icon": "repo",
+            "accent": theme.accent_success,
+        },
+        "stars": {
+            "id": "stars",
+            "val": f"★ {stars}",
+            "label": "Stars Earned",
+            "icon": "star",
+            "accent": theme.accent_warning,
+        },
+        "views": {
+            "id": "views",
+            "val": f"{format_metric_value(views)}+",
+            "label": "Live Views",
+            "icon": "eye",
+            "accent": theme.accent_primary,
+        },
+    }
+
+    active = []
+    if isinstance(metrics_cfg, dict):
+        for mid, is_active in metrics_cfg.items():
+            if is_active and mid in catalog:
+                active.append(catalog[mid])
+    elif isinstance(metrics_cfg, list):
+        for item in metrics_cfg:
+            if isinstance(item, str) and item in catalog:
+                active.append(catalog[item])
+            elif isinstance(item, dict):
+                mid = item.get("id")
+                if item.get("enabled", True) and mid in catalog:
+                    entry = dict(catalog[mid])
+                    if "label" in item:
+                        entry["label"] = item["label"]
+                    active.append(entry)
+
+    return active
+
+
 @register_builder("header")
 class HeaderBuilder(BaseBuilder):
-    """Generates the unified typewriter welcome + highlights header SVG."""
+    """Generates the unified typewriter welcome + highlights + telemetry header SVG."""
 
     WIDTH = 880
     WELCOME_H = 46
@@ -92,8 +164,15 @@ class HeaderBuilder(BaseBuilder):
     CARD_H = 76
     CARD_GAP = 10
     CARD_RX = 8
+    TELEMETRY_H = 34
+    TELEMETRY_GAP = 10
 
-    def build(self, config: Dict[str, Any], theme: Theme) -> str:
+    def build(
+        self,
+        config: Dict[str, Any],
+        theme: Theme,
+        telemetry_stats: Dict[str, Any] | None = None,
+    ) -> str:
         identity = config["identity"]
         highlights = identity.get("highlights", [])
         messages = identity.get("welcome_messages", [
@@ -104,7 +183,23 @@ class HeaderBuilder(BaseBuilder):
             "Real-time audio routing with Lavalink v4",
         ])
 
+        # Load telemetry stats from parameter or cache fallback
+        stats = telemetry_stats or {}
+        if not stats:
+            cache_path = Path(".cache/telemetry.json")
+            if cache_path.exists():
+                try:
+                    stats = json.loads(cache_path.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
+
+        active_metrics = _get_active_header_metrics(config, theme, stats)
+        has_telemetry = len(active_metrics) > 0
+
         total_h = self.WELCOME_H + self.GAP + self.CARD_H
+        if has_telemetry:
+            total_h += self.TELEMETRY_GAP + self.TELEMETRY_H
+
         num_cards = len(highlights) if highlights else 4
         card_w = (self.WIDTH - ((num_cards - 1) * self.CARD_GAP)) / num_cards
 
@@ -259,5 +354,57 @@ class HeaderBuilder(BaseBuilder):
                 font_size=9.5, letter_spacing=0.3,
             ))
 
+        # ── Integrated Telemetry Pills Row ──────────────────────
+        if has_telemetry:
+            telem_y = cards_y + self.CARD_H + self.TELEMETRY_GAP
+            num_pills = len(active_metrics)
+            pill_gap = 10
+            pill_w = (self.WIDTH - ((num_pills - 1) * pill_gap)) / num_pills
+
+            for idx, item in enumerate(active_metrics):
+                px = idx * (pill_w + pill_gap)
+                py = telem_y
+                accent = item["accent"]
+
+                # Pill background
+                parts.append(rect(
+                    px, py, pill_w, self.TELEMETRY_H,
+                    theme.bg_subtle, rx=6,
+                    stroke=theme.border_muted, stroke_width=1,
+                ))
+
+                # Left accent indicator bar
+                parts.append(rect(
+                    px, py + 5, 2.5, self.TELEMETRY_H - 10,
+                    fill=accent, rx=1.25,
+                ))
+
+                # Icon (14x14)
+                parts.append(render_icon(
+                    item["icon"],
+                    px + 12,
+                    py + (self.TELEMETRY_H - 14) / 2,
+                    14,
+                    accent,
+                ))
+
+                # Metric text (bold value + muted label)
+                parts.append(
+                    f'  <text x="{px + 34}" y="{py + self.TELEMETRY_H / 2 + 4}" '
+                    f'font-family="{theme.font_mono}">\n'
+                    f'    <tspan font-size="11.5" font-weight="800" fill="{theme.fg_default}">{_esc(item["val"])}</tspan>\n'
+                    f'    <tspan font-size="10" font-weight="500" fill="{theme.fg_muted}">  {_esc(item["label"])}</tspan>\n'
+                    f'  </text>\n'
+                )
+
+                # Right subtle status dot
+                parts.append(circle(
+                    px + pill_w - 14,
+                    py + self.TELEMETRY_H / 2,
+                    2.5,
+                    fill=accent,
+                ))
+
         parts.append(svg_close())
         return "".join(parts)
+

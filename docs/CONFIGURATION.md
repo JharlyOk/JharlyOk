@@ -102,6 +102,14 @@ telemetry:
   * Diseñadas en cuadrícula de 4 tarjetas simétricas.
   * Barras superiores de acento recortadas matemáticamente con `<clipPath>` (`rx=8`) para no salirse de los bordes redondeados.
   * Puntos verdes de telemetría activa en tiempo real.
+* **Telemetría Integrada (3ra Fila)**:
+  * Permite incorporar métricas dinámicas directamente en el lienzo del Header SVG vía `header.telemetry.enabled: true`.
+  * **Control granular individual**: Puedes activar o desactivar cada métrica en `profile.config.yaml`:
+    * `followers: true` (seguidores en GitHub)
+    * `repos: true` (repositorios públicos)
+    * `stars: false` (estrellas ganadas; puedes ocultarlo si tienes 0)
+    * `views: true` (contador de visitas en vivo)
+  * El motor calcula simétricamente el ancho de las pastillas vectoriales (*pills*) y su espaciado en función de cuántas métricas actives.
 
 ### 2. Neovim Code Manifest (`banner.py`)
 * **Aspecto**: Ventana macOS con pestañas (`JharlyOk.config.ts` y `package.json`), badge de lenguaje, barra de números de línea, código coloreado por tokens y statusline Neovim (`NORMAL main (utf-8) ● LSP READY`).

@@ -99,42 +99,6 @@
 
 <br><br>
 
-<!-- DYNAMIC TELEMETRY & GITHUB METRICS -->
-<a href="https://github.com/JharlyOk?tab=followers">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/followers-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/badges/followers-light.svg">
-    <img src="assets/badges/followers-dark.svg" height="28" alt="Followers" />
-  </picture>
-</a>
-&nbsp;
-<a href="https://github.com/JharlyOk?tab=repositories">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/repos-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/badges/repos-light.svg">
-    <img src="assets/badges/repos-dark.svg" height="28" alt="Repos" />
-  </picture>
-</a>
-&nbsp;
-<a href="https://github.com/JharlyOk?tab=stars">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/stars-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/badges/stars-light.svg">
-    <img src="assets/badges/stars-dark.svg" height="28" alt="Stars" />
-  </picture>
-</a>
-&nbsp;
-<a href="https://komarev.com/ghpvc/?username=JharlyOk">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/views-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/badges/views-light.svg">
-    <img src="assets/badges/views-dark.svg" height="28" alt="Visitors" />
-  </picture>
-</a>
-&nbsp;
-
-<br><br>
-
 <!-- VISITOR HIT BEACON -->
 <img src="https://komarev.com/ghpvc/?username=JharlyOk" width="1" height="1" alt="" style="display:none" />
 
