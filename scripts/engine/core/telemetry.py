@@ -143,38 +143,54 @@ def format_metric_value(val: int | float | str) -> str:
 
 # Canonical telemetry metrics definition (Single Source of Truth)
 TELEMETRY_METRICS_SPEC: Dict[str, Dict[str, Any]] = {
-    "followers": {
-        "id": "followers",
-        "default_label": "Followers",
-        "icon": "followers",
-        "accent": "secondary",
-        "prefix": "",
-        "suffix": "",
-    },
     "repos": {
         "id": "repos",
-        "default_label": "Public Repos",
+        "default_label": "PUBLIC REPOS",
+        "default_sub": "open source systems",
+        "default_suffix": "Active",
+        "badge_label": "Repos",
         "icon": "repo",
         "accent": "success",
         "prefix": "",
         "suffix": "",
+        "url": "https://github.com/{handle}?tab=repositories",
     },
     "stars": {
         "id": "stars",
-        "default_label": "Stars Earned",
+        "default_label": "TOTAL STARS",
+        "default_sub": "community stargazers",
+        "default_suffix": "Earned",
+        "badge_label": "Stars",
         "icon": "star",
         "accent": "warning",
         "prefix": "★ ",
         "suffix": "",
+        "url": "https://github.com/{handle}?tab=stars",
+    },
+    "followers": {
+        "id": "followers",
+        "default_label": "DEV NETWORK",
+        "default_sub": "{following} following developers",
+        "default_suffix": "Followers",
+        "badge_label": "Followers",
+        "icon": "followers",
+        "accent": "secondary",
+        "prefix": "",
+        "suffix": "",
+        "url": "https://github.com/{handle}?tab=followers",
     },
     "views": {
         "id": "views",
-        "default_label": "Profile Views",
+        "default_label": "PROFILE VIEWS",
+        "default_sub": "live hit counter",
+        "default_suffix": "Hits",
+        "badge_label": "Visitors",
         "icon": "eye",
         "accent": "primary",
         "prefix": "",
         "suffix": "+",
         "is_counter": True,
+        "url": "https://komarev.com/ghpvc/?username={handle}",
     },
 }
 
@@ -189,6 +205,62 @@ def resolve_theme_accent(theme: Any, accent_name: str) -> str:
         "danger": getattr(theme, "accent_danger", "#f85149"),
     }
     return mapping.get(accent_name, getattr(theme, "accent_primary", "#58a6ff"))
+
+
+def get_telemetry_dashboard_cards(
+    config: Dict[str, Any],
+    stats: Dict[str, Any],
+    theme: Any,
+) -> list[Dict[str, Any]]:
+    """Build candidate telemetry cards for the stats dashboard, merging user config."""
+    stats_cfg = config.get("stats", {})
+    metrics_cfg = stats_cfg.get("metrics", {})
+    following = stats.get("following", 0)
+
+    cards: list[Dict[str, Any]] = []
+
+    for mid, spec in TELEMETRY_METRICS_SPEC.items():
+        user_cfg = metrics_cfg.get(mid, {})
+        if isinstance(user_cfg, bool):
+            enabled = user_cfg
+            label = spec["default_label"]
+            sub = spec["default_sub"]
+            suffix = spec["default_suffix"]
+        elif isinstance(user_cfg, dict):
+            enabled = user_cfg.get("enabled", True)
+            label = user_cfg.get("label", spec["default_label"])
+            sub = user_cfg.get("sub", spec["default_sub"])
+            suffix = user_cfg.get("suffix", spec["default_suffix"])
+        else:
+            enabled = True
+            label = spec["default_label"]
+            sub = spec["default_sub"]
+            suffix = spec["default_suffix"]
+
+        if not enabled:
+            continue
+
+        raw_val = stats.get(mid, 0)
+        formatted_val = format_metric_value(raw_val)
+        prefix = spec.get("prefix", "")
+        extra_suffix = spec.get("suffix", "")
+        val_core = f"{prefix}{formatted_val}{extra_suffix}".strip()
+        val_str = f"{val_core} {suffix}".strip() if suffix else val_core
+
+        sub_str = sub.replace("{following}", str(following))
+        accent_color = resolve_theme_accent(theme, spec["accent"])
+
+        cards.append({
+            "id": mid,
+            "label": label,
+            "val": val_str,
+            "sub": sub_str,
+            "icon": spec["icon"],
+            "accent": accent_color,
+            "enabled": True,
+        })
+
+    return cards
 
 
 def get_active_telemetry_metrics(

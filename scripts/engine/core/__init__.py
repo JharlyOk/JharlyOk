@@ -9,6 +9,7 @@ from .telemetry import (
     TELEMETRY_METRICS_SPEC,
     resolve_theme_accent,
     get_active_telemetry_metrics,
+    get_telemetry_dashboard_cards,
 )
 
 __all__ = [
@@ -27,5 +28,6 @@ __all__ = [
     "TELEMETRY_METRICS_SPEC",
     "resolve_theme_accent",
     "get_active_telemetry_metrics",
+    "get_telemetry_dashboard_cards",
 ]
 

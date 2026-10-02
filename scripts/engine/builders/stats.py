@@ -15,7 +15,7 @@ from typing import Any, Dict
 
 from ..core.registry import BaseBuilder, register_builder
 from ..core.theme import Theme
-from ..core.telemetry import format_metric_value
+from ..core.telemetry import get_telemetry_dashboard_cards
 from ..svg.icons import render_icon
 from ..svg.primitives import (
     svg_open, svg_close, rect, text, circle, line, _esc,
@@ -45,45 +45,7 @@ class StatsBuilder(BaseBuilder):
                     pass
 
         handle = config.get("identity", {}).get("handle", "JharlyOk")
-        repos = stats.get("repos", 8)
-        stars = stats.get("stars", 0)
-        followers = stats.get("followers", 0)
-        following = stats.get("following", 2)
-        views = stats.get("views", 81)
-
-        # Granular configuration from profile.config.yaml
         stats_cfg = config.get("stats", {})
-        metrics_cfg = stats_cfg.get("metrics", {})
-
-        def _get_metric_cfg(key: str, default_label: str, default_sub: str, default_suffix: str) -> dict:
-            val = metrics_cfg.get(key, {})
-            if isinstance(val, bool):
-                return {
-                    "enabled": val,
-                    "label": default_label,
-                    "sub": default_sub,
-                    "suffix": default_suffix,
-                }
-            elif isinstance(val, dict):
-                return {
-                    "enabled": val.get("enabled", True),
-                    "label": val.get("label", default_label),
-                    "sub": val.get("sub", default_sub),
-                    "suffix": val.get("suffix", default_suffix),
-                }
-            return {
-                "enabled": True,
-                "label": default_label,
-                "sub": default_sub,
-                "suffix": default_suffix,
-            }
-
-        cfg_repos = _get_metric_cfg("repos", "PUBLIC REPOS", "open source systems", "Active")
-        cfg_stars = _get_metric_cfg("stars", "TOTAL STARS", "community stargazers", "Earned")
-        cfg_followers = _get_metric_cfg("followers", "DEV NETWORK", "{following} following developers", "Followers")
-        cfg_views = _get_metric_cfg("views", "PROFILE VIEWS", "live hit counter", "Hits")
-
-        followers_sub = cfg_followers["sub"].replace("{following}", str(following))
         command_text = stats_cfg.get("command", "gh telemetry --overview")
         badge_text = stats_cfg.get("badge_text", "LIVE TELEMETRY")
 
@@ -129,47 +91,7 @@ class StatsBuilder(BaseBuilder):
             f'font-weight="700" fill="{theme.accent_success}">{_esc(badge_text)}</text>\n',
         ]
 
-        # Candidate Metric Cards
-        all_cards = [
-            {
-                "id": "repos",
-                "label": cfg_repos["label"],
-                "val": f"{repos} {cfg_repos['suffix']}".strip(),
-                "sub": cfg_repos["sub"],
-                "icon": "repo",
-                "accent": theme.accent_success,
-                "enabled": cfg_repos["enabled"],
-            },
-            {
-                "id": "stars",
-                "label": cfg_stars["label"],
-                "val": f"★ {stars} {cfg_stars['suffix']}".strip(),
-                "sub": cfg_stars["sub"],
-                "icon": "star",
-                "accent": theme.accent_warning,
-                "enabled": cfg_stars["enabled"],
-            },
-            {
-                "id": "followers",
-                "label": cfg_followers["label"],
-                "val": f"{followers} {cfg_followers['suffix']}".strip(),
-                "sub": followers_sub,
-                "icon": "followers",
-                "accent": theme.accent_secondary,
-                "enabled": cfg_followers["enabled"],
-            },
-            {
-                "id": "views",
-                "label": cfg_views["label"],
-                "val": f"{format_metric_value(views)}+ {cfg_views['suffix']}".strip(),
-                "sub": cfg_views["sub"],
-                "icon": "eye",
-                "accent": theme.accent_primary,
-                "enabled": cfg_views["enabled"],
-            },
-        ]
-
-        active_cards = [c for c in all_cards if c["enabled"]]
+        active_cards = get_telemetry_dashboard_cards(config, stats, theme)
         num_cards = len(active_cards)
 
         start_x = 20
