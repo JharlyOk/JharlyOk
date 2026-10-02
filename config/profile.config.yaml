@@ -311,12 +311,32 @@ stack:
       - "Pterodactyl"
 
 # ==============================================================================
+# 📊 6. DASHBOARD DE ESTADÍSTICAS Y TELEMETRÍA DE GITHUB (stats.py)
+# Control granular: activa o desactiva individualmente cada tarjeta de métrica
+# Si desactivas una métrica, las tarjetas restantes se recalculan simétricamente
+# ==============================================================================
+stats:
+  metrics:
+    repos: true          # 📦 Public Repos (repositorios públicos activos)
+    stars: true          # ⭐ Total Stars (estrellas acumuladas; pon false para ocultar)
+    followers: true      # 👥 Dev Network (seguidores y desarrolladores)
+    views: true          # 👁️ Profile Views (contador de visitas en vivo)
+
+  # Barra de estado inferior del terminal de stats
+  statusline:
+    enabled: true        # true = muestra la línea inferior de tenure y flota de bots
+    tenure: "Since 2020 (6y)"
+    fleet: "13+ Autonomous Bots"
+    pipeline: "Lavalink v4 + LavaSrc"
+
+# ==============================================================================
 # 🌐 7. CANALES DE CONTACTO Y REDES SOCIALES (socials.py & badges.py)
-# Genera tanto la terminal de comunicación como los badges individuales split-pill
+# Control granular: activa o desactiva con enabled: true/false cada canal
 # Acentos válidos: primary (azul), secondary (morado), success (verde), warning (amarillo), danger (rojo)
 # ==============================================================================
 socials:
   - id: "telegram"
+    enabled: true        # true = se dibuja en la tarjeta terminal de socials
     label: "Telegram"
     handle: "@JharlyOk"
     url: "https://t.me/JharlyOk"
@@ -326,6 +346,7 @@ socials:
     latency: "< 1h avg response"
 
   - id: "discord"
+    enabled: true        # true = se dibuja en la tarjeta terminal de socials
     label: "Discord"
     handle: "JharlyOk"
     url: "https://discord.com"
@@ -335,6 +356,7 @@ socials:
     latency: "real-time voice"
 
   - id: "email"
+    enabled: true        # true = se dibuja en la tarjeta terminal de socials
     label: "Email"
     handle: "jhefcarrascojesus2001@gmail.com"
     display_handle: "Contact"
@@ -345,6 +367,7 @@ socials:
     latency: "24h SLA"
 
   - id: "github"
+    enabled: true        # true = se dibuja en la tarjeta terminal de socials
     label: "GitHub"
     handle: "JharlyOk"
     url: "https://github.com/JharlyOk"
@@ -354,6 +377,7 @@ socials:
     latency: "active daily"
 
   - id: "linkedin"
+    enabled: true        # true = se dibuja en la tarjeta terminal de socials
     label: "LinkedIn"
     handle: "Jharly Carrasco"
     display_handle: "JharlyOk"
@@ -364,6 +388,7 @@ socials:
     latency: "async connect"
 
   - id: "x"
+    enabled: true        # true = se dibuja en la tarjeta terminal de socials
     label: "X"
     handle: "@JharlyOk"
     url: "https://x.com/JharlyOk"

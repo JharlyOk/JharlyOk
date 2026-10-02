@@ -41,7 +41,7 @@ def _build_single_badge_markup(
 
 
 def _build_social_badges(config: Dict[str, Any]) -> List[str]:
-    """Build markdown links for all configured social badges."""
+    """Build markdown links for all configured active social badges."""
     socials = config.get("socials", [])
     if not socials:
         return []
@@ -49,6 +49,8 @@ def _build_social_badges(config: Dict[str, Any]) -> List[str]:
         "<!-- QUICK-ACTION SOCIAL BADGES -->",
     ]
     for item in socials:
+        if not item.get("enabled", True):
+            continue
         badge_id = item["id"]
         label = item.get("label", badge_id.title())
         url = item.get("url", "#")
@@ -57,24 +59,25 @@ def _build_social_badges(config: Dict[str, Any]) -> List[str]:
 
 
 def _build_telemetry_badges(config: Dict[str, Any]) -> List[str]:
-    """Build markdown links for dynamic GitHub metric badges."""
+    """Build markdown links for dynamic GitHub metric badges based on active metrics."""
     handle = config.get("identity", {}).get("handle", "JharlyOk")
-    telemetry_cfg = config.get("telemetry", {})
+    stats_cfg = config.get("stats", {})
+    metrics_cfg = stats_cfg.get("metrics", {})
     default_metrics = [
         {"id": "followers", "label": "Followers", "url": f"https://github.com/{handle}?tab=followers"},
         {"id": "repos", "label": "Repos", "url": f"https://github.com/{handle}?tab=repositories"},
         {"id": "stars", "label": "Stars", "url": f"https://github.com/{handle}?tab=stars"},
         {"id": "views", "label": "Visitors", "url": f"https://komarev.com/ghpvc/?username={handle}"},
     ]
-    metrics = telemetry_cfg.get("metrics", default_metrics) if isinstance(telemetry_cfg, dict) else default_metrics
     metric_links: list[str] = [
         "<!-- DYNAMIC TELEMETRY & GITHUB METRICS -->",
     ]
-    for item in metrics:
+    for item in default_metrics:
         metric_id = item["id"]
+        if not metrics_cfg.get(metric_id, True):
+            continue
         label = item.get("label", metric_id.title())
-        raw_url = item.get("url", f"https://github.com/{handle}")
-        url = raw_url.replace("{handle}", handle)
+        url = item["url"]
         metric_links.append(_build_single_badge_markup(metric_id, label, url) + "\n&nbsp;")
     return metric_links
 

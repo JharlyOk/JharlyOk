@@ -211,6 +211,31 @@
       }
     },
 
+    "stats": {
+      "type": "object",
+      "description": "Granular metric cards and statusline configuration for GitHub stats banner.",
+      "properties": {
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "repos": { "type": "boolean" },
+            "stars": { "type": "boolean" },
+            "followers": { "type": "boolean" },
+            "views": { "type": "boolean" }
+          }
+        },
+        "statusline": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "tenure": { "type": "string" },
+            "fleet": { "type": "string" },
+            "pipeline": { "type": "string" }
+          }
+        }
+      }
+    },
+
     "socials": {
       "type": "array",
       "description": "Communication endpoints, social networks, and handles.",
@@ -221,6 +246,10 @@
           "id": {
             "type": "string",
             "enum": ["telegram", "discord", "email", "github", "linkedin", "x", "web"]
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether to render this channel in the socials terminal card."
           },
           "label": { "type": "string" },
           "handle": { "type": "string" },
