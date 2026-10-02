@@ -10,6 +10,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict, List
 
+from ..core.config import is_module_enabled
+from ..core.telemetry import format_metric_value
 from ..core.theme import Theme
 from ..svg.icons import render_icon
 from ..svg.primitives import _esc
@@ -31,10 +33,10 @@ def build_badge_svg(
     item: Dict[str, Any],
     theme: Theme,
 ) -> str:
-    """Build a single split-pill badge SVG for a social/platform link."""
-    icon_name = item.get("id", "web")
+    """Build a single split-pill badge SVG for a link or telemetry metric."""
+    icon_name = item.get("icon", item.get("id", "web"))
     label = item.get("label", icon_name.title())
-    handle = item.get("display_handle", item.get("handle", ""))
+    handle = str(item.get("display_handle", item.get("handle", item.get("value", ""))))
     accent_key = item.get("accent", "primary")
     accent_color = _resolve_accent_color(accent_key, theme)
 
@@ -70,9 +72,9 @@ def build_badge_svg(
         f'    </clipPath>\n'
         f'  </defs>\n\n'
         f'  <g clip-path="url(#pill-clip)">\n'
-        f'    <!-- Left Section: Platform -->\n'
+        f'    <!-- Left Section: Platform/Metric -->\n'
         f'    <rect x="0" y="0" width="{left_w}" height="{height}" fill="{theme.bg_overlay}" />\n'
-        f'    <!-- Right Section: Handle -->\n'
+        f'    <!-- Right Section: Handle/Count -->\n'
         f'    <rect x="{left_w}" y="0" width="{right_w}" height="{height}" fill="{accent_color}" />\n'
         f'  </g>\n\n'
         f'  <!-- Pill Border -->\n'
@@ -82,11 +84,11 @@ def build_badge_svg(
         f'stroke="{theme.border_muted}" stroke-width="1" />\n\n'
         f'  <!-- Icon -->\n'
         f'{render_icon(icon_name, pad_left, icon_y, icon_size, theme.fg_default)}'
-        f'  <!-- Platform Label -->\n'
+        f'  <!-- Platform/Metric Label -->\n'
         f'  <text x="{pad_left + icon_size + icon_gap}" y="{text_y}" '
         f'font-family="{theme.font_mono}" font-size="11" font-weight="600" fill="{theme.fg_default}">'
         f'{_esc(label)}</text>\n\n'
-        f'  <!-- Handle -->\n'
+        f'  <!-- Value/Handle -->\n'
         f'  <text x="{left_w + 10}" y="{text_y}" '
         f'font-family="{theme.font_mono}" font-size="11" font-weight="700" fill="{right_fg}">'
         f'{_esc(handle)}</text>\n'
@@ -95,18 +97,56 @@ def build_badge_svg(
     return svg
 
 
-def compile_all_badges(config: Dict[str, Any], theme: Theme, output_dir: Path) -> List[str]:
-    """Compile all badges for a theme and save to output_dir."""
+def compile_all_badges(
+    config: Dict[str, Any],
+    theme: Theme,
+    output_dir: Path,
+    telemetry_stats: Dict[str, Any] | None = None,
+) -> List[str]:
+    """Compile both social badges and dynamic telemetry badges for a theme."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    socials: List[dict] = config.get("socials", [])
     theme_suffix = "dark" if theme.name == "github-dark" else "light"
     generated: list[str] = []
 
-    for item in socials:
-        badge_id = item["id"]
-        svg_content = build_badge_svg(item, theme)
-        file_path = output_dir / f"{badge_id}-{theme_suffix}.svg"
-        file_path.write_text(svg_content, encoding="utf-8")
-        generated.append(file_path.name)
+    # 1. Standalone Social Badges
+    if is_module_enabled(config, "badges"):
+        socials: List[dict] = config.get("socials", [])
+        for item in socials:
+            badge_id = item["id"]
+            svg_content = build_badge_svg(item, theme)
+            file_path = output_dir / f"{badge_id}-{theme_suffix}.svg"
+            file_path.write_text(svg_content, encoding="utf-8")
+            generated.append(file_path.name)
+
+    # 2. Dynamic Telemetry Metric Badges
+    if is_module_enabled(config, "telemetry"):
+        telemetry_cfg = config.get("telemetry", {})
+        default_metrics = [
+            {"id": "followers", "label": "Followers", "icon": "followers", "accent": "secondary"},
+            {"id": "repos", "label": "Repos", "icon": "repo", "accent": "success"},
+            {"id": "stars", "label": "Stars", "icon": "star", "accent": "warning"},
+            {"id": "views", "label": "Visitors", "icon": "eye", "accent": "primary"},
+        ]
+        metrics = telemetry_cfg.get("metrics", default_metrics)
+        stats = telemetry_stats or {}
+
+        for m in metrics:
+            m_id = m["id"]
+            raw_val = stats.get(m_id, 0)
+            formatted_val = format_metric_value(raw_val)
+            if m_id == "views":
+                formatted_val = f"{formatted_val}+"
+
+            badge_item = {
+                "id": m_id,
+                "label": m.get("label", m_id.title()),
+                "icon": m.get("icon", m_id),
+                "value": formatted_val,
+                "accent": m.get("accent", "primary"),
+            }
+            svg_content = build_badge_svg(badge_item, theme)
+            file_path = output_dir / f"{m_id}-{theme_suffix}.svg"
+            file_path.write_text(svg_content, encoding="utf-8")
+            generated.append(file_path.name)
 
     return generated

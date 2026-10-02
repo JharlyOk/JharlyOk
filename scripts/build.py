@@ -28,6 +28,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from engine.core.config import load_config, is_module_enabled
 from engine.core.theme import load_theme_pair
 from engine.core.registry import get_all_builders, get_builder
+from engine.core.telemetry import fetch_telemetry
 from engine.markdown.readme import update_readme_file
 from engine.builders.badges import compile_all_badges
 
@@ -63,6 +64,7 @@ def main() -> None:
 
     # Paths
     config_path = PROJECT_ROOT / "config" / "profile.config.json"
+    cache_path = PROJECT_ROOT / "config" / "telemetry_cache.json"
     themes_dir = PROJECT_ROOT / "themes"
     assets_dir = PROJECT_ROOT / "assets"
     readme_path = PROJECT_ROOT / "README.md"
@@ -127,16 +129,27 @@ def main() -> None:
             f"({elapsed:.0f}ms)"
         )
 
-    # Build standalone badges
+    # Fetch telemetry stats if telemetry module enabled
+    telemetry_stats = None
+    if is_module_enabled(config, "telemetry"):
+        handle = config["identity"]["handle"]
+        telemetry_stats = fetch_telemetry(handle, cache_path)
+        _log(
+            f"  [ok] Telemetry: {telemetry_stats.get('followers', 0)} followers | "
+            f"{telemetry_stats.get('repos', 0)} repos | {telemetry_stats.get('stars', 0)} stars | "
+            f"{telemetry_stats.get('views', 0)} visitors"
+        )
+
+    # Build standalone badges (social links + dynamic telemetry)
     total_badges = 0
-    if is_module_enabled(config, "badges"):
+    if is_module_enabled(config, "badges") or is_module_enabled(config, "telemetry"):
         badges_dir = assets_dir / "badges"
-        dark_badges = compile_all_badges(config, dark_theme, badges_dir)
-        light_badges = compile_all_badges(config, light_theme, badges_dir)
+        dark_badges = compile_all_badges(config, dark_theme, badges_dir, telemetry_stats)
+        light_badges = compile_all_badges(config, light_theme, badges_dir, telemetry_stats)
         total_badges = len(dark_badges) + len(light_badges)
         _log(f"  > badges.............. {total_badges} vector badges generated in assets/badges/")
     else:
-        _log("  [skip] badges (disabled in config.modules)")
+        _log("  [skip] badges & telemetry (disabled in config.modules)")
 
     # Sync README.md if not disabled
     if not args.no_readme and not args.only:

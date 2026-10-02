@@ -62,7 +62,8 @@ En `config/profile.config.json`, la sección `modules` permite activar o desacti
   "projects": { "enabled": true },
   "stack":    { "enabled": true },
   "connect":  { "enabled": true },
-  "badges":   { "enabled": true }
+  "badges":   { "enabled": true },
+  "telemetry":{ "enabled": true }
 }
 ```
 
@@ -140,9 +141,26 @@ Los colores de **todos** los componentes se extraen exclusivamente de `themes/gi
 
 ---
 
+### 6. Badges & Telemetría Dinámica (`badges.py` + `telemetry.py`)
+* **Badges de Redes**:
+  * Botones split-pill individuales (`assets/badges/{id}-dark.svg` y `light.svg`) con 28px de altura y bordes redondeados Primer (`rx=6`).
+* **Métricas Dinámicas de GitHub y Visitas**:
+  * Consulta en vivo la API de GitHub (`followers`, `repos`, `stars`) y el contador de visitas (`views`).
+  * Formatea números de manera inteligente (`k`, `M`, `+`).
+  * Creados con clipPath simétrico, íconos Octicons oficiales (followers, repo, star, eye) y contraste exacto según el tema.
+  * Incluye un píxel invisible de registro de visitas para garantizar que cada visita continúe incrementando el contador global.
+  * **Tolerancia a fallos**: Si estás offline, utiliza `config/telemetry_cache.json` como fallback seguro.
+
+---
+
 ## 🔄 Flujo de Trabajo y Automatización (CI/CD)
 
 El repositorio cuenta con una GitHub Action en `.github/workflows/build-profile.yml`:
-1. Cada vez que realizas un `push` a la rama `main` modificando `config/`, `themes/` o `scripts/`, el flujo de CI se dispara automáticamente.
-2. Ejecuta `python scripts/build.py`.
-3. Si los assets sufrieron algún cambio, los commitea y los sube automáticamente.
+1. **Disparadores**:
+   * **Automático cada 6 horas (`cron: '0 */6 * * *'`)**: Actualiza las métricas dinámicas (seguidores, estrellas, repositorios, visitas) automáticamente sin intervención humana.
+   * **Push a `main`**: Al modificar `config/`, `themes/` o `scripts/`.
+   * **Manual (`workflow_dispatch`)**: Puedes forzar la recompilación con 1 clic desde la pestaña "Actions" en GitHub.
+2. **Seguridad y Rate Limits**:
+   * Utiliza `${{ secrets.GITHUB_TOKEN }}` para disponer de 1,000 peticiones/hora en la API de GitHub.
+3. **Persistencia**:
+   * Commitea y sincroniza automáticamente `assets/`, `README.md` y `config/telemetry_cache.json` con etiqueta `[skip ci]`.

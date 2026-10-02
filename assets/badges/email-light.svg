@@ -6,9 +6,9 @@
   </defs>
 
   <g clip-path="url(#pill-clip)">
-    <!-- Left Section: Platform -->
+    <!-- Left Section: Platform/Metric -->
     <rect x="0" y="0" width="71" height="28" fill="#eaeef2" />
-    <!-- Right Section: Handle -->
+    <!-- Right Section: Handle/Count -->
     <rect x="71" y="0" width="69" height="28" fill="#d1242f" />
   </g>
 
@@ -20,9 +20,9 @@
   <g transform="translate(8, 7.0) scale(0.5833)">
     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#1f2328" />
   </g>
-  <!-- Platform Label -->
+  <!-- Platform/Metric Label -->
   <text x="28" y="17.5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="600" fill="#1f2328">Email</text>
 
-  <!-- Handle -->
+  <!-- Value/Handle -->
   <text x="81" y="17.5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700" fill="#ffffff">Contact</text>
 </svg>

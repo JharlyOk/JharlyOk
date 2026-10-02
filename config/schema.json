@@ -55,6 +55,13 @@
           "properties": {
             "enabled": { "type": "boolean", "default": true }
           }
+        },
+        "telemetry": {
+          "type": "object",
+          "description": "Dynamic GitHub telemetry and visitor metric split-pill badges.",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true }
+          }
         }
       }
     },

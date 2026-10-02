@@ -112,15 +112,42 @@ def generate_readme(config: Dict[str, Any]) -> str:
         sections.append("\n".join(badge_links))
         sections.extend(["", "<br><br>", ""])
 
-    # 7. Telemetry & Counters
+    # 7. Dynamic Telemetry & GitHub Metric Badges
+    if is_module_enabled(config, "telemetry"):
+        telemetry_cfg = config.get("telemetry", {})
+        default_metrics = [
+            {"id": "followers", "label": "Followers", "url": f"https://github.com/{handle}?tab=followers"},
+            {"id": "repos", "label": "Repos", "url": f"https://github.com/{handle}?tab=repositories"},
+            {"id": "stars", "label": "Stars", "url": f"https://github.com/{handle}?tab=stars"},
+            {"id": "views", "label": "Visitors", "url": f"https://komarev.com/ghpvc/?username={handle}"},
+        ]
+        metrics = telemetry_cfg.get("metrics", default_metrics)
+        metric_links: list[str] = [
+            "<!-- DYNAMIC TELEMETRY & GITHUB METRICS -->",
+        ]
+        for item in metrics:
+            metric_id = item["id"]
+            label = item.get("label", metric_id.title())
+            raw_url = item.get("url", f"https://github.com/{handle}")
+            url = raw_url.replace("{handle}", handle)
+            metric_links.append(
+                f'<a href="{url}">\n'
+                f'  <picture>\n'
+                f'    <source media="(prefers-color-scheme: dark)" srcset="assets/badges/{metric_id}-dark.svg">\n'
+                f'    <source media="(prefers-color-scheme: light)" srcset="assets/badges/{metric_id}-light.svg">\n'
+                f'    <img src="assets/badges/{metric_id}-dark.svg" height="28" alt="{label}" />\n'
+                f'  </picture>\n'
+                f'</a>\n'
+                f'&nbsp;'
+            )
+        metric_links.append(
+            f'\n<!-- VISITOR HIT BEACON -->\n'
+            f'<img src="https://komarev.com/ghpvc/?username={handle}" width="1" height="1" alt="" style="display:none" />'
+        )
+        sections.append("\n".join(metric_links))
+        sections.extend(["", "<br><br>", ""])
+
     sections.extend([
-        "<!-- TELEMETRY COUNTERS -->",
-        f"![Profile Views](https://komarev.com/ghpvc/?username={handle}&color=58A6FF&style=flat-square&label=visitors)",
-        "&nbsp;",
-        f"[![GitHub](https://img.shields.io/github/followers/{handle}?label=Follow&style=flat-square&color=30363d&labelColor=21262d)](https://github.com/{handle})",
-        "",
-        "<br><br>",
-        "",
         '<sub>Built with a custom SVG engine · Dark/Light adaptive · Config-driven · <a href="scripts/">View source</a></sub>',
         "",
         "</div>\n",

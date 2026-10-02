@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 28" width="98" height="28" role="img" aria-label="Stars: 0">
+  <defs>
+    <clipPath id="pill-clip">
+      <rect width="98" height="28" rx="6" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#pill-clip)">
+    <!-- Left Section: Platform/Metric -->
+    <rect x="0" y="0" width="71" height="28" fill="#1c2128" />
+    <!-- Right Section: Handle/Count -->
+    <rect x="71" y="0" width="27" height="28" fill="#d29922" />
+  </g>
+
+  <!-- Pill Border -->
+  <rect x="0.5" y="0.5" width="97" height="27" rx="6" fill="none" stroke="#30363d" stroke-width="1" />
+  <line x1="71" y1="0" x2="71" y2="28" stroke="#21262d" stroke-width="1" />
+
+  <!-- Icon -->
+  <g transform="translate(8, 7.0) scale(0.5833)">
+    <path d="M12.672.668a.75.75 0 0 0-1.345 0L8.27 6.865l-6.838.994a.75.75 0 0 0-.416 1.279l4.948 4.823-1.168 6.811a.75.75 0 0 0 1.088.791L12 18.347l6.117 3.216a.75.75 0 0 0 1.088-.79l-1.169-6.812 4.948-4.823a.75.75 0 0 0-.416-1.28l-6.838-.993L12.672.668Z" fill="#f0f6fc" />
+  </g>
+  <!-- Platform/Metric Label -->
+  <text x="28" y="17.5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="600" fill="#f0f6fc">Stars</text>
+
+  <!-- Value/Handle -->
+  <text x="81" y="17.5" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="11" font-weight="700" fill="#010409">0</text>
+</svg>
