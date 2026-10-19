@@ -34,7 +34,7 @@
     <path d="M10.5 4.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM7 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-5.5 12a4.5 4.5 0 0 1 9 0 .75.75 0 0 1-1.5 0 3 3 0 0 0-6 0 .75.75 0 0 1-1.5 0Zm14.5-12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-1.5 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Zm-4.25 12a4.25 4.25 0 0 1 7.25-3.056.75.75 0 0 1-1.042 1.08 2.75 2.75 0 0 0-4.666 1.976.75.75 0 0 1-1.5 0Z" fill="#8250df" />
   </g>
   <text x="44" y="242" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10.5" font-weight="700" letter-spacing="0.5" fill="#656d76">SEGUIDORES</text>
-  <text x="22" y="266" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="17" font-weight="800" fill="#1f2328">1 Seguidor</text>
+  <text x="22" y="266" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="17" font-weight="800" fill="#1f2328">0 Seguidores</text>
   <text x="22" y="283" font-family="'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Consolas, monospace" font-size="10" font-weight="500" fill="#6e7681">2 desarrolladores seguidos</text>
   <rect x="10" y="304" width="280" height="76" rx="6" fill="#f6f8fa" stroke="#d8dee4" stroke-width="1.0" />
   <rect x="10" y="312" width="3" height="60" rx="1.5" fill="#0969da" />
